@@ -24,9 +24,9 @@ public class TerminalHandler : MonoBehaviour
     }
 
     [SerializeField] GameObject _lineTameplate;
+    [SerializeField] CommandCollection _commandCollection;
 
     public void OnCommandInputEnd(LineHandler line) {
-        // parseCommand(line.cmd, line.args);
         parseCommand(line.cmd);
         instantiateNewLine();
     }
@@ -37,31 +37,22 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void parseCommand(string cmd) {
-
-        Match m = Regex.Match(cmd, "^ *clear$");
-
-        if(m.Success) {
-            foreach (Transform child in transform)
-            {
-                if(child.tag != "Background") {
-                    Destroy(child.gameObject);
-                }
+        foreach (var command in _commandCollection.AvailableCommands)
+        {
+            if(command.CheckCmdMatch(cmd)) {
+                command.OnCmdMatch();
+                Debug.Log("MATCH FOUND:\t\"" + cmd + "\"  matched  \"" + command.GetCmdMatch() + "\"");
+                break;
             }
-        } else {
-            Debug.LogWarning("No cmd match for \"" + cmd + "\"");
         }
+    }
 
-        // switch (cmd)
-        // {
-        //     case "clear":
-        //         foreach (Transform child in transform)
-        //         {
-        //             if(child.tag != "Background") {
-        //                 Destroy(child.gameObject);
-        //             }
-        //         }
-        //         break;
-        //     default: Debug.LogWarning("No cmd match for \"" + cmd + "\""); break;
-        // }
+    public void ClearScreen() {
+        foreach (Transform child in transform)
+        {
+            if(child.tag != "Background") {
+                Destroy(child.gameObject);
+            }
+        }
     }
 }
