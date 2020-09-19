@@ -11,7 +11,9 @@ public class TerminalHandler : MonoBehaviour
         get; private set;
     }
 
-    // [SerializeField] public LineCmdCollection;
+    public TerminalConfig TerminalConfig {get {
+        return _terminalConfig;
+    }}
 
     void Awake()
     {
@@ -24,7 +26,7 @@ public class TerminalHandler : MonoBehaviour
     }
 
     [SerializeField] GameObject _lineTameplate;
-    [SerializeField] CommandCollection _commandCollection;
+    [SerializeField] TerminalConfig _terminalConfig;
 
     public void OnCommandInputEnd(LineHandler line) {
         parseCommand(line.cmd);
@@ -37,7 +39,7 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void parseCommand(string cmd) {
-        foreach (var command in _commandCollection.AvailableCommands)
+        foreach (var command in _terminalConfig.AvailableCommands)
         {
             if(command.CheckCmdMatch(cmd)) {
                 command.OnCmdMatch();
