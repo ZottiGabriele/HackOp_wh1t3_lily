@@ -7,6 +7,8 @@ using System.Text.RegularExpressions;
 
 public class TerminalHandler : MonoBehaviour
 {
+    public bool DebugMode = false;
+
     public static TerminalHandler Instance {
         get; private set;
     }
@@ -26,7 +28,9 @@ public class TerminalHandler : MonoBehaviour
     }
 
     [SerializeField] GameObject _lineTameplate;
+    [SerializeField] GameObject _lastLine;
     [SerializeField] TerminalConfig _terminalConfig;
+    
 
     public void OnCommandInputEnd(LineHandler line) {
         parseCommand(line.cmd);
@@ -34,19 +38,24 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void instantiateNewLine() {
-        var new_line = Instantiate(_lineTameplate, transform).GetComponentInChildren<TMP_InputField>();
-        EventSystem.current.SetSelectedGameObject(new_line.gameObject);
+        var new_line = Instantiate(_lineTameplate, transform);
+        var inputField = new_line.GetComponentInChildren<TMP_InputField>();
+        EventSystem.current.SetSelectedGameObject(inputField.gameObject);
+        _lastLine = new_line.gameObject;
     }
 
     private void parseCommand(string cmd) {
+        bool match = false;
         foreach (var command in _terminalConfig.AvailableCommands)
         {
             if(command.CheckCmdMatch(cmd)) {
                 command.OnCmdMatch();
-                Debug.Log("MATCH FOUND:\t\"" + cmd + "\"  matched  \"" + command.GetCmdMatch() + "\"");
+                match = true;
+                if(DebugMode) Debug.Log("MATCH FOUND:\t\"" + cmd + "\"  matched  \"" + command.GetCmdMatch() + "\"");
                 break;
             }
         }
+        if(!match) DisplayOutput("Command \"" + cmd + "\" not found");
     }
 
     public void ClearScreen() {
@@ -56,5 +65,9 @@ public class TerminalHandler : MonoBehaviour
                 Destroy(child.gameObject);
             }
         }
+    }
+
+    public void DisplayOutput(string output) {
+        _lastLine.GetComponent<LineHandler>().DisplayOutput(output);
     }
 }

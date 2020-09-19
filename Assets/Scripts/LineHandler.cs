@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class LineHandler : MonoBehaviour
 {
     [SerializeField] TMP_InputField _inField;
+    [SerializeField] TMP_Text _outField;
 
     public string cmd;
 
@@ -22,5 +23,9 @@ public class LineHandler : MonoBehaviour
         _inField.GetComponent<LayoutElement>().flexibleHeight = 0;
 
         TerminalHandler.Instance.OnCommandInputEnd(this);
+    }
+
+    public void DisplayOutput(string output) {
+        _outField.text = output;
     }
 }
