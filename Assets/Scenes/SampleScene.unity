@@ -370,7 +370,7 @@ MonoBehaviour:
     ultrices iaculis lectus, et faucibus lorem hendrerit vel. Aliquam aliquam odio
     eu aliquet tristique. Integer eget risus rhoncus, molestie ex in, tempus arcu.
 
-    
+
 
     Vivamus
     id dui vitae dui euismod vulputate. Ut luctus tristique congue. Integer ipsum
@@ -381,7 +381,7 @@ MonoBehaviour:
     at enim. Donec efficitur sem eu quam pretium ornare. Donec ligula sem, ullamcorper
     non mollis in, pellentesque id nisi. Morbi luctus porttitor mi.
 
-    
+
 
     Nullam
     eu dolor fermentum, rhoncus felis nec, ultrices lorem. Integer sit amet augue
@@ -393,14 +393,14 @@ MonoBehaviour:
     bibendum ut erat ut, scelerisque porta risus. Donec pulvinar nibh in cursus eleifend.
     Maecenas neque augue, consectetur non libero at, mattis ultricies dolor.
 
-    
+
 
     Nunc
     quis elit vel lectus pharetra euismod. Nunc dictum sodales finibus. Nulla facilisi.
     Vivamus ornare vestibulum ligula, et fermentum tortor ornare id. In non sollicitudin
     nisl. Integer eu sem et est finibus egestas. Aenean tempor pharetra consectetur.
 
-    
+
 
     Quisque
     nisl odio, commodo ut convallis vel, aliquam et nisl. Curabitur vitae enim imperdiet,
@@ -476,12 +476,12 @@ MonoBehaviour:
   m_margin: {x: 10, y: 0, z: 15, w: 0}
   m_textInfo:
     textComponent: {fileID: 419550312}
-    characterCount: 2484
+    characterCount: 2480
     spriteCount: 0
-    spaceCount: 367
+    spaceCount: 371
     wordCount: 364
     linkCount: 0
-    lineCount: 35
+    lineCount: 39
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -1075,7 +1075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lineTameplate: {fileID: 8725191205163882579, guid: 6ec5f10277e32ec48b53bbc3a495d65a,
     type: 3}
-  _commandCollection: {fileID: 11400000, guid: 7c3e245e11f8e7246bad1ac950b42464, type: 2}
+  _terminalConfig: {fileID: 11400000, guid: 6f49e36b612e8d44395e884553d75af4, type: 2}
 --- !u!114 &1073492558
 MonoBehaviour:
   m_ObjectHideFlags: 0
