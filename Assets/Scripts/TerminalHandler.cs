@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
 
 public class TerminalHandler : MonoBehaviour
 {
@@ -13,11 +14,15 @@ public class TerminalHandler : MonoBehaviour
         get; private set;
     }
 
-    public TerminalConfig TerminalConfig {get {
-        return _terminalConfig;
-    }}
+    public TerminalConfig TerminalConfig {get => _terminalConfig;}
 
-    void Awake()
+    [SerializeField] GameObject _lineTameplate;
+    [SerializeField] GameObject _currentLine;
+    [SerializeField] TerminalConfig _terminalConfig;
+    [SerializeField] ScrollRect _scrollRect;
+    TMP_InputField _currentInputField;
+
+    private void Awake()
     {
         if(!Instance) {
             Instance = this;
@@ -27,10 +32,17 @@ public class TerminalHandler : MonoBehaviour
         }
     }
 
-    [SerializeField] GameObject _lineTameplate;
-    [SerializeField] GameObject _lastLine;
-    [SerializeField] TerminalConfig _terminalConfig;
-    
+    private void Start() {
+        _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
+        Debug.Log(_currentLine);
+        Debug.Log(_currentInputField);
+    }
+
+    private void Update() {
+        if(EventSystem.current.currentSelectedGameObject != _currentInputField) {
+            EventSystem.current.SetSelectedGameObject(_currentInputField.gameObject);
+        }
+    }
 
     public void OnCommandInputEnd(LineHandler line) {
         parseCommand(line.cmd);
@@ -38,10 +50,9 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void instantiateNewLine() {
-        var new_line = Instantiate(_lineTameplate, transform);
-        var inputField = new_line.GetComponentInChildren<TMP_InputField>();
-        EventSystem.current.SetSelectedGameObject(inputField.gameObject);
-        _lastLine = new_line.gameObject;
+        _currentLine = Instantiate(_lineTameplate, transform);
+        _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
+        StartCoroutine(scrollToBottom());
     }
 
     private void parseCommand(string cmd) {
@@ -68,6 +79,11 @@ public class TerminalHandler : MonoBehaviour
     }
 
     public void DisplayOutput(string output) {
-        _lastLine.GetComponent<LineHandler>().DisplayOutput(output);
+        _currentLine.GetComponent<LineHandler>().DisplayOutput(output);
+    }
+
+    private IEnumerator scrollToBottom() {
+        yield return new WaitForEndOfFrame();
+        _scrollRect.normalizedPosition = Vector2.zero;
     }
 }

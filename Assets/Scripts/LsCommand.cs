@@ -35,7 +35,7 @@ public class LsCommand : ICommand
         string output = "";
         foreach(var c in content) {
             FileInfo c_info = new FileInfo(c);
-            if(c_info.Attributes == FileAttributes.Directory) {
+            if(c_info.Attributes.HasFlag(FileAttributes.Directory)) {
                 output += getDirInfo(new DirectoryInfo(c));
             } else {
                 output += getFileInfo(c_info);
