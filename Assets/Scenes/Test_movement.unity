@@ -660,5 +660,15 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5679583613663997599, guid: 22262f98bc38d6a4d85982722ea550ce,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.028429031
+      objectReference: {fileID: 0}
+    - target: {fileID: 5679583613663997599, guid: 22262f98bc38d6a4d85982722ea550ce,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.46283722
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22262f98bc38d6a4d85982722ea550ce, type: 3}
