@@ -36,8 +36,8 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("is_running", _isRunning);
     }
 
-    private void Update() {
-        Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.deltaTime;
+    private void FixedUpdate() {
+        Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
         if(_isRunning) translation *= _runningSpeedMultiplyer;
         transform.Translate(translation);
         _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y ) >= 0.01f);
