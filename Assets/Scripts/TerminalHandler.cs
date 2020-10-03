@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using System.Text.RegularExpressions;
 using UnityEngine.UI;
+using System.IO;
 
 public class TerminalHandler : MonoBehaviour
 {
@@ -15,12 +16,14 @@ public class TerminalHandler : MonoBehaviour
     }
 
     public TerminalConfig TerminalConfig {get => _terminalConfig;}
+    public VirtualFileSystem VirtualFileSystem {get => _virtualFileSystem;}
 
     [SerializeField] GameObject _lineTameplate;
     [SerializeField] GameObject _currentLine;
     [SerializeField] TerminalConfig _terminalConfig;
     [SerializeField] ScrollRect _scrollRect;
     TMP_InputField _currentInputField;
+    VirtualFileSystem _virtualFileSystem;
 
     private void Awake()
     {
@@ -33,9 +36,10 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void Start() {
+        string json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "tree.json"));
+
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
-        Debug.Log(_currentLine);
-        Debug.Log(_currentInputField);
+        _virtualFileSystem = VirtualFileSystem.CreateFromJSON(json);
     }
 
     private void Update() {

@@ -30,48 +30,17 @@ public class LsCommand : ICommand
 
     public override void OnCmdMatch()
     {
-        var content = Directory.EnumerateFileSystemEntries(TerminalHandler.Instance.TerminalConfig.CurrentPath);
-
+        //TODO: actually use the active path to query the VFS for the output
+        
         string output = "";
-        foreach(var c in content) {
-            FileInfo c_info = new FileInfo(c);
-            if(c_info.Attributes.HasFlag(FileAttributes.Directory)) {
-                output += getDirInfo(new DirectoryInfo(c));
-            } else {
-                output += getFileInfo(c_info);
-            }
+        foreach (var f in TerminalHandler.Instance.VirtualFileSystem.contents)
+        {
+            output += $"{f.prot} {f.user} {f.group} {f.size} {f.name}\n";
         }
 
         a_flag = false;
         l_flag = false;
 
         TerminalHandler.Instance.DisplayOutput(output);
-    }
-
-    private string getDirInfo(DirectoryInfo c_info)
-    {
-        string output = "";
-        if(a_flag || c_info.Name[0] != '.') {
-            if(l_flag) {
-                output = "drwxr-xr-x- " + c_info.GetFileSystemInfos().Length + " testuser testgroup " + c_info.Name + "\n";
-            } else {
-                output = c_info.Name + "\n";
-            }
-        }
-
-        return output;
-    }
-
-    private string getFileInfo(FileInfo c_info)
-    {
-        string output = "";
-        if(a_flag || c_info.Name[0] != '.') {
-            if(l_flag) {
-                output = "-rwxr-xr-x- 1 testuser testgroup " + c_info.Name + "\n";
-            } else {
-                output = c_info.Name + "\n";
-            }
-        }
-        return output;
     }
 }

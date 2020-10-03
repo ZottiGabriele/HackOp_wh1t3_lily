@@ -19,15 +19,9 @@ public class TerminalConfigCustomInspector : Editor
             Process.Start(@Application.persistentDataPath);
         }
 
-        if(GUILayout.Button("Reinitialize virtual filesystem")) {
-            
-            Directory.Delete(Application.persistentDataPath, true);
-            Directory.CreateDirectory(Application.persistentDataPath);
-            Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "challange_1"));
-            Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "challange_2"));
-            Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "challange_3"));
-            Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "challange_4"));
-            Process.Start(@Application.persistentDataPath);
+        if(GUILayout.Button("Create filesystem JSON")) {
+            //TODO: implement correctly
+            Process.Start("C:\\Windows\\System32\\bash.exe");
         }
 
 #else

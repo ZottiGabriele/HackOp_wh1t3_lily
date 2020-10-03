@@ -7,9 +7,9 @@ using UnityEngine;
 public class TerminalConfig : ScriptableObject
 {
     public List<ICommand> AvailableCommands = new List<ICommand>();
-    public string StartingPath {get {return Application.persistentDataPath + Path.DirectorySeparatorChar + _startingPath;}}
-    public string CurrentPath {get {return Application.persistentDataPath + Path.DirectorySeparatorChar + _currentPath;}}
-    public string HomePath {get {return Application.persistentDataPath + Path.DirectorySeparatorChar + _homePath;}}
+    public string StartingPath {get => Path.Combine(Application.persistentDataPath, _startingPath);}
+    public string CurrentPath {get => Path.Combine(Application.persistentDataPath, _currentPath);}
+    public string HomePath {get => Path.Combine(Application.persistentDataPath, _homePath);}
     public string PATH = "";
 
     [SerializeField] string _startingPath = "";
