@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class TestInteractionArea : IInteractionArea
 {
+    [SerializeField] string onInteractionText = "";
     Animator _animator;
 
     private void Awake() {
@@ -14,5 +15,6 @@ public class TestInteractionArea : IInteractionArea
     public override void OnInteraction()
     {
         _animator.SetTrigger("OnInteraction");
+        RoamingUIHandler.Instance.ShowText(onInteractionText);
     }
 }
