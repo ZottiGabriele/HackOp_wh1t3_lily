@@ -41,8 +41,7 @@ public class PlayerController : MonoBehaviour
         var hit = Physics2D.Raycast(mousePos + Vector3.forward, -Vector3.forward, 20, LayerMask.GetMask("Interaction"));
 
         if(hit.transform != null) {
-            Debug.Log("Hit something bruh");
-            //TODO: call for interaction 
+            hit.transform.GetComponent<IInteractionArea>().OnInteraction();
         }
     }
 
