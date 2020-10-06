@@ -36,10 +36,12 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void Start() {
-        string json = File.ReadAllText(Path.Combine(Application.persistentDataPath, "tree.json"));
+        string jsonPath = Application.persistentDataPath + "/" + TerminalConfig.JsonRelativePath;
+        string json = File.ReadAllText(jsonPath);
 
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
-        _virtualFileSystem = VirtualFileSystem.CreateFromJSON(json);
+        _virtualFileSystem = VirtualFileSystem.CreateFromJson(json);
+        _terminalConfig.Initialize();
     }
 
     private void Update() {

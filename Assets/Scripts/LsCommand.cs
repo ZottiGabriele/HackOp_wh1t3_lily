@@ -29,13 +29,19 @@ public class LsCommand : ICommand
     }
 
     public override void OnCmdMatch()
-    {
-        //TODO: actually use the active path to query the VFS for the output
-        
+    {   
         string output = "";
-        foreach (var f in TerminalHandler.Instance.VirtualFileSystem.contents)
+        foreach (var f in TerminalHandler.Instance.VirtualFileSystem.ActiveEntry.contents)
         {
-            output += $"{f.prot} {f.user} {f.group} {f.size} {f.name}\n";
+            var file_path_components = f.name.Split('/');
+            string file_name = file_path_components[file_path_components.Length - 1];
+            if(a_flag || file_name[0] != '.') {
+                if(l_flag) {
+                    output += $"{f.prot} {f.user} {f.group} {f.size} {file_name}\n";
+                } else {
+                    output += $"{file_name}  ";
+                }
+            }
         }
 
         a_flag = false;

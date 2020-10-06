@@ -36,6 +36,16 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("is_running", _isRunning);
     }
 
+    private void OnInteract() {
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        var hit = Physics2D.Raycast(mousePos + Vector3.forward, -Vector3.forward, 20, LayerMask.GetMask("Interaction"));
+
+        if(hit.transform != null) {
+            Debug.Log("Hit something bruh");
+            //TODO: call for interaction 
+        }
+    }
+
     private void FixedUpdate() {
         Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
         if(_isRunning) translation *= _runningSpeedMultiplyer;

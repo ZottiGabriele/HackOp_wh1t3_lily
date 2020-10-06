@@ -6,11 +6,12 @@ using System.Text.RegularExpressions;
 public abstract class ICommand : ScriptableObject
 {
     public abstract string GetCmdMatch();
+    protected string _cmd;
 
     public virtual bool CheckCmdMatch(string cmd) {
 
         Match m = Regex.Match(cmd, GetCmdMatch());
-
+        if(m.Success) _cmd = cmd;
         return m.Success;
     }
 
