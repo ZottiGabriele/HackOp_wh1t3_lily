@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance {get; private set;}
+
     [SerializeField] float _movementSpeed = 1.2f;
     [SerializeField] float _runningSpeedMultiplyer = 2;
     [SerializeField] float _jumpSpeed = 4f;
@@ -17,8 +19,28 @@ public class PlayerController : MonoBehaviour
     bool _isRunning = false;
 
     private void Awake() {
+
+        if(!Instance) {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        } else if (Instance != this) {
+            Destroy(this);
+        }
+
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
+    }
+
+    private void FixedUpdate() {
+        Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
+        if(_isRunning) translation *= _runningSpeedMultiplyer;
+        transform.Translate(translation);
+        _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y ) >= 0.01f);
+        _animator.SetBool("is_running", _isRunning);
+    }
+
+    public void OnHintTokenFound() {
+        _animator.SetTrigger("hint_token_found");
     }
 
     private void OnJump() {
@@ -31,9 +53,12 @@ public class PlayerController : MonoBehaviour
         if(_velocity.x != 0) transform.localScale = new Vector3(_velocity.x,1,1);
     }
 
-    private void OnRun() {
-        _isRunning = !_isRunning;
-        _animator.SetBool("is_running", _isRunning);
+    private void OnRunStart(){ 
+        _isRunning = true;
+    }
+
+    private void OnRunStop(){ 
+        _isRunning = false;
     }
 
     private void OnInteract() {
@@ -41,14 +66,10 @@ public class PlayerController : MonoBehaviour
         var hit = Physics2D.Raycast(mousePos + Vector3.forward, -Vector3.forward, 20, LayerMask.GetMask("Interaction"));
 
         if(hit.transform != null) {
-            hit.transform.GetComponent<IInteractionArea>().OnInteraction();
+            var areas = hit.transform.GetComponents<IInteractionArea>();
+            foreach(var a in areas) {
+                a.OnInteraction();
+            }
         }
-    }
-
-    private void FixedUpdate() {
-        Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
-        if(_isRunning) translation *= _runningSpeedMultiplyer;
-        transform.Translate(translation);
-        _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y ) >= 0.01f);
     }
 }

@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class RoamingUIHandler : MonoBehaviour
 {
     public static RoamingUIHandler Instance {get; private set;}
 
     [SerializeField] GameObject _textBox;
+    [SerializeField] GameObject _popUp;
+    [SerializeField] TMP_Text _hintTokenCounterText;
     [SerializeField] [Range(0,1)] float typingSpeed = 0.95f;
     [SerializeField] TMP_Text _text;
 
@@ -21,10 +24,18 @@ public class RoamingUIHandler : MonoBehaviour
         }
     }
 
+    private void Update() {
+        _hintTokenCounterText.text = GameStateHandler.Instance.GameData.HintTokenCount.ToString();
+    }
+
     public void ShowText(string text) {
         _textBox.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(startTypingEffect(text));
+    }
+
+    public void ShowPopUp() {
+        _popUp.SetActive(true);
     }
 
     IEnumerator startTypingEffect(string text) {

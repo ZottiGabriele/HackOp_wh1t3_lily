@@ -22,9 +22,17 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Run",
-                    "type": "Button",
+                    "name": "RunStart",
+                    "type": "Value",
                     "id": "df81d7b1-c91a-4a3e-8e95-f9ac8f2f5d44",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RunStop",
+                    "type": "Value",
+                    "id": "e7dd06ee-fc81-4b9d-ae52-23ce0e9940b0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -87,10 +95,10 @@
                     "name": "",
                     "id": "6af0f679-cf40-47b9-a5eb-1ca7bcb6819a",
                     "path": "<Keyboard>/shift",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "KeyboardAndMouse",
-                    "action": "Run",
+                    "action": "RunStart",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -102,6 +110,17 @@
                     "processors": "",
                     "groups": "KeyboardAndMouse",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "882c3d78-16c6-4421-b44e-5dd6a7491d2f",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "KeyboardAndMouse",
+                    "action": "RunStop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

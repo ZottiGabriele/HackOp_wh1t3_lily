@@ -35,9 +35,17 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Run"",
-                    ""type"": ""Button"",
+                    ""name"": ""RunStart"",
+                    ""type"": ""Value"",
                     ""id"": ""df81d7b1-c91a-4a3e-8e95-f9ac8f2f5d44"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RunStop"",
+                    ""type"": ""Value"",
+                    ""id"": ""e7dd06ee-fc81-4b9d-ae52-23ce0e9940b0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -100,10 +108,10 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""6af0f679-cf40-47b9-a5eb-1ca7bcb6819a"",
                     ""path"": ""<Keyboard>/shift"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": ""Press"",
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",
-                    ""action"": ""Run"",
+                    ""action"": ""RunStart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -115,6 +123,17 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""KeyboardAndMouse"",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""882c3d78-16c6-4421-b44e-5dd6a7491d2f"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse"",
+                    ""action"": ""RunStop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -144,7 +163,8 @@ public class @InputController : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Run = m_Player.FindAction("Run", throwIfNotFound: true);
+        m_Player_RunStart = m_Player.FindAction("RunStart", throwIfNotFound: true);
+        m_Player_RunStop = m_Player.FindAction("RunStop", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
@@ -197,7 +217,8 @@ public class @InputController : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Run;
+    private readonly InputAction m_Player_RunStart;
+    private readonly InputAction m_Player_RunStop;
     private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
@@ -205,7 +226,8 @@ public class @InputController : IInputActionCollection, IDisposable
         public PlayerActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Run => m_Wrapper.m_Player_Run;
+        public InputAction @RunStart => m_Wrapper.m_Player_RunStart;
+        public InputAction @RunStop => m_Wrapper.m_Player_RunStop;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -222,9 +244,12 @@ public class @InputController : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Run.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
-                @Run.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
-                @Run.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRun;
+                @RunStart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStart;
+                @RunStart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStart;
+                @RunStart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStart;
+                @RunStop.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStop;
+                @RunStop.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStop;
+                @RunStop.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRunStop;
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
@@ -238,9 +263,12 @@ public class @InputController : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Run.started += instance.OnRun;
-                @Run.performed += instance.OnRun;
-                @Run.canceled += instance.OnRun;
+                @RunStart.started += instance.OnRunStart;
+                @RunStart.performed += instance.OnRunStart;
+                @RunStart.canceled += instance.OnRunStart;
+                @RunStop.started += instance.OnRunStop;
+                @RunStop.performed += instance.OnRunStop;
+                @RunStop.canceled += instance.OnRunStop;
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
@@ -261,7 +289,8 @@ public class @InputController : IInputActionCollection, IDisposable
     {
         void OnJump(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
-        void OnRun(InputAction.CallbackContext context);
+        void OnRunStart(InputAction.CallbackContext context);
+        void OnRunStop(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
 }

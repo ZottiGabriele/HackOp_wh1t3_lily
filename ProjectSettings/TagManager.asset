@@ -16,7 +16,7 @@ TagManager:
   - 
   - 
   - Interaction
-  - 
+  - Player
   - 
   - 
   - 
@@ -43,9 +43,12 @@ TagManager:
   - name: Background
     uniqueID: 188323131
     locked: 0
+  - name: Foreground
+    uniqueID: 1336324159
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Sun
+  - name: Player
     uniqueID: 2057485957
     locked: 0
