@@ -20,4 +20,4 @@ MonoBehaviour:
   PATH: 
   _currentPath: /home/user/
   _homePath: /home/user/
-  _jsonRelativePath: /challenge_1/vfs_ch1.json
+  _jsonRelativePath: challenge_1\vfs_ch1

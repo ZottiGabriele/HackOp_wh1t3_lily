@@ -15,10 +15,10 @@ public class SecondChallengeInteractionArea : IInteractionArea
     public override void OnInteraction()
     {
         if(!GameStateHandler.Instance.GameData.SecurityCameraFound) {
-            RoamingUIHandler.Instance.ShowText(_preChallangeText);
+            GeneralUIHandler.Instance.ShowText(_preChallangeText);
         } else {
             if(!GameStateHandler.Instance.GameData.InteractedWithComputer) {
-                RoamingUIHandler.Instance.ShowText(_onChallangeText);
+                GeneralUIHandler.Instance.ShowText(_onChallangeText);
                 _zoomInOnScreen.Play();
             } else {
                 _zoomInOnScreen.time = _targetTimeIfAlreadyInteracted;

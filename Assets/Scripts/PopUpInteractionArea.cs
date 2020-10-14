@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PopUpInteractionArea : IInteractionArea
 {
+    [SerializeField] GeneralUIHandler.PopUpType _popUpType;
+    
     public override void OnInteraction()
     {
-        RoamingUIHandler.Instance.ShowPopUp();
+        GeneralUIHandler.Instance.ShowPopUp(_popUpType);
     }
 }

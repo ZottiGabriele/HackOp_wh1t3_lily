@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
@@ -9,6 +10,8 @@ public class GameStateHandler : MonoBehaviour
     public static GameStateHandler Instance;
     
     public GameData GameData {get => _gameData;}
+
+    public Action OnHintTokenUpdate = () => {};
 
     [SerializeField] GameData _gameData;
     [SerializeField] bool _saveGameDataDuringPlay = false;
@@ -37,7 +40,12 @@ public class GameStateHandler : MonoBehaviour
     }
 
     public void AddHintToken(int n) {
+        if(!_gameData.FirstTokenFound) {
+            GeneralUIHandler.Instance.ShowPopUp(GeneralUIHandler.PopUpType.FirstTokenFound);
+            _gameData.FirstTokenFound = true;
+        }
         _gameData.HintTokenCount += n;
+        OnHintTokenUpdate();
     }
 
 //TODO: here? Should it work this way?

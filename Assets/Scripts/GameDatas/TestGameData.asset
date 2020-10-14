@@ -15,4 +15,4 @@ MonoBehaviour:
   HintTokenCount: 3
   FirstTokenFound: 0
   SecurityCameraFound: 1
-  InteractedWithComputer: 0
+  InteractedWithComputer: 1

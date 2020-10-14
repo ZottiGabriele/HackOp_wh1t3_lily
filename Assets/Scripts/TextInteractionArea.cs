@@ -14,6 +14,6 @@ public class TextInteractionArea : IInteractionArea
 
     public override void OnInteraction()
     {
-        RoamingUIHandler.Instance.ShowText(onInteractionText);
+        GeneralUIHandler.Instance.ShowText(onInteractionText);
     }
 }

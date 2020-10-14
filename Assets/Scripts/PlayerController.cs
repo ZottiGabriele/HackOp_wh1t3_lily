@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Animator), typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(PlayerInput))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance {get; private set;}
@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     Vector2 _velocity = Vector2.zero;
     Animator _animator;
     Rigidbody2D _rigidBody;
+    PlayerInput _playerInput;
     bool _isRunning = false;
 
     private void Awake() {
@@ -26,9 +27,12 @@ public class PlayerController : MonoBehaviour
         } else if (Instance != this) {
             Destroy(this);
         }
+    }
 
+    private void Start() {
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
+        _playerInput = GetComponent<PlayerInput>();
     }
 
     private void FixedUpdate() {
@@ -37,6 +41,14 @@ public class PlayerController : MonoBehaviour
         transform.Translate(translation);
         _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y ) >= 0.01f);
         _animator.SetBool("is_running", _isRunning);
+    }
+
+    public void DisableInput() {
+        _playerInput.enabled = false;
+    }
+
+    public void EnableInput() {
+        _playerInput.enabled = true;
     }
 
     public void OnHintTokenFound() {

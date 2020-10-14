@@ -1,50 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 
-public class RoamingUIHandler : MonoBehaviour
+public class RoamingUiHandler : MonoBehaviour
 {
-    public static RoamingUIHandler Instance {get; private set;}
+    [SerializeField] TMP_Text hintTokenCount;
 
-    [SerializeField] GameObject _textBox;
-    [SerializeField] GameObject _popUp;
-    [SerializeField] TMP_Text _hintTokenCounterText;
-    [SerializeField] [Range(0,1)] float typingSpeed = 0.95f;
-    [SerializeField] TMP_Text _text;
+    private void Start() {
+        GameStateHandler.Instance.OnHintTokenUpdate += OnHintTokenUpdate;
+        OnHintTokenUpdate();
+    }
 
-     private void Awake()
+    private void OnDestroy() {
+        GameStateHandler.Instance.OnHintTokenUpdate -= OnHintTokenUpdate;
+    }
+
+    private void OnHintTokenUpdate()
     {
-        if(!Instance) {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        } else if (Instance != this) {
-            Destroy(this);
-        }
-    }
-
-    private void Update() {
-        _hintTokenCounterText.text = GameStateHandler.Instance.GameData.HintTokenCount.ToString();
-    }
-
-    public void ShowText(string text) {
-        _textBox.SetActive(true);
-        StopAllCoroutines();
-        StartCoroutine(startTypingEffect(text));
-    }
-
-    public void ShowPopUp() {
-        _popUp.SetActive(true);
-    }
-
-    IEnumerator startTypingEffect(string text) {
-        _text.text = "";
-        foreach(var c in text) {
-            _text.text += c;
-            yield return new WaitForSeconds(1 - typingSpeed);
-        }
-        yield return new WaitForSeconds(2);
-        _textBox.SetActive(false);
+        hintTokenCount.text = GameStateHandler.Instance.GameData.HintTokenCount.ToString();
     }
 }
