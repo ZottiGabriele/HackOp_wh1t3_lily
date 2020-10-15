@@ -11,7 +11,9 @@ public class HintTokenInteractionArea : TextInteractionArea
         if(!isEnabled) return;
         base.OnInteraction();
         PlayerController.Instance.OnHintTokenFound();
-        isEnabled = false;
         GameStateHandler.Instance.AddHintToken(1);
+        SoundsHandler.Instance.PlayHintTokenFoundSound();
+        
+        isEnabled = false;
     }
 }

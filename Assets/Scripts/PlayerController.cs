@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(PlayerInput))]
+[RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(PlayerInput)), RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance {get; private set;}
@@ -13,11 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _runningSpeedMultiplyer = 2;
     [SerializeField] float _jumpSpeed = 4f;
 
+    Vector3 _startPosition;
     Vector2 _velocity = Vector2.zero;
     Animator _animator;
     Rigidbody2D _rigidBody;
     PlayerInput _playerInput;
+    AudioSource _audioSource;
     bool _isRunning = false;
+    bool _wasInputActive;
 
     private void Awake() {
 
@@ -33,6 +36,19 @@ public class PlayerController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
+        _audioSource = GetComponent<AudioSource>();
+        _startPosition = transform.position;
+
+        GameStateHandler.Instance.OnGameStateChanged += OnGameStateChanged;
+    }
+
+    private void OnDestroy() {
+        GameStateHandler.Instance.OnGameStateChanged -= OnGameStateChanged;
+    }
+
+    private void OnGameStateChanged(GameStateHandler.GameState gameState)
+    {
+        if(gameState == GameStateHandler.GameState.Gameover) OnGameOver();
     }
 
     private void FixedUpdate() {
@@ -44,11 +60,17 @@ public class PlayerController : MonoBehaviour
     }
 
     public void DisableInput() {
+        _wasInputActive = _playerInput.enabled;
         _playerInput.enabled = false;
     }
 
     public void EnableInput() {
         _playerInput.enabled = true;
+    }
+
+    //This method restores the input as it was before the disabling
+    public void RestoreInput() {
+        _playerInput.enabled = _wasInputActive;
     }
 
     public void OnHintTokenFound() {
@@ -83,5 +105,13 @@ public class PlayerController : MonoBehaviour
                 a.OnInteraction();
             }
         }
+    }
+
+    private void OnGameOver() {
+        transform.position = _startPosition;
+    }
+
+    public void PlayStepSound() {
+        _audioSource.Play();
     }
 }

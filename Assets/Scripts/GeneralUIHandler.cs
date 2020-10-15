@@ -10,16 +10,28 @@ public class GeneralUIHandler : MonoBehaviour
 
     [SerializeField] GameObject _textBox;
     [SerializeField] GameObject _firstTokenFoundPopUp;
+    [SerializeField] GameObject _menu;
     [SerializeField] [Range(0,1)] float typingSpeed = 0.95f;
     [SerializeField] TMP_Text _text;
 
-     private void Awake()
+    private bool isActive = true;
+
+    private void Awake()
     {
         if(!Instance) {
             Instance = this;
             DontDestroyOnLoad(this);
         } else if (Instance != this) {
             Destroy(this);
+        }
+    }
+
+    private void Update() {
+        if(GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.Gameover ||
+           GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.UnpausableCutscene) return;
+        
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            ToggleMenu();
         }
     }
 
@@ -34,6 +46,26 @@ public class GeneralUIHandler : MonoBehaviour
             case PopUpType.FirstTokenFound:
                 StartCoroutine(showFirstTokenFoundPopUp());
                 break;
+        }
+    }
+
+    public void ShowMenu() {
+        if(GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.Gameover ||
+           GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.UnpausableCutscene) return;
+        _menu.SetActive(true);
+        GameStateHandler.Instance.PauseGame();
+    }
+
+    public void HideMenu() {
+        _menu.SetActive(false);
+        GameStateHandler.Instance.ResumeGame();
+    }
+
+    public void ToggleMenu() {
+        if(_menu.activeInHierarchy) {
+            HideMenu();
+        } else {
+            ShowMenu();
         }
     }
 

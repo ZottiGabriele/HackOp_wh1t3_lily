@@ -15,9 +15,4 @@ public class TerminalConfig : ScriptableObject
     [SerializeField] string _currentPath = "/home/user/";
     [SerializeField] string _homePath = "/home/user/";
     [SerializeField] string _jsonRelativePath = "";
-
-    public void Initialize() {
-        _currentPath = _homePath;
-    }
-
 }

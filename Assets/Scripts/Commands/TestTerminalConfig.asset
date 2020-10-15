@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c4e62a4f792be4f8fbfa97350eab31, type: 3}
+  m_Name: TestTerminalConfig
+  m_EditorClassIdentifier: 
+  AvailableCommands:
+  - {fileID: 11400000, guid: 233805b4efc7e594fbeb026899a5f074, type: 2}
+  - {fileID: 11400000, guid: 10a424846e263614bbfd8eb84fe05225, type: 2}
+  - {fileID: 11400000, guid: 11cf3c4ebb26c0e4587ee32f8475d75c, type: 2}
+  - {fileID: 11400000, guid: f9028bafcb056f64088af2fb8f2b8a8c, type: 2}
+  - {fileID: 11400000, guid: 4ef0c60f0c63c3a4da48ef850f803177, type: 2}
+  PATH: 
+  _currentPath: /home/user/
+  _homePath: /home/user/
+  _jsonRelativePath: challenge_1/vfs_ch1

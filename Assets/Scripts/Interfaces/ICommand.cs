@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 public abstract class ICommand : ScriptableObject
 {
+    public abstract string GetCmdDescription();
     public abstract string GetCmdMatch();
     protected string _cmd;
 
