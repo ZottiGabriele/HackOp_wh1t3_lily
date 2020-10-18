@@ -7,7 +7,7 @@ public class PwdCommand : ICommand
 {
     public override string GetCmdDescription()
     {
-        return "<b>pwd</b> : print name of current working directory\n";
+        return "<b>pwd</b> : print name of current working directory";
     }
 
     public override string GetCmdMatch()

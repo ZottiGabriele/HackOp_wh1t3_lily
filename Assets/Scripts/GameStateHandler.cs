@@ -72,14 +72,12 @@ public class GameStateHandler : MonoBehaviour
         if(_currentGameState == GameState.UnpausableCutscene || _currentGameState == GameState.Gameover) return;
         Time.timeScale = 0;
         PlayerController.Instance.DisableInput();
-        AudioListener.pause = true;
         ChangeGameState(GameState.Paused);
     }
 
     public void ResumeGame() {
         Time.timeScale = 1;
         PlayerController.Instance.RestoreInput();
-        AudioListener.pause = false;
         ChangeGameState(GameState.Playing);
     }
 

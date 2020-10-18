@@ -5,11 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/CdCommand", fileName = "CdCommand")]
 public class CdCommand : ICommand
 {
-    char[] _separator = {' '};
-
     public override string GetCmdDescription()
     {
-        return "<b>cd <directory_path></b> : changes current directory to <directory_path>\n";
+        return "<b>cd <directory_path></b> : changes current directory to <directory_path>";
     }
 
     public override string GetCmdMatch()
@@ -17,9 +15,10 @@ public class CdCommand : ICommand
         return "^ *cd *[\\w\\d\\.\\/]* *$";
     }
 
+    //TODO fix cd /
     public override void OnCmdMatch()
     {
-        var cmd = _cmd.Split(_separator, System.StringSplitOptions.RemoveEmptyEntries);
+        var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
 
         if(cmd.Length != 2) {
             TerminalHandler.Instance.TerminalConfig.CurrentPath = TerminalHandler.Instance.TerminalConfig.HomePath;
@@ -32,13 +31,13 @@ public class CdCommand : ICommand
         var query_item = TerminalHandler.Instance.VirtualFileSystem.Query(arg);
         if(query_item != null) {
             if(query_item.type != "directory") {
-                TerminalHandler.Instance.DisplayOutput("The file " + arg + " is not a directory");
+                TerminalHandler.Instance.DisplayOutput("ERROR: The file " + arg + " is not a directory");
             } else {
-                TerminalHandler.Instance.TerminalConfig.CurrentPath = query_item.name.TrimStart('.') + "/";
+                TerminalHandler.Instance.TerminalConfig.CurrentPath = query_item.full_path;
                 TerminalHandler.Instance.VirtualFileSystem.ActiveEntry = query_item;
             }
         } else {
-            TerminalHandler.Instance.DisplayOutput("Directory " + arg + " not found");
+            TerminalHandler.Instance.DisplayOutput("ERROR: Directory " + arg + " not found");
         }
     }
 }

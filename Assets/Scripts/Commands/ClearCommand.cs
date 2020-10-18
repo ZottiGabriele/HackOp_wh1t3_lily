@@ -7,7 +7,7 @@ public class ClearCommand : ICommand
 {
     public override string GetCmdDescription()
     {
-        return "<b>clear</b> : clear the terminal screen\n";
+        return "<b>clear</b> : clear the terminal screen";
     }
 
     public override string GetCmdMatch()

@@ -36,7 +36,7 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void Start() {
-        var json = Resources.Load(TerminalConfig.JsonRelativePath) as TextAsset;
+        var json = Resources.Load(TerminalConfig.VFSJsonPath) as TextAsset;
 
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
         _virtualFileSystem = VirtualFileSystem.CreateFromJson(json.text);
@@ -73,7 +73,7 @@ public class TerminalHandler : MonoBehaviour
                 break;
             }
         }
-        if(!match) DisplayOutput("Command \"" + cmd + "\" not found");
+        if(!match) DisplayOutput("Command \"" + cmd + "\" not found or has wrong arguments / options.\n\nType <b>help</b> to see the available commands.");
     }
 
     public void ClearScreen() {

@@ -1,0 +1,48 @@
+{
+  "contents": {
+    "hidden": false,
+    "name": "/",
+    "full_path": "/",
+    "r_full_path": "VFS/challenge_3/",
+    "flags": "drwxr-xr-x",
+    "user": "user",
+    "group": "group",
+    "type": "directory",
+    "contents": [
+      {
+        "hidden": false,
+        "name": "home",
+        "full_path": "/home/",
+        "r_full_path": "VFS/challenge_3/home",
+        "flags": "drwxr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "contents": [
+          {
+            "hidden": false,
+            "name": "user",
+            "full_path": "/home/user/",
+            "r_full_path": "VFS/challenge_3/home/user",
+            "flags": "drwxr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "contents": [
+              {
+                "hidden": false,
+                "name": "file_3",
+                "full_path": "/home/user/file_3/",
+                "r_full_path": "VFS/challenge_3/home/user/file_3",
+                "flags": "-rwxr-xr-x",
+                "user": "user",
+                "group": "group",
+                "type": "file"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

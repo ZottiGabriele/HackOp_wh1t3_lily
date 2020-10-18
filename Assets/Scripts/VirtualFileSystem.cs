@@ -5,9 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class VirtualFileSystem
 {
-    public string type;
-    public string name;
-    public VirtualFileSystemEntry[] contents;
+    public VirtualFileSystemEntry contents;
     public VirtualFileSystemEntry ActiveEntry;
     public VirtualFileSystemEntry HomeEntry;
     private Dictionary<string, VirtualFileSystemEntry> _hashTable = new Dictionary<string, VirtualFileSystemEntry>();
@@ -16,7 +14,7 @@ public class VirtualFileSystem
     {
         var output = JsonUtility.FromJson<VirtualFileSystem>(jsonString);
 
-        output.buildHashTable();
+        output.contents.BuildHashTable(ref output._hashTable);
 
         output.ActiveEntry = output.Query(TerminalHandler.Instance.TerminalConfig.CurrentPath.TrimEnd('/'));
         output.HomeEntry = output.Query(TerminalHandler.Instance.TerminalConfig.HomePath.TrimEnd('/'));
@@ -24,28 +22,14 @@ public class VirtualFileSystem
         return output;
     }
 
-    private void buildHashTable() {
-
-        //TODO: probably better to have it in the source JSON
-        var root = new VirtualFileSystemEntry("directory", name, "drwxr-xr-x", "", "user", "group", "4096", contents);
-        _hashTable.Add(name, root);
-
-        if(contents == null) return;
-
-        foreach(var f in contents) {
-            f.BuildHashTable(ref _hashTable);
-        }
-    }
-
     public VirtualFileSystemEntry Query(string path) {
 
         VirtualFileSystemEntry output = null;
-        char[] separator = {'/'};
 
         //Make the path absolute if relative
         if(path[0] != '/') path = TerminalHandler.Instance.TerminalConfig.CurrentPath + path;
 
-        var path_sections = path.Split(separator, System.StringSplitOptions.RemoveEmptyEntries);
+        var path_sections = path.Split(new[]{'/'}, System.StringSplitOptions.RemoveEmptyEntries);
         List<string> final_path = new List<string>();
 
         foreach(var s in path_sections) {
@@ -63,7 +47,7 @@ public class VirtualFileSystem
             path += s + "/";
         }
 
-        _hashTable.TryGetValue("." + path.TrimEnd('/'), out output);
+        _hashTable.TryGetValue(path, out output);
         return output;
     }
 }
@@ -71,28 +55,18 @@ public class VirtualFileSystem
 [System.Serializable]
 public class VirtualFileSystemEntry
 {
-    public string type;
+    public bool hidden;
     public string name;
-    public string mode;
-    public string prot;
+    public string full_path;
+    public string r_full_path;
+    public string flags;
     public string user;
     public string group;
-    public string size;
+    public string type;
     public VirtualFileSystemEntry[] contents;
 
-    public VirtualFileSystemEntry(string type, string name, string mode, string prot, string user, string group, string size, VirtualFileSystemEntry[] contents) {
-        this.type = type;
-        this.name = name;
-        this.mode = mode;
-        this.prot = prot;
-        this.user = user;
-        this.group = group;
-        this.size = size;
-        this.contents = contents;
-    }
-
     public void BuildHashTable(ref Dictionary<string, VirtualFileSystemEntry> hashTable) {
-        hashTable.Add(name, this);
+        hashTable.Add(full_path, this);
         
         if(contents == null) return;
         

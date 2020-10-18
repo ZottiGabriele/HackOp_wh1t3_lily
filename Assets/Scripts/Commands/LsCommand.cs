@@ -15,7 +15,7 @@ public class LsCommand : ICommand
         string description = "<b>ls [OPTIONS]</b> : list directory contents\n";
         description += "\nOPTIONS\n";
         description += "\t<b>-a</b> :  do not ignore entries starting with .\n";
-        description += "\t<b>-l</b> : use a long listing format\n";
+        description += "\t<b>-l</b> : use a long listing format";
         return description;
     }
 
@@ -43,12 +43,11 @@ public class LsCommand : ICommand
         foreach (var f in TerminalHandler.Instance.VirtualFileSystem.ActiveEntry.contents)
         {
             var file_path_components = f.name.Split('/');
-            string file_name = file_path_components[file_path_components.Length - 1];
-            if(a_flag || file_name[0] != '.') {
+            if(a_flag || !f.hidden) {
                 if(l_flag) {
-                    output += $"{f.prot} {f.user} {f.group} {f.size} {file_name}\n";
+                    output += $"{f.flags} {f.user} {f.group} {f.name}\n";
                 } else {
-                    output += $"{file_name}  ";
+                    output += $"{f.name}  ";
                 }
             }
         }

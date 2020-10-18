@@ -16,12 +16,16 @@ public class TerminalConfigCustomInspector : Editor
         GUILayout.Space(25);
 
 #if UNITY_EDITOR_WIN
-        if(GUILayout.Button("Select VFS JSON")) {
-            string prePath = Application.dataPath + "/Resources/";
-            string path = EditorUtility.OpenFilePanel("Select VFS JSON", prePath, "json");
-            if(path.Length != 0) {
-                tc.JsonRelativePath = path.Remove(0, prePath.Length).Split('.')[0];
-            }
+        if(GUILayout.Button("Generate VFS jsons")) {
+            string cmd = "C:\\Users\\Zotti\\Documents\\0_UNITY\\HackOp_wh1t3_lily\\Helper\\VFSGenerator.py";
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = "C:\\Users\\Zotti\\AppData\\Local\\Programs\\Python\\Python39\\python.exe";
+            start.Arguments = string.Format("{0}", cmd);
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            Process.Start(start);
+
+            UnityEngine.Debug.Log("VFS file generated");
         }
 #else
         UnityEngine.Debug.LogWarning("Some TerminalConfig Inspector functions are available only for Windows Unity Editor");

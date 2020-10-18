@@ -18,7 +18,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11cf3c4ebb26c0e4587ee32f8475d75c, type: 2}
   - {fileID: 11400000, guid: f9028bafcb056f64088af2fb8f2b8a8c, type: 2}
   - {fileID: 11400000, guid: 4ef0c60f0c63c3a4da48ef850f803177, type: 2}
+  - {fileID: 11400000, guid: 3e8733842ae0e6443b69acdf840028f9, type: 2}
   PATH: 
   _currentPath: /home/user/
   _homePath: /home/user/
-  _jsonRelativePath: challenge_1/vfs_ch1
+  _challenge: 0

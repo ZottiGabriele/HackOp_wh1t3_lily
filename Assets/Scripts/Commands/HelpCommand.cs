@@ -20,10 +20,10 @@ public class HelpCommand : ICommand
         string output = "";
 
         foreach(var c in TerminalHandler.Instance.TerminalConfig.AvailableCommands) {
-            output += c.GetCmdDescription() + "\n";
+            output += c.GetCmdDescription() + "\n\n";
         }
 
-        output.Remove(output.Length - 2);
+        output = output.Remove(output.Length - 2);
 
         TerminalHandler.Instance.DisplayOutput(output);
     }
