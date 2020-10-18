@@ -9,10 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "C:\\Users\\Zotti\\Documents\\0_UNITY\\HackOp_wh1t3_lily\\Helper\\VFSGenerator.py",
-            "console": "integratedTerminal",
-            "args": [
-                "C:\\Users\\Zotti\\Documents\\0_UNITY\\HackOp_wh1t3_lily\\Assets\\Resources\\VFS"
-            ]
+            "console": "integratedTerminal"
         },
         {
             "name": "Unity Editor",

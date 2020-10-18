@@ -1,0 +1,10 @@
+#include <stdlib.h>
+#include <sys/types.h>
+#include <unistd.h>
+ 
+int main(void)
+{
+    setreuid(geteuid(), geteuid());
+    system("ls -al /home/root");
+    return 0;
+}

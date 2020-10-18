@@ -21,6 +21,38 @@
         "contents": [
           {
             "hidden": false,
+            "name": "root",
+            "full_path": "/home/root/",
+            "r_full_path": "VFS/challenge_2/home/root",
+            "flags": "drwxr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "contents": [
+              {
+                "hidden": false,
+                "name": "file_1",
+                "full_path": "/home/root/file_1/",
+                "r_full_path": "VFS/challenge_2/home/root/file_1",
+                "flags": "-rwxr-xr-x",
+                "user": "user",
+                "group": "group",
+                "type": "file"
+              },
+              {
+                "hidden": false,
+                "name": "file_2",
+                "full_path": "/home/root/file_2/",
+                "r_full_path": "VFS/challenge_2/home/root/file_2",
+                "flags": "-rwxr-xr-x",
+                "user": "user",
+                "group": "group",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "hidden": false,
             "name": "user",
             "full_path": "/home/user/",
             "r_full_path": "VFS/challenge_2/home/user",
@@ -31,12 +63,22 @@
             "contents": [
               {
                 "hidden": false,
-                "name": "file_2",
-                "full_path": "/home/user/file_2/",
-                "r_full_path": "VFS/challenge_2/home/user/file_2",
+                "name": "file.c",
+                "full_path": "/home/user/file.c/",
+                "r_full_path": "VFS/challenge_2/home/user/file.c",
                 "flags": "-rwxr-xr-x",
                 "user": "user",
                 "group": "group",
+                "type": "file"
+              },
+              {
+                "hidden": false,
+                "name": "file",
+                "full_path": "/home/user/file/",
+                "r_full_path": "VFS/challenge_2/home/user/_r__s_file",
+                "flags": "srwxr-xr-x",
+                "user": "root",
+                "group": "root",
                 "type": "file"
               }
             ]

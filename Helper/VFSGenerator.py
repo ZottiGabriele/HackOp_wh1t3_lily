@@ -17,13 +17,18 @@ def main(ch_number: str):
     
 def path_to_dict(start_path, path, vfs_path):
     file_name = os.path.basename(path)
-    d = {'hidden': file_name.startswith("_h_")}
+
+    #if it has more than one extension, remove the last one
+    if(len(file_name.split(".")) > 2):
+        file_name = ".".join(file_name.split('.')[:-1])
+
+    d = {'hidden': file_name.__contains__("_h_")}
     d['name'] = file_name if not d['hidden'] else file_name.replace("_h_", ".")
-    d['full_path'] = path[len(start_path):len(path)-len(file_name)].replace("\\","/").replace("_h_", ".") + d['name'] + "/"
+    d['full_path'] = path[len(start_path):len(path)-len(os.path.basename(path))].replace("\\","/").replace("_h_", ".") + d['name'] + "/"
     d['r_full_path'], _ = os.path.splitext(path[len(vfs_path) + 1:].replace("\\","/"))
     d['flags'] = "drwxr-xr-x"
-    d['user'] = "user"
-    d['group'] = "group"
+    d['user'] = "user" if not file_name.__contains__("_r_") else "root"
+    d['group'] = "group" if not file_name.__contains__("_r_") else "root"
 
     #fix root folder
     if(file_name == ""):
@@ -40,7 +45,19 @@ def path_to_dict(start_path, path, vfs_path):
     else:
         d['type'] = "file"
         d['flags'] = "-rwxr-xr-x"
+        if(file_name.__contains__("_s_")):
+            d['flags'] = "srwxr-xr-x"
+
+    clean(d)
+
     return d
+
+def clean(d):
+    d['name'] = d['name'].replace("_r_", "")
+    d['name'] = d['name'].replace("_s_", "")
+
+    d['full_path'] = d["full_path"].replace("_r_", "")
+    d['full_path'] = d["full_path"].replace("_s_", "")
 
 if __name__ == "__main__":
     for i in range(1, 5):
