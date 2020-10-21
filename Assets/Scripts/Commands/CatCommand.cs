@@ -13,7 +13,7 @@ public class CatCommand : ICommand
 
     public override string GetCmdMatch()
     {
-        return "^ *cat *$|^ *cat *[\\w\\d\\.\\/]+ *$";
+        return "^ *cat *$|^ *cat +[\\w\\d\\.\\/]+ *$";
     }
 
     public override void OnCmdMatch()

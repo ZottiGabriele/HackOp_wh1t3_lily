@@ -12,7 +12,7 @@ public class CdCommand : ICommand
 
     public override string GetCmdMatch()
     {
-        return "^ *cd *[\\w\\d\\.\\/]* *$";
+        return "^ *cd *$|^ *cd +[\\w\\d\\.\\/]* *$";
     }
 
     public override void OnCmdMatch()
