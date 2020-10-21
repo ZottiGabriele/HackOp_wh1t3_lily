@@ -24,7 +24,6 @@ public class TerminalHandler : MonoBehaviour
     [SerializeField] ScrollRect _scrollRect;
     TMP_InputField _currentInputField;
     VirtualFileSystem _virtualFileSystem;
-    string _dollarOutput = "";
 
     private void Awake()
     {
@@ -112,16 +111,6 @@ public class TerminalHandler : MonoBehaviour
         }
 
         return p_user || p_group || p_other || TerminalConfig.CurrentUser == "root";
-    }
-
-    public string GetDollarOutput() {
-        var output = _dollarOutput;
-        _dollarOutput = "";
-        return output;
-    }
-
-    public void DOLLAR_PATH() {
-        _dollarOutput = TerminalConfig.PATH;
     }
 
     private IEnumerator scrollToBottom() {

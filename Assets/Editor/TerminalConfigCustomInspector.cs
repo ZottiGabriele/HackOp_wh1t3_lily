@@ -15,6 +15,10 @@ public class TerminalConfigCustomInspector : Editor
 
         GUILayout.Space(25);
 
+        if(GUILayout.Button("Reset ENV")) {
+            tc.ResetENV();
+        };
+
 #if UNITY_EDITOR_WIN
         if(GUILayout.Button("Generate VFS jsons")) {
             string cmd = "C:\\Users\\Zotti\\Documents\\0_UNITY\\HackOp_wh1t3_lily\\Helper\\VFSGenerator.py";

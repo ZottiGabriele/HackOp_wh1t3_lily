@@ -11,6 +11,17 @@
     "contents": [
       {
         "hidden": false,
+        "name": "bin",
+        "full_path": "/bin/",
+        "r_full_path": "VFS/challenge_2/bin",
+        "flags": "drwxrwxr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "contents": []
+      },
+      {
+        "hidden": false,
         "name": "home",
         "full_path": "/home/",
         "r_full_path": "VFS/challenge_2/home",
@@ -70,6 +81,52 @@
                 "user": "user",
                 "group": "group",
                 "type": "file"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "name": "usr",
+        "full_path": "/usr/",
+        "r_full_path": "VFS/challenge_2/usr",
+        "flags": "drwxrwxr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "contents": [
+          {
+            "hidden": false,
+            "name": "bin",
+            "full_path": "/usr/bin/",
+            "r_full_path": "VFS/challenge_2/usr/bin",
+            "flags": "drwxrwxr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "contents": []
+          },
+          {
+            "hidden": false,
+            "name": "local",
+            "full_path": "/usr/local/",
+            "r_full_path": "VFS/challenge_2/usr/local",
+            "flags": "drwxrwxr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "contents": [
+              {
+                "hidden": false,
+                "name": "bin",
+                "full_path": "/usr/local/bin/",
+                "r_full_path": "VFS/challenge_2/usr/local/bin",
+                "flags": "drwxrwxr-x",
+                "user": "user",
+                "group": "group",
+                "type": "directory",
+                "contents": []
               }
             ]
           }

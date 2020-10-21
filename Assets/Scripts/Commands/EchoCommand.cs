@@ -28,8 +28,7 @@ public class EchoCommand : ICommand
             if(!arg.StartsWith("$")) {
                 output += arg + " ";
             } else {
-                TerminalHandler.Instance.SendMessage("DOLLAR_" + arg.Substring(1), SendMessageOptions.DontRequireReceiver);
-                output += TerminalHandler.Instance.GetDollarOutput() + " ";
+                output += TerminalHandler.Instance.TerminalConfig.TryGetEnvVar(arg) + " ";
             }
         }
 

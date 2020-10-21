@@ -12,7 +12,7 @@ public class CdCommand : ICommand
 
     public override string GetCmdMatch()
     {
-        return "^ *cd *$|^ *cd +[\\w\\d\\.\\/]* *$";
+        return "^ *cd *$|^ *cd +[\\w\\.\\/]* *$";
     }
 
     public override void OnCmdMatch()
@@ -20,9 +20,9 @@ public class CdCommand : ICommand
         var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
 
         if(cmd.Length != 2) {
-            TerminalHandler.Instance.TerminalConfig.CurrentPath = TerminalHandler.Instance.TerminalConfig.HomePath;
-            TerminalHandler.Instance.VirtualFileSystem.ActiveEntry = TerminalHandler.Instance.VirtualFileSystem.HomeEntry;
-            return;
+            var temp = new List<string>(cmd);
+            temp.Add(TerminalHandler.Instance.TerminalConfig.HomePath);
+            cmd = temp.ToArray();
         }
 
         string arg = cmd[1];
