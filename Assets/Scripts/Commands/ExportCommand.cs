@@ -21,12 +21,21 @@ public class ExportCommand : ICommand
 
         if(args[1][0] == '$') {
             TerminalHandler.Instance.DisplayOutput("ERROR: $ is used only to read the variable, not to set it.\n\nInstead of $VAR=value try VAR=value");
+            return;
         }
 
         if(args[1] == "USER" || args[1] == "GROUP" || args[1] == "PWD") {
             TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
         } else {
-            TerminalHandler.Instance.TerminalConfig.SetEnvVar("$" + args[1], args[2]);
+
+            bool has_preface = (args[2][0] != '$');
+            var vars = args[2].Split('$');
+            string value = (has_preface) ? vars[0] : "";
+            for(int i = (has_preface) ? 1 : 0; i < vars.Length; i++) {
+                value += TerminalHandler.Instance.TerminalConfig.TryGetEnvVar("$" + vars[i]);
+            }
+
+            TerminalHandler.Instance.TerminalConfig.SetEnvVar("$" + args[1], value);
         }
     }
 }
