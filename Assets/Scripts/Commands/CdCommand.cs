@@ -15,7 +15,6 @@ public class CdCommand : ICommand
         return "^ *cd *[\\w\\d\\.\\/]* *$";
     }
 
-    //TODO fix cd /
     public override void OnCmdMatch()
     {
         var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
@@ -32,6 +31,8 @@ public class CdCommand : ICommand
         if(query_item != null) {
             if(query_item.type != "directory") {
                 TerminalHandler.Instance.DisplayOutput("ERROR: The file " + arg + " is not a directory");
+            } else if(!TerminalHandler.Instance.CheckPermissions(query_item, "r-x")) {
+                TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
             } else {
                 TerminalHandler.Instance.TerminalConfig.CurrentPath = query_item.full_path;
                 TerminalHandler.Instance.VirtualFileSystem.ActiveEntry = query_item;

@@ -89,6 +89,30 @@ public class TerminalHandler : MonoBehaviour
         _currentLine.GetComponent<LineHandler>().DisplayOutput(output);
     }
 
+    public bool CheckPermissions(VirtualFileSystemEntry query_item, string flags) {
+
+        bool p_user = TerminalHandler.Instance.TerminalConfig.CurrentUser == query_item.user;
+        bool p_group = TerminalHandler.Instance.TerminalConfig.CurrentGroup == query_item.group;
+        bool p_other = query_item.flags[7] == 'r' && query_item.flags[9] == 'x';
+
+        if(flags[0] == 'r') {
+            p_user = p_user && query_item.flags[1] == 'r';
+            p_group = p_group && query_item.flags[4] == 'r';
+        }
+
+        if(flags[1] == 'w') {
+            p_user = p_user && query_item.flags[2] == 'w';
+            p_group = p_group && query_item.flags[5] == 'w';
+        }
+
+        if(flags[2] == 'x') {
+            p_user = p_user && query_item.flags[3] == 'x';
+            p_group = p_group && query_item.flags[6] == 'x';
+        }
+
+        return p_user || p_group || p_other || TerminalConfig.CurrentUser == "root";
+    }
+
     private IEnumerator scrollToBottom() {
         yield return new WaitForEndOfFrame();
         _scrollRect.normalizedPosition = Vector2.zero;

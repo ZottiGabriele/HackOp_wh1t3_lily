@@ -32,6 +32,11 @@ public class CatCommand : ICommand
             if(query_item.type == "directory") {
                 TerminalHandler.Instance.DisplayOutput("ERROR: The file " + arg + " is a directory");
             } else {
+                if(!TerminalHandler.Instance.CheckPermissions(query_item, "r--")) {
+                    TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
+                    return;
+                }
+
                 var target = Resources.Load(query_item.r_full_path) as TextAsset;
                 if(target == null) {
                     TerminalHandler.Instance.DisplayOutput("Can't read file contents");

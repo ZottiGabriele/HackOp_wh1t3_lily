@@ -209,6 +209,15 @@ TextureImporter:
   - first:
       213: 4870769716041497365
     second: Door
+  - first:
+      213: 4870769716041497365
+    second: Painting
+  - first:
+      213: 1200347939626656717
+    second: Furniture_5
+  - first:
+      213: -5205570905279116615
+    second: Door
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -567,27 +576,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DeskLamp
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 144
-        width: 8
-        height: 11
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc3a154671e78a010800000000000000
-      internalID: 1200347939626656717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: WaterMachine
       rect:
         serializedVersion: 2
@@ -630,6 +618,27 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
+      name: Painting
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 147
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b32631043789340800000000000000
+      internalID: 4870769716041497365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
       name: Door
       rect:
         serializedVersion: 2
@@ -644,8 +653,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51b32631043789340800000000000000
-      internalID: 4870769716041497365
+      spriteID: 9bacab987d812c7b0800000000000000
+      internalID: -5205570905279116615
       vertices: []
       indices: 
       edges: []

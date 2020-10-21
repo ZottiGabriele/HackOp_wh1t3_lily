@@ -32,3 +32,18 @@ public class TerminalConfigCustomInspector : Editor
 #endif
     }
 }
+
+public class TerminalConfigMenuItem {
+    [MenuItem("TerminalConfig/Generate VFS jsons")]
+    private static void NewMenuOption() {
+        string cmd = "C:\\Users\\Zotti\\Documents\\0_UNITY\\HackOp_wh1t3_lily\\Helper\\VFSGenerator.py";
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = "C:\\Users\\Zotti\\AppData\\Local\\Programs\\Python\\Python39\\python.exe";
+            start.Arguments = string.Format("{0}", cmd);
+            start.UseShellExecute = false;
+            start.RedirectStandardOutput = true;
+            Process.Start(start);
+
+            UnityEngine.Debug.Log("VFS file generated");
+    }
+}

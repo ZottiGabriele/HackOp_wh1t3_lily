@@ -16,12 +16,14 @@ public class LsCommand : ICommand
         description += "\nOPTIONS\n";
         description += "\t<b>-a</b> :  do not ignore entries starting with .\n";
         description += "\t<b>-l</b> : use a long listing format";
+        description += "\n\n";
+        description += "<b>ll</b> : same as ls -al";
         return description;
     }
 
     public override string GetCmdMatch()
     {
-        return "^ *ls *$|^ *ls +-a?l? *$|^ *ls +-l?a? *$";
+        return "^ *ls *$|^ *ls +-a?l? *$|^ *ls +-l?a? *$|^ *ll *$";
     }
 
     public override bool CheckCmdMatch(string cmd) {
@@ -34,11 +36,21 @@ public class LsCommand : ICommand
             l_flag = flags.Contains("l");
         }
 
+        if(m.Success && cmd.Contains("ll")) {
+            a_flag = true;
+            l_flag = true;
+        }
+
         return m.Success;
     }
 
     public override void OnCmdMatch()
-    {   
+    {
+        if(!TerminalHandler.Instance.CheckPermissions(TerminalHandler.Instance.VirtualFileSystem.ActiveEntry, "r--")) {
+            TerminalHandler.Instance.DisplayOutput("ERROR: Permission Denied");
+            return;
+        }
+
         string output = "";
         foreach (var f in TerminalHandler.Instance.VirtualFileSystem.ActiveEntry.contents)
         {

@@ -22,13 +22,13 @@ def path_to_dict(start_path, path, vfs_path):
     if(len(file_name.split(".")) > 2):
         file_name = ".".join(file_name.split('.')[:-1])
 
-    d = {'hidden': file_name.__contains__("_h_")}
-    d['name'] = file_name if not d['hidden'] else file_name.replace("_h_", ".")
-    d['full_path'] = path[len(start_path):len(path)-len(os.path.basename(path))].replace("\\","/").replace("_h_", ".") + d['name'] + "/"
+    d = {'hidden':False}
+    d['name'] = file_name
+    d['full_path'] = path[len(start_path):len(path)-len(os.path.basename(path))].replace("\\","/") + d['name'] + "/"
     d['r_full_path'], _ = os.path.splitext(path[len(vfs_path) + 1:].replace("\\","/"))
-    d['flags'] = "drwxr-xr-x"
-    d['user'] = "user" if not file_name.__contains__("_r_") else "root"
-    d['group'] = "group" if not file_name.__contains__("_r_") else "root"
+    d['flags'] = "-rw-rw-r--"
+    d['user'] = "user"
+    d['group'] = "group"
 
     #fix root folder
     if(file_name == ""):
@@ -37,6 +37,7 @@ def path_to_dict(start_path, path, vfs_path):
     
     if os.path.isdir(path):
         d['type'] = "directory"
+        d['flags'] = "drwxrwxr-x"
         d['contents'] = []
         for x in os.listdir(path):
             #skip .meta files
@@ -44,20 +45,35 @@ def path_to_dict(start_path, path, vfs_path):
                 d['contents'].append(path_to_dict(start_path, os.path.join(path,x), vfs_path))
     else:
         d['type'] = "file"
-        d['flags'] = "-rwxr-xr-x"
-        if(file_name.__contains__("_s_")):
-            d['flags'] = "srwxr-xr-x"
 
-    clean(d)
+    parse_custom_tags(d)
 
     return d
 
-def clean(d):
-    d['name'] = d['name'].replace("_r_", "")
-    d['name'] = d['name'].replace("_s_", "")
+def parse_custom_tags(d):
+    d['hidden'] = d['name'].__contains__("_h_")
+    d['name'] = d['name'].replace("_h_", ".")
+    d['full_path'] = d["full_path"].replace("_h_", ".")
 
-    d['full_path'] = d["full_path"].replace("_r_", "")
-    d['full_path'] = d["full_path"].replace("_s_", "")
+    exe = d['name'].__contains__("_x_")
+    if (exe):
+        d['name'] = d['name'].replace("_x_", "")
+        d['flags'] = d['flags'][0:3] + "x" + d['flags'][4:6] + "x" + d['flags'][7:9] + "x"
+
+    root = d['name'].__contains__("_r_")
+    if(root):
+        d['name'] = d['name'].replace("_r_", "")
+        d['full_path'] = d["full_path"].replace("_r_", "")
+        d['user'] = "root"
+        d['group'] = "root"
+        if(d['type'] == "directory"):
+            d['flags'] = "drwxr-x---"
+
+    set_uid = d['name'].__contains__("_s_")
+    if(set_uid):
+        d['name'] = d['name'].replace("_s_", "")
+        d['full_path'] = d["full_path"].replace("_s_", "")
+        d['flags'] = "s" + d['flags'][1:]
 
 if __name__ == "__main__":
     for i in range(1, 5):

@@ -22,4 +22,6 @@ MonoBehaviour:
   PATH: 
   _currentPath: /home/user/
   _homePath: /home/user/
+  _currentUser: user
+  _currentGroup: group
   _challenge: 1

@@ -5,6 +5,6 @@
 int main(void)
 {
     setreuid(geteuid(), geteuid());
-    system("ls -al /home/root");
+    system("cat /home/root/welcome_message.txt");
     return 0;
 }
