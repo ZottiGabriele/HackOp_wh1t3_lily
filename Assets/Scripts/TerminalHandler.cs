@@ -15,13 +15,15 @@ public class TerminalHandler : MonoBehaviour
         get; private set;
     }
 
-    public TerminalConfig TerminalConfig {get => _terminalConfig;}
+    public TerminalConfig TerminalConfig {get => _configs.Peek();}
     public VirtualFileSystem VirtualFileSystem {get => _virtualFileSystem;}
-
+    
+    [SerializeField] GameObject _terminalUI;
     [SerializeField] GameObject _lineTameplate;
     [SerializeField] GameObject _currentLine;
-    [SerializeField] TerminalConfig _terminalConfig;
+    [SerializeField] TerminalConfig _startingTerminalConfig;
     [SerializeField] ScrollRect _scrollRect;
+    Stack<TerminalConfig> _configs = new Stack<TerminalConfig>();
     TMP_InputField _currentInputField;
     VirtualFileSystem _virtualFileSystem;
 
@@ -36,13 +38,14 @@ public class TerminalHandler : MonoBehaviour
     }
 
     private void Start() {
+        _startingTerminalConfig = ScriptableObject.Instantiate(_startingTerminalConfig);
+        _configs.Push(ScriptableObject.Instantiate(_startingTerminalConfig));
+
         var json = Resources.Load(TerminalConfig.VFSJsonPath) as TextAsset;
+        _virtualFileSystem = VirtualFileSystem.CreateFromJson(json.text);
+        Resources.UnloadAsset(json);
 
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
-        _virtualFileSystem = VirtualFileSystem.CreateFromJson(json.text);
-        _terminalConfig = ScriptableObject.Instantiate(_terminalConfig);
-
-        Resources.UnloadAsset(json);
     }
 
     private void LateUpdate() {
@@ -53,10 +56,9 @@ public class TerminalHandler : MonoBehaviour
 
     public void OnCommandInputEnd(LineHandler line) {
         parseCommand(line.cmd);
-        instantiateNewLine();
     }
 
-    private void instantiateNewLine() {
+    public void InstantiateNewLine() {
         _currentLine = Instantiate(_lineTameplate, transform);
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
         StartCoroutine(scrollToBottom());
@@ -64,10 +66,11 @@ public class TerminalHandler : MonoBehaviour
 
     private void parseCommand(string cmd) {
         bool match = false;
-        foreach (var command in _terminalConfig.AvailableCommands)
+        foreach (var command in _startingTerminalConfig.AvailableCommands)
         {
             if(command.CheckCmdMatch(cmd)) {
                 command.OnCmdMatch();
+                command.AfterCmdMatch();
                 match = true;
                 if(DebugMode) Debug.Log("MATCH FOUND:\t\"" + cmd + "\"  matched  \"" + command.GetCmdMatch() + "\"");
                 break;
@@ -114,6 +117,27 @@ public class TerminalHandler : MonoBehaviour
         }
 
         return p_user || p_group || p_other || TerminalConfig.CurrentUser == "root";
+    }
+
+    public void NewShell() {
+        if(_configs.Count <= 5) {
+            _configs.Push(ScriptableObject.Instantiate(_startingTerminalConfig));
+        } else {
+            DisplayOutput("Too many shells are active.");
+        }
+    }
+
+    public void ExitShell() {
+        if(_configs.Count == 1) {
+            ScriptableObject.Destroy(_configs.Pop());
+            _configs.Push(ScriptableObject.Instantiate(_startingTerminalConfig));
+            ClearScreen();
+            InstantiateNewLine();
+            _terminalUI.SetActive(false);
+        } else {
+            ScriptableObject.Destroy(_configs.Pop());
+            InstantiateNewLine();
+        }
     }
 
     private IEnumerator scrollToBottom() {

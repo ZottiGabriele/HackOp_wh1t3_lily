@@ -8,8 +8,8 @@ using UnityEngine;
 public class VirtualFileSystem
 {
     public VirtualFileSystemEntry childs;
-    public VirtualFileSystemEntry ActiveEntry;
-    public VirtualFileSystemEntry HomeEntry;
+    public VirtualFileSystemEntry ActiveEntry {get => Query(TerminalHandler.Instance.TerminalConfig.CurrentPath);}
+    public VirtualFileSystemEntry HomeEntry {get => Query(TerminalHandler.Instance.TerminalConfig.HomePath);}
     private Dictionary<string, VirtualFileSystemEntry> _hashTable = new Dictionary<string, VirtualFileSystemEntry>();
 
     public static VirtualFileSystem CreateFromJson (string jsonString)
@@ -17,9 +17,6 @@ public class VirtualFileSystem
         var output = JsonUtility.FromJson<VirtualFileSystem>(jsonString);
 
         output.childs.BuildHashTable(ref output._hashTable);
-
-        output.ActiveEntry = output.Query(TerminalHandler.Instance.TerminalConfig.CurrentPath.TrimEnd('/'));
-        output.HomeEntry = output.Query(TerminalHandler.Instance.TerminalConfig.HomePath.TrimEnd('/'));
 
         return output;
     }

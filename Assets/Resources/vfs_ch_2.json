@@ -77,6 +77,17 @@
           {
             "hidden": false,
             "readable": false,
+            "name": "exit",
+            "full_path": "/bin/exit",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
             "name": "export",
             "full_path": "/bin/export",
             "flags": "-r-xr-xr-x",
@@ -110,8 +121,30 @@
           {
             "hidden": false,
             "readable": false,
+            "name": "mv",
+            "full_path": "/bin/mv",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
             "name": "pwd",
             "full_path": "/bin/pwd",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "sh",
+            "full_path": "/bin/sh",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
@@ -189,7 +222,7 @@
                 "hidden": false,
                 "readable": true,
                 "name": "welcome_message.txt",
-                "full_path": "/home/_r_root/welcome_message.txt",
+                "full_path": "/home/root/welcome_message.txt",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",

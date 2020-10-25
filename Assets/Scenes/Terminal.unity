@@ -535,6 +535,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 6f49e36b612e8d44395e884553d75af4,
         type: 2}
+    - target: {fileID: 4051200116598363920, guid: 0248856fc9467fd4bbcc207293a6edac,
+        type: 3}
+      propertyPath: _startingTerminalConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 6f49e36b612e8d44395e884553d75af4,
+        type: 2}
     - target: {fileID: 4051200116598363935, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
       propertyPath: m_SizeDelta.y

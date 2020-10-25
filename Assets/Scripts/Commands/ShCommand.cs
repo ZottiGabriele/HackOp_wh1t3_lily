@@ -17,8 +17,6 @@ public class ShCommand : ICommand
 
     public override void OnCmdMatch()
     {
-        //TODO: reset path and stuff
-        //TODO: put shell into a stack?
-        TerminalHandler.Instance.ClearScreen();
+        TerminalHandler.Instance.NewShell();
     }
 }

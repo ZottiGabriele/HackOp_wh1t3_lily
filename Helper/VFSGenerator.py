@@ -54,14 +54,10 @@ def parse_custom_tags(d):
 
     exe = d['name'].__contains__("_x_")
     if (exe):
-        d['name'] = d['name'].replace("_x_", "")
-        d['full_path'] = d["full_path"].replace("_x_", "")
         d['flags'] = d['flags'][0:3] + "x" + d['flags'][4:6] + "x" + d['flags'][7:9] + "x"
 
     root = d['name'].__contains__("_r_")
     if(root):
-        d['name'] = d['name'].replace("_r_", "")
-        d['full_path'] = d["full_path"].replace("_r_", "")
         d['user'] = "root"
         d['group'] = "root"
         if(d['type'] == "directory"):
@@ -69,20 +65,14 @@ def parse_custom_tags(d):
 
     set_uid = d['name'].__contains__("_s_")
     if(set_uid):
-        d['name'] = d['name'].replace("_s_", "")
-        d['full_path'] = d["full_path"].replace("_s_", "")
         d['flags'] = "s" + d['flags'][1:]
 
     unreadable = d['name'].__contains__("_u_")
     if(unreadable):
-        d['name'] = d['name'].replace("_u_", "")
-        d['full_path'] = d["full_path"].replace("_u_", "")
         d['readable'] = False
 
     writable = d['name'].__contains__("_w_")
     if(writable):
-        d['name'] = d['name'].replace("_w_", "")
-        d['full_path'] = d["full_path"].replace("_w_", "")
         d['flags'] = d['flags'][0:2] + "w" + d['flags'][3:5] + "w" + d['flags'][6:8] + "w" + d['flags'][9:]
 
     if(d['name'].__contains__(".asset")):
@@ -91,6 +81,9 @@ def parse_custom_tags(d):
         d['full_path'] = d['full_path'].lower().replace("command.asset", "")
         d['flags'] = "-r-xr-xr-x"
         d['content'] = ""
+
+    d['name'] = d['name'].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "")
+    d['full_path'] = d["full_path"].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "")
 
 if __name__ == "__main__":
     for i in range(1, 5):

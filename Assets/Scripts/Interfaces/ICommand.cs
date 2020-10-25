@@ -17,4 +17,7 @@ public abstract class ICommand : ScriptableObject
     }
 
     public abstract void OnCmdMatch();
+    public virtual void AfterCmdMatch() {
+        TerminalHandler.Instance.InstantiateNewLine();
+    }
 }

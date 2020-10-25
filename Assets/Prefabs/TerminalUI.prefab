@@ -1708,10 +1708,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugMode: 0
+  _terminalUI: {fileID: 4051200117709743526}
   _lineTameplate: {fileID: 172079305569602574, guid: 6ec5f10277e32ec48b53bbc3a495d65a,
     type: 3}
   _currentLine: {fileID: 4205122068180166537}
-  _terminalConfig: {fileID: 11400000, guid: 6f49e36b612e8d44395e884553d75af4, type: 2}
+  _startingTerminalConfig: {fileID: 0}
   _scrollRect: {fileID: 4051200115968690736}
 --- !u!114 &4051200116598363921
 MonoBehaviour:

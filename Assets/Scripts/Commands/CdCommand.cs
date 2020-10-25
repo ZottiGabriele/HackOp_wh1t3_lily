@@ -34,8 +34,8 @@ public class CdCommand : ICommand
             } else if(!TerminalHandler.Instance.CheckPermissions(query_item, "r-x")) {
                 TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
             } else {
-                TerminalHandler.Instance.TerminalConfig.CurrentPath = query_item.full_path + "/";
-                TerminalHandler.Instance.VirtualFileSystem.ActiveEntry = query_item;
+                string currentPath = (query_item.full_path == "/") ? "/" : query_item.full_path + "/";
+                TerminalHandler.Instance.TerminalConfig.CurrentPath = currentPath;
             }
         } else {
             TerminalHandler.Instance.DisplayOutput("ERROR: Directory " + arg + " not found");
