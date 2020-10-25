@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc87ae7638ab42b488428aa755799119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameData: {fileID: 11400000, guid: e990cd8501674c14bbca309a6ad109f4, type: 2}
+  _gameData: {fileID: 11400000, guid: 4296b48f917a6a841aca5700161412c3, type: 2}
   _saveGameDataDuringPlay: 0
   _currentGameState: 0
 --- !u!95 &206882043 stripped

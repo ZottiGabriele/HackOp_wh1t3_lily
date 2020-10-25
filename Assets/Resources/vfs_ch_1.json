@@ -1,129 +1,135 @@
 {
-  "contents": {
+  "childs": {
     "hidden": false,
+    "readable": true,
     "name": "/",
     "full_path": "/",
-    "r_full_path": "VFS/challenge_1/",
-    "flags": "drwxrwxr-x",
+    "flags": "dr-xr-xr-x",
     "user": "user",
     "group": "group",
     "type": "directory",
-    "contents": [
+    "childs": [
       {
         "hidden": false,
+        "readable": true,
         "name": "home",
-        "full_path": "/home/",
-        "r_full_path": "VFS/challenge_1/home",
-        "flags": "drwxrwxr-x",
+        "full_path": "/home",
+        "flags": "dr-xr-xr-x",
         "user": "user",
         "group": "group",
         "type": "directory",
-        "contents": [
+        "childs": [
           {
             "hidden": false,
+            "readable": true,
             "name": "user",
-            "full_path": "/home/user/",
-            "r_full_path": "VFS/challenge_1/home/user",
-            "flags": "drwxrwxr-x",
+            "full_path": "/home/user",
+            "flags": "dr-xr-xr-x",
             "user": "user",
             "group": "group",
             "type": "directory",
-            "contents": [
+            "childs": [
               {
                 "hidden": false,
+                "readable": true,
                 "name": "asd",
-                "full_path": "/home/user/asd/",
-                "r_full_path": "VFS/challenge_1/home/user/asd",
-                "flags": "drwxrwxr-x",
+                "full_path": "/home/user/asd",
+                "flags": "dr-xr-xr-x",
                 "user": "user",
                 "group": "group",
                 "type": "directory",
-                "contents": [
+                "childs": [
                   {
                     "hidden": false,
+                    "readable": true,
                     "name": "lalal.txt",
-                    "full_path": "/home/user/asd/lalal.txt/",
-                    "r_full_path": "VFS/challenge_1/home/user/asd/lalal",
+                    "full_path": "/home/user/asd/lalal.txt",
                     "flags": "-rw-rw-r--",
                     "user": "user",
                     "group": "group",
-                    "type": "file"
+                    "type": "file",
+                    "content": "Is this file even empty?\n\nNothing cool to see here..."
                   }
                 ]
               },
               {
                 "hidden": false,
+                "readable": true,
                 "name": "asd2",
-                "full_path": "/home/user/asd2/",
-                "r_full_path": "VFS/challenge_1/home/user/asd2",
-                "flags": "drwxrwxr-x",
+                "full_path": "/home/user/asd2",
+                "flags": "dr-xr-xr-x",
                 "user": "user",
                 "group": "group",
                 "type": "directory",
-                "contents": [
+                "childs": [
                   {
                     "hidden": false,
+                    "readable": true,
                     "name": "ifasfoa.txt",
-                    "full_path": "/home/user/asd2/ifasfoa.txt/",
-                    "r_full_path": "VFS/challenge_1/home/user/asd2/ifasfoa",
+                    "full_path": "/home/user/asd2/ifasfoa.txt",
                     "flags": "-rw-rw-r--",
                     "user": "user",
                     "group": "group",
-                    "type": "file"
+                    "type": "file",
+                    "content": ""
                   }
                 ]
               },
               {
                 "hidden": false,
+                "readable": true,
                 "name": "asdasd.txt",
-                "full_path": "/home/user/asdasd.txt/",
-                "r_full_path": "VFS/challenge_1/home/user/asdasd",
+                "full_path": "/home/user/asdasd.txt",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
-                "type": "file"
+                "type": "file",
+                "content": "ASDASD... what did you expect?"
               },
               {
                 "hidden": true,
+                "readable": true,
                 "name": ".hidden.txt",
-                "full_path": "/home/user/.hidden.txt/",
-                "r_full_path": "VFS/challenge_1/home/user/_h_hidden",
+                "full_path": "/home/user/.hidden.txt",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
-                "type": "file"
+                "type": "file",
+                "content": "How... How did you find me?!"
               }
             ]
           },
           {
             "hidden": true,
+            "readable": true,
             "name": ".hidden_dir",
-            "full_path": "/home/.hidden_dir/",
-            "r_full_path": "VFS/challenge_1/home/_h_hidden_dir",
-            "flags": "drwxrwxr-x",
+            "full_path": "/home/.hidden_dir",
+            "flags": "dr-xr-xr-x",
             "user": "user",
             "group": "group",
             "type": "directory",
-            "contents": [
+            "childs": [
               {
                 "hidden": false,
+                "readable": true,
                 "name": "not_hidden.asd",
-                "full_path": "/home/.hidden_dir/not_hidden.asd/",
-                "r_full_path": "VFS/challenge_1/home/_h_hidden_dir/not_hidden",
+                "full_path": "/home/.hidden_dir/not_hidden.asd",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
-                "type": "file"
+                "type": "file",
+                "content": ""
               },
               {
                 "hidden": true,
+                "readable": true,
                 "name": ".hidden",
-                "full_path": "/home/.hidden_dir/.hidden/",
-                "r_full_path": "VFS/challenge_1/home/_h_hidden_dir/_h_hidden",
+                "full_path": "/home/.hidden_dir/.hidden",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
-                "type": "file"
+                "type": "file",
+                "content": "2"
               }
             ]
           }

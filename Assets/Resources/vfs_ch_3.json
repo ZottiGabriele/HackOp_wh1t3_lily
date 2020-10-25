@@ -1,43 +1,44 @@
 {
-  "contents": {
+  "childs": {
     "hidden": false,
+    "readable": true,
     "name": "/",
     "full_path": "/",
-    "r_full_path": "VFS/challenge_4/",
-    "flags": "drwxrwxr-x",
+    "flags": "dr-xr-xr-x",
     "user": "user",
     "group": "group",
     "type": "directory",
-    "contents": [
+    "childs": [
       {
         "hidden": false,
+        "readable": true,
         "name": "home",
-        "full_path": "/home/",
-        "r_full_path": "VFS/challenge_4/home",
-        "flags": "drwxrwxr-x",
+        "full_path": "/home",
+        "flags": "dr-xr-xr-x",
         "user": "user",
         "group": "group",
         "type": "directory",
-        "contents": [
+        "childs": [
           {
             "hidden": false,
+            "readable": true,
             "name": "user",
-            "full_path": "/home/user/",
-            "r_full_path": "VFS/challenge_4/home/user",
-            "flags": "drwxrwxr-x",
+            "full_path": "/home/user",
+            "flags": "dr-xr-xr-x",
             "user": "user",
             "group": "group",
             "type": "directory",
-            "contents": [
+            "childs": [
               {
                 "hidden": false,
-                "name": "file_4",
-                "full_path": "/home/user/file_4/",
-                "r_full_path": "VFS/challenge_4/home/user/file_4",
+                "readable": true,
+                "name": "file_3",
+                "full_path": "/home/user/file_3",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
-                "type": "file"
+                "type": "file",
+                "content": ""
               }
             ]
           }

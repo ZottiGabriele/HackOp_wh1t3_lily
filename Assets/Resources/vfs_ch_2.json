@@ -1,0 +1,274 @@
+{
+  "childs": {
+    "hidden": false,
+    "readable": true,
+    "name": "/",
+    "full_path": "/",
+    "flags": "dr-xr-xr-x",
+    "user": "user",
+    "group": "group",
+    "type": "directory",
+    "childs": [
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "bin",
+        "full_path": "/bin",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cat",
+            "full_path": "/bin/cat",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cd",
+            "full_path": "/bin/cd",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "clear",
+            "full_path": "/bin/clear",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cp",
+            "full_path": "/bin/cp",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "echo",
+            "full_path": "/bin/echo",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "export",
+            "full_path": "/bin/export",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "help",
+            "full_path": "/bin/help",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "ls",
+            "full_path": "/bin/ls",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "pwd",
+            "full_path": "/bin/pwd",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "whoami",
+            "full_path": "/bin/whoami",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "file",
+            "content": ""
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "home",
+        "full_path": "/home",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "user",
+            "full_path": "/home/user",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": [
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "welcome_user_source.c",
+                "full_path": "/home/user/welcome_user_source.c",
+                "flags": "-rw-rw-r--",
+                "user": "user",
+                "group": "group",
+                "type": "file",
+                "content": "#include <stdlib.h>\n#include <sys/types.h>\n#include <unistd.h>\n \nint main(void)\n{\n    setreuid(geteuid(), geteuid());\n    system(\"cat /home/root/welcome_message.txt\");\n    return 0;\n}"
+              },
+              {
+                "hidden": false,
+                "readable": false,
+                "name": "welcome_user",
+                "full_path": "/home/user/welcome_user",
+                "flags": "srwxrwxr-x",
+                "user": "root",
+                "group": "root",
+                "type": "file",
+                "content": ""
+              }
+            ]
+          },
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "root",
+            "full_path": "/home/root",
+            "flags": "dr-xr-x---",
+            "user": "root",
+            "group": "root",
+            "type": "directory",
+            "childs": [
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "welcome_message.txt",
+                "full_path": "/home/_r_root/welcome_message.txt",
+                "flags": "-rw-rw-r--",
+                "user": "user",
+                "group": "group",
+                "type": "file",
+                "content": "\"Hello\""
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "usr",
+        "full_path": "/usr",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "bin",
+            "full_path": "/usr/bin",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": []
+          },
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "local",
+            "full_path": "/usr/local",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": [
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "bin",
+                "full_path": "/usr/local/bin",
+                "flags": "dr-xr-xr-x",
+                "user": "user",
+                "group": "group",
+                "type": "directory",
+                "childs": [
+                  {
+                    "hidden": false,
+                    "readable": false,
+                    "name": "echo",
+                    "full_path": "/usr/local/bin/echo",
+                    "flags": "-r-xr-xr-x",
+                    "user": "user",
+                    "group": "group",
+                    "type": "file",
+                    "content": ""
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "tmp",
+        "full_path": "/tmp",
+        "flags": "drwxrwxrwx",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": []
+      }
+    ]
+  }
+}

@@ -7,7 +7,7 @@ public class ExportCommand : ICommand
 {
     public override string GetCmdDescription()
     {
-        return "<b>export <VAR>=<value></b> : sets enviroment variable <$VAR> with value <value>";
+        return "<b>export <VAR>=<value></b> : sets enviroment variable <VAR> with value <value>";
     }
 
     public override string GetCmdMatch()
@@ -36,6 +36,10 @@ public class ExportCommand : ICommand
             }
 
             TerminalHandler.Instance.TerminalConfig.SetEnvVar("$" + args[1], value);
+
+            if(args[1] == "PATH") {
+                TerminalHandler.Instance.TerminalConfig.LoadCmdsFromPATH();
+            }
         }
     }
 }

@@ -13,21 +13,13 @@ MonoBehaviour:
   m_Name: Ch_2_TerminalConfig
   m_EditorClassIdentifier: 
   AvailableCommands:
-  - {fileID: 11400000, guid: 233805b4efc7e594fbeb026899a5f074, type: 2}
-  - {fileID: 11400000, guid: 10a424846e263614bbfd8eb84fe05225, type: 2}
-  - {fileID: 11400000, guid: 11cf3c4ebb26c0e4587ee32f8475d75c, type: 2}
-  - {fileID: 11400000, guid: f9028bafcb056f64088af2fb8f2b8a8c, type: 2}
-  - {fileID: 11400000, guid: 3e8733842ae0e6443b69acdf840028f9, type: 2}
-  - {fileID: 11400000, guid: c912159f60e575b42939a10628fd4b95, type: 2}
-  - {fileID: 11400000, guid: 220c1b266b33274458822879fa714c1a, type: 2}
-  - {fileID: 11400000, guid: d3f92f6d4ff45144094b36cb2711e381, type: 2}
-  - {fileID: 11400000, guid: 4ef0c60f0c63c3a4da48ef850f803177, type: 2}
-  _currentPath: /home/user/
-  _currentGroup: group
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   _challenge: 1
   _env:
   - name: PATH
-    value: /usr/bin:/usr/local/bin
+    value: /bin:/usr/bin:/usr/local/bin
   - name: USER
     value: user
   - name: GROUP

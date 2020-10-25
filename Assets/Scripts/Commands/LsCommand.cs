@@ -52,14 +52,14 @@ public class LsCommand : ICommand
         }
 
         string output = "";
-        foreach (var f in TerminalHandler.Instance.VirtualFileSystem.ActiveEntry.contents)
+        foreach (var f in TerminalHandler.Instance.VirtualFileSystem.ActiveEntry.childs)
         {
             var file_path_components = f.name.Split('/');
             if(a_flag || !f.hidden) {
                 if(l_flag) {
-                    output += $"{f.flags} {f.user} {f.group} {f.name}\n";
+                    output += $"{f.flags}    {f.user}  {f.group}    {f.name}\n";
                 } else {
-                    output += $"{f.name}  ";
+                    output += $"{f.name}    ";
                 }
             }
         }

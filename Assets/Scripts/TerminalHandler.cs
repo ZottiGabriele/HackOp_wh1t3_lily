@@ -93,21 +93,24 @@ public class TerminalHandler : MonoBehaviour
 
         bool p_user = TerminalHandler.Instance.TerminalConfig.CurrentUser == query_item.user;
         bool p_group = TerminalHandler.Instance.TerminalConfig.CurrentGroup == query_item.group;
-        bool p_other = query_item.flags[7] == 'r' && query_item.flags[9] == 'x';
+        bool p_other = true;
 
         if(flags[0] == 'r') {
             p_user = p_user && query_item.flags[1] == 'r';
             p_group = p_group && query_item.flags[4] == 'r';
+            p_other = p_other && query_item.flags[7] == 'r';
         }
 
         if(flags[1] == 'w') {
             p_user = p_user && query_item.flags[2] == 'w';
             p_group = p_group && query_item.flags[5] == 'w';
+            p_other = p_other && query_item.flags[8] == 'w';
         }
 
         if(flags[2] == 'x') {
             p_user = p_user && query_item.flags[3] == 'x';
             p_group = p_group && query_item.flags[6] == 'x';
+            p_other = p_other && query_item.flags[9] == 'x';
         }
 
         return p_user || p_group || p_other || TerminalConfig.CurrentUser == "root";

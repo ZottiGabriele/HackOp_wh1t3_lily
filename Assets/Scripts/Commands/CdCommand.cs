@@ -12,7 +12,7 @@ public class CdCommand : ICommand
 
     public override string GetCmdMatch()
     {
-        return "^ *cd *$|^ *cd +[\\w\\.\\/]* *$";
+        return "^ *cd *$|^ *cd +\\S* *$";
     }
 
     public override void OnCmdMatch()
@@ -34,7 +34,7 @@ public class CdCommand : ICommand
             } else if(!TerminalHandler.Instance.CheckPermissions(query_item, "r-x")) {
                 TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
             } else {
-                TerminalHandler.Instance.TerminalConfig.CurrentPath = query_item.full_path;
+                TerminalHandler.Instance.TerminalConfig.CurrentPath = query_item.full_path + "/";
                 TerminalHandler.Instance.VirtualFileSystem.ActiveEntry = query_item;
             }
         } else {

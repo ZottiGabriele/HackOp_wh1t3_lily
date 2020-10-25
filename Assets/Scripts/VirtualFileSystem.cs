@@ -1,11 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 [System.Serializable]
 public class VirtualFileSystem
 {
-    public VirtualFileSystemEntry contents;
+    public VirtualFileSystemEntry childs;
     public VirtualFileSystemEntry ActiveEntry;
     public VirtualFileSystemEntry HomeEntry;
     private Dictionary<string, VirtualFileSystemEntry> _hashTable = new Dictionary<string, VirtualFileSystemEntry>();
@@ -14,7 +16,7 @@ public class VirtualFileSystem
     {
         var output = JsonUtility.FromJson<VirtualFileSystem>(jsonString);
 
-        output.contents.BuildHashTable(ref output._hashTable);
+        output.childs.BuildHashTable(ref output._hashTable);
 
         output.ActiveEntry = output.Query(TerminalHandler.Instance.TerminalConfig.CurrentPath.TrimEnd('/'));
         output.HomeEntry = output.Query(TerminalHandler.Instance.TerminalConfig.HomePath.TrimEnd('/'));
@@ -26,7 +28,14 @@ public class VirtualFileSystem
 
         VirtualFileSystemEntry output = null;
 
-        //Make the path absolute if relative
+        path = GetFinalPath(path);        
+
+        _hashTable.TryGetValue(path, out output);
+        return output;
+    }
+
+    public string GetFinalPath(string path) {
+
         if(path[0] != '/') path = TerminalHandler.Instance.TerminalConfig.CurrentPath + path;
 
         var path_sections = path.Split(new[]{'/'}, System.StringSplitOptions.RemoveEmptyEntries);
@@ -46,32 +55,70 @@ public class VirtualFileSystem
         foreach(var s in final_path) {
             path += s + "/";
         }
+        if(path != "/") path = path.Remove(path.LastIndexOf('/'));
 
-        _hashTable.TryGetValue(path, out output);
-        return output;
+        return path;
     }
-}
 
-[System.Serializable]
-public class VirtualFileSystemEntry
-{
-    public bool hidden;
-    public string name;
-    public string full_path;
-    public string r_full_path;
-    public string flags;
-    public string user;
-    public string group;
-    public string type;
-    public VirtualFileSystemEntry[] contents;
+    public VirtualFileSystemEntry CopyEntry(VirtualFileSystemEntry source, string destination) {
 
-    public void BuildHashTable(ref Dictionary<string, VirtualFileSystemEntry> hashTable) {
-        hashTable.Add(full_path, this);
+        var parent_path = destination.Remove(destination.LastIndexOf('/'));
+        var parent = Query(parent_path);
+        var parent_childs = new List<VirtualFileSystemEntry>(parent.childs);
+        VirtualFileSystemEntry target = null;
         
-        if(contents == null) return;
-        
-        foreach(var f in contents) {
-            f.BuildHashTable(ref hashTable);
+        if(_hashTable.TryGetValue(destination, out target)) {
+            _hashTable.Remove(destination);
+            parent_childs.Remove(target);
+        }
+
+        var copy = source.Clone();
+        copy.full_path = destination;
+        copy.name = Path.GetFileName(destination).Replace('\\', '/');
+
+        _hashTable.Add(destination, copy);
+
+        parent_childs.Add(copy);
+        parent_childs.Sort();
+        parent.childs = parent_childs.ToArray();
+
+        fixFullPath(parent, copy);
+
+        return copy;
+    }
+
+    public VirtualFileSystemEntry MoveEntry(VirtualFileSystemEntry source, string destination) {
+        var copy = CopyEntry(source, destination);
+        RemoveEntry(source);
+        return copy;
+    }
+
+    public void RemoveEntry(VirtualFileSystemEntry entry) {
+        var parent_path = entry.full_path.Remove(entry.full_path.LastIndexOf('/'));
+        var parent = Query(parent_path);
+        var parent_childs = new List<VirtualFileSystemEntry>(parent.childs);
+
+        _hashTable.Remove(entry.full_path);
+        parent_childs.Remove(entry);
+
+        parent.childs = parent_childs.ToArray();
+    }
+
+    void fixFullPath(VirtualFileSystemEntry parent, VirtualFileSystemEntry entry) {
+
+        entry.full_path = parent.full_path + "/" + entry.name;
+
+        if(_hashTable.TryGetValue(entry.full_path, out _)) {
+            _hashTable.Remove(entry.full_path);
+        }
+
+        _hashTable.Add(entry.full_path, entry);
+
+        if(entry.childs == null) return;
+        foreach (var c in entry.childs)
+        {
+            if(c == entry) return;
+            fixFullPath(entry, c);
         }
     }
 }

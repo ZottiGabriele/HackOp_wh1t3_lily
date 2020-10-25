@@ -13,7 +13,7 @@ public class CatCommand : ICommand
 
     public override string GetCmdMatch()
     {
-        return "^ *cat *$|^ *cat +[\\w\\d\\.\\/]+ *$";
+        return "^ *cat *$|^ *cat +[\\S]+ *$";
     }
 
     public override void OnCmdMatch()
@@ -36,14 +36,11 @@ public class CatCommand : ICommand
                     TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
                     return;
                 }
-
-                var target = Resources.Load(query_item.r_full_path) as TextAsset;
-                if(target == null) {
-                    TerminalHandler.Instance.DisplayOutput("Can't read file contents");
-                    return;
+                if(query_item.readable) {
+                    TerminalHandler.Instance.DisplayOutput(query_item.content);
+                } else {
+                    TerminalHandler.Instance.DisplayOutput("ERROR: can't read file contents");
                 }
-                TerminalHandler.Instance.DisplayOutput(target.text);
-                Resources.UnloadAsset(target);
             }
         } else {
             TerminalHandler.Instance.DisplayOutput("ERROR: File " + arg + " not found");
