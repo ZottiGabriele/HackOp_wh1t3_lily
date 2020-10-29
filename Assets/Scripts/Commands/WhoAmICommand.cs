@@ -5,15 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/WhoAmICommand", fileName = "WhoAmICommand")]
 public class WhoAmICommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>whoami</b> : print name of current user";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *whoami *$";
-    }
+    public override string GetCmdName() => "whoami";
+    public override string GetCmdDescription() => "<b>whoami</b> : print name of current user";
+    public override string GetCmdMatch() => "^ *whoami *$";
 
     public override void OnCmdMatch()
     {

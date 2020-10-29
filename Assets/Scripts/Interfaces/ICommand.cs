@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 
 public abstract class ICommand : ScriptableObject
 {
+    public abstract string GetCmdName();
     public abstract string GetCmdDescription();
     public abstract string GetCmdMatch();
     protected string _cmd;
@@ -17,7 +18,4 @@ public abstract class ICommand : ScriptableObject
     }
 
     public abstract void OnCmdMatch();
-    public virtual void AfterCmdMatch() {
-        TerminalHandler.Instance.InstantiateNewLine();
-    }
 }

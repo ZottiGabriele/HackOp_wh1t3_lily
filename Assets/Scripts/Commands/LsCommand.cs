@@ -10,22 +10,17 @@ public class LsCommand : ICommand
     private bool a_flag = false;
     private bool l_flag = false;
 
+    public override string GetCmdName() => "ls";
     public override string GetCmdDescription()
     {
         string description = "<b>ls [OPTIONS]</b> : list directory contents\n";
         description += "\nOPTIONS\n";
         description += "\t<b>-a</b> :  do not ignore entries starting with .\n";
         description += "\t<b>-l</b> : use a long listing format";
-        description += "\n\n";
-        description += "<b>ll</b> : same as ls -al";
         return description;
     }
 
-    public override string GetCmdMatch()
-    {
-        return "^ *ls *$|^ *ls +-a?l? *$|^ *ls +-l?a? *$|^ *ll *$";
-    }
-
+    public override string GetCmdMatch() => "^ *ls *$|^ *ls +-a?l? *$|^ *ls +-l?a? *$";
     public override bool CheckCmdMatch(string cmd) {
 
         Match m = Regex.Match(cmd, GetCmdMatch());
@@ -34,11 +29,6 @@ public class LsCommand : ICommand
             string flags = cmd.Split('-')[1];
             a_flag = flags.Contains("a");
             l_flag = flags.Contains("l");
-        }
-
-        if(m.Success && cmd.Contains("ll")) {
-            a_flag = true;
-            l_flag = true;
         }
 
         return m.Success;

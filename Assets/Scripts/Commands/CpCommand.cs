@@ -5,16 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/CpCommand", fileName = "CpCommand")]
 public class CpCommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>cp <source> <destination></b> : copies <source> to <destination>";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *cp +\\S+ +\\S+ *$";
-    }
-
+    public override string GetCmdName() => "cp";
+    public override string GetCmdDescription() =>"<b>cp <source> <destination></b> : copies <source> to <destination>";
+    public override string GetCmdMatch() => "^ *cp +\\S+ +\\S+ *$";
     public override void OnCmdMatch()
     {
         var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
@@ -28,6 +21,8 @@ public class CpCommand : ICommand
         
         if(source == null) {
             TerminalHandler.Instance.DisplayOutput("ERROR: source file not found");
+        } else if(source.type == "directory") {
+            TerminalHandler.Instance.DisplayOutput("ERROR: copying folders is not allowed.");
         } else {
             string destination_path = TerminalHandler.Instance.VirtualFileSystem.GetFinalPath(cmd[2]);
             int last_sep = destination_path.LastIndexOf('/');
@@ -45,13 +40,15 @@ public class CpCommand : ICommand
                 return;
             }
 
-            if(!TerminalHandler.Instance.CheckPermissions(parent, "-w-")) {
+            if(!TerminalHandler.Instance.CheckPermissions(parent, "-w-") || !TerminalHandler.Instance.CheckPermissions(source, "r--")) {
                 TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied.");
                 return;
             }
 
             var copy = TerminalHandler.Instance.VirtualFileSystem.CopyEntry(source, destination_path);
             fixOwnership(copy);
+            TerminalHandler.Instance.TerminalConfig.LoadCmdsFromPATH();
+            TerminalHandler.Instance.InstantiateNewLine();
         }
     }
 

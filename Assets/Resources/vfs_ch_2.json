@@ -4,6 +4,7 @@
     "readable": true,
     "name": "/",
     "full_path": "/",
+    "r_path": "VFS/challenge_2/",
     "flags": "dr-xr-xr-x",
     "user": "user",
     "group": "group",
@@ -14,6 +15,7 @@
         "readable": true,
         "name": "bin",
         "full_path": "/bin",
+        "r_path": "VFS/challenge_2/bin",
         "flags": "dr-xr-xr-x",
         "user": "user",
         "group": "group",
@@ -24,10 +26,11 @@
             "readable": false,
             "name": "cat",
             "full_path": "/bin/cat",
+            "r_path": "VFS/challenge_2/bin/CatCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -35,10 +38,11 @@
             "readable": false,
             "name": "cd",
             "full_path": "/bin/cd",
+            "r_path": "VFS/challenge_2/bin/CdCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -46,10 +50,11 @@
             "readable": false,
             "name": "clear",
             "full_path": "/bin/clear",
+            "r_path": "VFS/challenge_2/bin/ClearCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -57,10 +62,11 @@
             "readable": false,
             "name": "cp",
             "full_path": "/bin/cp",
+            "r_path": "VFS/challenge_2/bin/CpCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -68,10 +74,11 @@
             "readable": false,
             "name": "echo",
             "full_path": "/bin/echo",
+            "r_path": "VFS/challenge_2/bin/EchoCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -79,10 +86,11 @@
             "readable": false,
             "name": "exit",
             "full_path": "/bin/exit",
+            "r_path": "VFS/challenge_2/bin/ExitCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -90,10 +98,11 @@
             "readable": false,
             "name": "export",
             "full_path": "/bin/export",
+            "r_path": "VFS/challenge_2/bin/ExportCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -101,10 +110,11 @@
             "readable": false,
             "name": "help",
             "full_path": "/bin/help",
+            "r_path": "VFS/challenge_2/bin/HelpCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -112,10 +122,11 @@
             "readable": false,
             "name": "ls",
             "full_path": "/bin/ls",
+            "r_path": "VFS/challenge_2/bin/LsCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -123,10 +134,11 @@
             "readable": false,
             "name": "mv",
             "full_path": "/bin/mv",
+            "r_path": "VFS/challenge_2/bin/MvCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -134,10 +146,11 @@
             "readable": false,
             "name": "pwd",
             "full_path": "/bin/pwd",
+            "r_path": "VFS/challenge_2/bin/PwdCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -145,10 +158,11 @@
             "readable": false,
             "name": "sh",
             "full_path": "/bin/sh",
+            "r_path": "VFS/challenge_2/bin/ShCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           },
           {
@@ -156,10 +170,11 @@
             "readable": false,
             "name": "whoami",
             "full_path": "/bin/whoami",
+            "r_path": "VFS/challenge_2/bin/WhoAmICommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
-            "type": "file",
+            "type": "cmd",
             "content": ""
           }
         ]
@@ -169,6 +184,7 @@
         "readable": true,
         "name": "home",
         "full_path": "/home",
+        "r_path": "VFS/challenge_2/home",
         "flags": "dr-xr-xr-x",
         "user": "user",
         "group": "group",
@@ -179,6 +195,7 @@
             "readable": true,
             "name": "user",
             "full_path": "/home/user",
+            "r_path": "VFS/challenge_2/home/user",
             "flags": "dr-xr-xr-x",
             "user": "user",
             "group": "group",
@@ -189,6 +206,7 @@
                 "readable": true,
                 "name": "welcome_user_source.c",
                 "full_path": "/home/user/welcome_user_source.c",
+                "r_path": "VFS/challenge_2/home/user/welcome_user_source",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
@@ -200,10 +218,11 @@
                 "readable": false,
                 "name": "welcome_user",
                 "full_path": "/home/user/welcome_user",
-                "flags": "srwxrwxr-x",
+                "r_path": "VFS/challenge_2/home/user/_r__s_welcome_user",
+                "flags": "sr-xr-xr-x",
                 "user": "root",
                 "group": "root",
-                "type": "file",
+                "type": "cmd",
                 "content": ""
               }
             ]
@@ -213,21 +232,35 @@
             "readable": true,
             "name": "root",
             "full_path": "/home/root",
-            "flags": "dr-xr-x---",
+            "r_path": "VFS/challenge_2/home/_r_root",
+            "flags": "dr-xr-xr-x",
             "user": "root",
             "group": "root",
             "type": "directory",
             "childs": [
               {
                 "hidden": false,
+                "readable": false,
+                "name": "disable_security_camera",
+                "full_path": "/home/root/disable_security_camera",
+                "r_path": "VFS/challenge_2/home/_r_root/_ro_disable_security_camera",
+                "flags": "-r-xr-x---",
+                "user": "root",
+                "group": "root",
+                "type": "cmd",
+                "content": ""
+              },
+              {
+                "hidden": false,
                 "readable": true,
                 "name": "welcome_message.txt",
                 "full_path": "/home/root/welcome_message.txt",
+                "r_path": "VFS/challenge_2/home/_r_root/_r_welcome_message",
                 "flags": "-rw-rw-r--",
-                "user": "user",
-                "group": "group",
+                "user": "root",
+                "group": "root",
                 "type": "file",
-                "content": "\"Hello\""
+                "content": "\"Hello and welcome to HackOp!\""
               }
             ]
           }
@@ -238,6 +271,7 @@
         "readable": true,
         "name": "usr",
         "full_path": "/usr",
+        "r_path": "VFS/challenge_2/usr",
         "flags": "dr-xr-xr-x",
         "user": "user",
         "group": "group",
@@ -248,6 +282,7 @@
             "readable": true,
             "name": "bin",
             "full_path": "/usr/bin",
+            "r_path": "VFS/challenge_2/usr/bin",
             "flags": "dr-xr-xr-x",
             "user": "user",
             "group": "group",
@@ -259,6 +294,7 @@
             "readable": true,
             "name": "local",
             "full_path": "/usr/local",
+            "r_path": "VFS/challenge_2/usr/local",
             "flags": "dr-xr-xr-x",
             "user": "user",
             "group": "group",
@@ -269,6 +305,7 @@
                 "readable": true,
                 "name": "bin",
                 "full_path": "/usr/local/bin",
+                "r_path": "VFS/challenge_2/usr/local/bin",
                 "flags": "dr-xr-xr-x",
                 "user": "user",
                 "group": "group",
@@ -279,10 +316,11 @@
                     "readable": false,
                     "name": "echo",
                     "full_path": "/usr/local/bin/echo",
+                    "r_path": "VFS/challenge_2/usr/local/bin/EchoCommand",
                     "flags": "-r-xr-xr-x",
                     "user": "user",
                     "group": "group",
-                    "type": "file",
+                    "type": "cmd",
                     "content": ""
                   }
                 ]
@@ -296,6 +334,7 @@
         "readable": true,
         "name": "tmp",
         "full_path": "/tmp",
+        "r_path": "VFS/challenge_2/_w_tmp",
         "flags": "drwxrwxrwx",
         "user": "user",
         "group": "group",

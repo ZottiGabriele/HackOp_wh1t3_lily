@@ -36,7 +36,7 @@ public class GameStateHandler : MonoBehaviour
         } else if(!_saveGameDataDuringPlay) {
             _gameData = Instantiate(_gameData);
         }
-        
+
         #if UNITY_EDITOR
         Application.targetFrameRate = 144;
         #endif
@@ -83,15 +83,6 @@ public class GameStateHandler : MonoBehaviour
 
     public void ExitGame() {
         Application.Quit();
-    }
-
-//TODO: here? Should it work this way?
-    public void SecurityCameraFound() {
-        _gameData.SecurityCameraFound = true;
-    }
-
-    public void InteractedWithComputer() {
-        _gameData.InteractedWithComputer = true;
     }
 
     public enum GameState {

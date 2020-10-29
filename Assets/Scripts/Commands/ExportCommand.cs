@@ -5,16 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/ExportCommand", fileName = "ExportCommand")]
 public class ExportCommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>export <VAR>=<value></b> : sets enviroment variable <VAR> with value <value>";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *export +\\$\\w+=[\\w\\$/:]+ *$|^ *export +\\w+=[\\w\\$/:]+ *$";
-    }
-
+    public override string GetCmdName() => "export";
+    public override string GetCmdDescription() =>"<b>export <VAR>=<value></b> : sets enviroment variable <VAR> with value <value>";
+    public override string GetCmdMatch() => "^ *export +\\$\\w+=[\\w\\$/:]+ *$|^ *export +\\w+=[\\w\\$/:]+ *$";
     public override void OnCmdMatch()
     {
         var args = _cmd.Split(new char[]{' ','='}, System.StringSplitOptions.RemoveEmptyEntries);
@@ -36,10 +29,8 @@ public class ExportCommand : ICommand
             }
 
             TerminalHandler.Instance.TerminalConfig.SetEnvVar("$" + args[1], value);
-
-            if(args[1] == "PATH") {
-                TerminalHandler.Instance.TerminalConfig.LoadCmdsFromPATH();
-            }
+            TerminalHandler.Instance.TerminalConfig.LoadCmdsFromPATH();
+            TerminalHandler.Instance.InstantiateNewLine();
         }
     }
 }

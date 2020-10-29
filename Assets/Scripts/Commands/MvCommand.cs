@@ -5,24 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/MvCommand", fileName = "MvCommand")]
 public class MvCommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>mv <source> <destination></b> : moves <source> to <destination>";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *mv +\\S+ +\\S+ *$";
-    }
-
+    public override string GetCmdName() => "mv";
+    public override string GetCmdDescription() => "<b>mv <source> <destination></b> : moves <source> to <destination>";
+    public override string GetCmdMatch() => "^ *mv +\\S+ +\\S+ *$";
     public override void OnCmdMatch()
     {
         var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
-
-        // if((cmd[1]) == "/") {
-        //     TerminalHandler.Instance.DisplayOutput("ERROR: Can't copy root folder");
-        //     return;
-        // }
 
         var source = TerminalHandler.Instance.VirtualFileSystem.Query(cmd[1]);
         int last_sep = 0;
@@ -31,8 +19,8 @@ public class MvCommand : ICommand
             TerminalHandler.Instance.DisplayOutput("ERROR: source file not found");
         } else {
 
-            if(source.type == "directory" && !TerminalHandler.Instance.CheckPermissions(source, "-wx")) {
-                TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied.");
+            if(source.type == "directory") {
+                TerminalHandler.Instance.DisplayOutput("ERROR: moving / renaming folders is not allowed.");
                 return;
             } else if(source.type == "file") {
                 last_sep = source.full_path.LastIndexOf('/');
@@ -66,6 +54,8 @@ public class MvCommand : ICommand
             }
 
             var copy = TerminalHandler.Instance.VirtualFileSystem.MoveEntry(source, destination_path);
+            TerminalHandler.Instance.TerminalConfig.LoadCmdsFromPATH();
+            TerminalHandler.Instance.InstantiateNewLine();
         }
     }
 }

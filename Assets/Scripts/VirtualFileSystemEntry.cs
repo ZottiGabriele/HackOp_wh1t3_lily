@@ -10,6 +10,7 @@ public class VirtualFileSystemEntry : IComparable
     public bool readable;
     public string name;
     public string full_path;
+    public string r_path;
     public string flags;
     public string user;
     public string group;
@@ -25,6 +26,7 @@ public class VirtualFileSystemEntry : IComparable
         output.readable = readable;
         output.name = name;
         output.full_path = full_path;
+        output.r_path = r_path;
         output.flags = flags;
         output.user = user;
         output.group = group;
@@ -35,13 +37,13 @@ public class VirtualFileSystemEntry : IComparable
         return output;
     }
 
-    public void BuildHashTable(ref Dictionary<string, VirtualFileSystemEntry> hashTable) {
+    public void BuildVirtualFileSystem(ref Dictionary<string, VirtualFileSystemEntry> hashTable) {
         hashTable.Add(full_path, this);
         
         if(childs == null) return;
         
         foreach(var f in childs) {
-            f.BuildHashTable(ref hashTable);
+            f.BuildVirtualFileSystem(ref hashTable);
         }
     }
 

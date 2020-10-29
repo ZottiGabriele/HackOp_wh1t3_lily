@@ -5,16 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/CdCommand", fileName = "CdCommand")]
 public class CdCommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>cd <directory_path></b> : changes current directory to <directory_path>";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *cd *$|^ *cd +\\S* *$";
-    }
-
+    public override string GetCmdName() => "cd";
+    public override string GetCmdDescription() => "<b>cd <directory_path></b> : changes current directory to <directory_path>";
+    public override string GetCmdMatch() => "^ *cd *$|^ *cd +\\S* *$";
     public override void OnCmdMatch()
     {
         var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
@@ -36,6 +29,7 @@ public class CdCommand : ICommand
             } else {
                 string currentPath = (query_item.full_path == "/") ? "/" : query_item.full_path + "/";
                 TerminalHandler.Instance.TerminalConfig.CurrentPath = currentPath;
+                TerminalHandler.Instance.InstantiateNewLine();
             }
         } else {
             TerminalHandler.Instance.DisplayOutput("ERROR: Directory " + arg + " not found");

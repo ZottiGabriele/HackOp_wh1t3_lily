@@ -6,15 +6,9 @@ using System.IO;
 [CreateAssetMenu(menuName = "Custom/Commands/CatCommand", fileName = "CatCommand")]
 public class CatCommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>cat <file></b> : outputs the contents of <file>";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *cat *$|^ *cat +[\\S]+ *$";
-    }
+    public override string GetCmdName() => "cat";
+    public override string GetCmdDescription() => "<b>cat <file></b> : outputs the contents of <file>";
+    public override string GetCmdMatch() => "^ *cat *$|^ *cat +[\\S]+ *$";
 
     public override void OnCmdMatch()
     {

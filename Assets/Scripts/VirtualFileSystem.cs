@@ -10,13 +10,32 @@ public class VirtualFileSystem
     public VirtualFileSystemEntry childs;
     public VirtualFileSystemEntry ActiveEntry {get => Query(TerminalHandler.Instance.TerminalConfig.CurrentPath);}
     public VirtualFileSystemEntry HomeEntry {get => Query(TerminalHandler.Instance.TerminalConfig.HomePath);}
+    public List<VirtualFileSystemEntry> AvailableCommands {get => getAvailableCommands();}
     private Dictionary<string, VirtualFileSystemEntry> _hashTable = new Dictionary<string, VirtualFileSystemEntry>();
 
     public static VirtualFileSystem CreateFromJson (string jsonString)
     {
         var output = JsonUtility.FromJson<VirtualFileSystem>(jsonString);
 
-        output.childs.BuildHashTable(ref output._hashTable);
+        output.childs.BuildVirtualFileSystem(ref output._hashTable);
+
+        return output;
+    }
+
+    public List<VirtualFileSystemEntry> getAvailableCommands() {
+        var output = new List<VirtualFileSystemEntry>();
+        var targets = TerminalHandler.Instance.TerminalConfig.TryGetEnvVar("$PATH").Split(':');
+
+        foreach(var t in targets) {
+            var t_query = Query(t);
+            if(t_query != null && t_query.type == "directory") {
+                foreach(var c in t_query.childs) {
+                    if(c.type == "cmd" && !output.Contains(c)) {
+                        output.Add(c);
+                    }
+                }
+            }
+        }
 
         return output;
     }

@@ -20,6 +20,7 @@ def path_to_dict(start_path, path, vfs_path):
     d['readable'] = True
     d['name'] = file_name
     d['full_path'] = path[len(start_path):len(path)-len(os.path.basename(path))].replace("\\","/") + d['name']
+    d['r_path'], _ = os.path.splitext(path[len(vfs_path) - 3:].replace("\\","/"))
     d['flags'] = "-rw-rw-r--"
     d['user'] = "user"
     d['group'] = "group"
@@ -52,6 +53,17 @@ def parse_custom_tags(d):
     d['name'] = d['name'].replace("_h_", ".")
     d['full_path'] = d["full_path"].replace("_h_", ".")
 
+    if(d['name'].__contains__(".asset")):
+        d['readable'] = False
+        d['type'] = "cmd"
+        d['name'] = d['name'].lower().replace(".asset", "")
+        d['full_path'] = d['full_path'].lower().replace(".asset", "")
+        d['flags'] = "-r-xr-xr-x"
+        d['content'] = ""
+        if(d['name'].__contains__("command")):
+            d['name'] = d['name'].replace("command", "")
+            d['full_path'] = d['full_path'].replace("command", "")
+
     exe = d['name'].__contains__("_x_")
     if (exe):
         d['flags'] = d['flags'][0:3] + "x" + d['flags'][4:6] + "x" + d['flags'][7:9] + "x"
@@ -61,11 +73,17 @@ def parse_custom_tags(d):
         d['user'] = "root"
         d['group'] = "root"
         if(d['type'] == "directory"):
-            d['flags'] = "dr-xr-x---"
+            d['flags'] = "dr-xr-xr-x"
+
+    root_only = d['name'].__contains__("_ro_")
+    if(root_only):
+        d['user'] = "root"
+        d['group'] = "root"
+        d['flags'] = d['flags'][0] + "r-xr-x---"
 
     set_uid = d['name'].__contains__("_s_")
     if(set_uid):
-        d['flags'] = "s" + d['flags'][1:]
+        d['flags'] = "sr-xr-xr-x"
 
     unreadable = d['name'].__contains__("_u_")
     if(unreadable):
@@ -75,15 +93,8 @@ def parse_custom_tags(d):
     if(writable):
         d['flags'] = d['flags'][0:2] + "w" + d['flags'][3:5] + "w" + d['flags'][6:8] + "w" + d['flags'][9:]
 
-    if(d['name'].__contains__(".asset")):
-        d['readable'] = False
-        d['name'] = d['name'].lower().replace("command.asset", "")
-        d['full_path'] = d['full_path'].lower().replace("command.asset", "")
-        d['flags'] = "-r-xr-xr-x"
-        d['content'] = ""
-
-    d['name'] = d['name'].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "")
-    d['full_path'] = d["full_path"].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "")
+    d['name'] = d['name'].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "").replace("_ro_", "")
+    d['full_path'] = d["full_path"].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "").replace("_ro_", "")
 
 if __name__ == "__main__":
     for i in range(1, 5):

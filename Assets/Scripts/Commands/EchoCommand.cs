@@ -5,16 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/Commands/EchoCommand", fileName = "EchoCommand")]
 public class EchoCommand : ICommand
 {
-    public override string GetCmdDescription()
-    {
-        return "<b>echo <message></b> : print <message> on screen. If <message> contains $VAR it will print the value of VAR";
-    }
-
-    public override string GetCmdMatch()
-    {
-        return "^ *echo +\\S";
-    }
-
+    public override string GetCmdName() => "echo";
+    public override string GetCmdDescription() =>"<b>echo <message></b> : print <message> on screen. If <message> contains $VAR it will print the value of VAR";
+    public override string GetCmdMatch() =>"^ *echo +\\S";
     public override void OnCmdMatch()
     {
         var args = _cmd.Split(' ');
