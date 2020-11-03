@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//! IF ANY IS REMOVED THEN CHECK CONDITIONS ON IINTERACTIONAREA
 [CreateAssetMenu(menuName = "Custom/GameData", fileName = "New GameData")]
 public class GameData : ScriptableObject
 {
@@ -20,5 +21,10 @@ public class GameData : ScriptableObject
         FirstTokenFound = false;
         SecurityCameraFound = false;
         InteractedWithComputer = false;
+        
+        FirstChallengeCompleted = false;
+        SecondChallengeCompleted = false;
+        ThirdChallengeCompleted = false;
+        FourthChallengeCompleted = false;
     }
 }

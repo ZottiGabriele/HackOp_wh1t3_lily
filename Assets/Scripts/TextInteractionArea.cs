@@ -12,7 +12,7 @@ public class TextInteractionArea : IInteractionArea
         gameObject.layer = LayerMask.NameToLayer("Interaction");
     }
 
-    public override void OnInteraction()
+    protected override void onInteraction()
     {
         GeneralUIHandler.Instance.ShowText(onInteractionText);
     }

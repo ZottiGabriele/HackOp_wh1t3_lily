@@ -310,20 +310,7 @@
                 "user": "user",
                 "group": "group",
                 "type": "directory",
-                "childs": [
-                  {
-                    "hidden": false,
-                    "readable": false,
-                    "name": "echo",
-                    "full_path": "/usr/local/bin/echo",
-                    "r_path": "VFS/challenge_2/usr/local/bin/EchoCommand",
-                    "flags": "-r-xr-xr-x",
-                    "user": "user",
-                    "group": "group",
-                    "type": "cmd",
-                    "content": ""
-                  }
-                ]
+                "childs": []
               }
             ]
           }

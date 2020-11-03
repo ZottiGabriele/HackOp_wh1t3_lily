@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _runningSpeedMultiplyer = 2;
     [SerializeField] float _jumpSpeed = 4f;
 
-    Vector3 _startPosition;
     Vector2 _velocity = Vector2.zero;
     Animator _animator;
     Rigidbody2D _rigidBody;
@@ -26,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
         if(!Instance) {
             Instance = this;
-            DontDestroyOnLoad(this);
+            // DontDestroyOnLoad(this);
         } else if (Instance != this) {
             Destroy(this);
         }
@@ -37,19 +36,8 @@ public class PlayerController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
         _audioSource = GetComponent<AudioSource>();
-        _startPosition = transform.position;
-
-        GameStateHandler.Instance.OnGameStateChanged += OnGameStateChanged;
     }
 
-    private void OnDestroy() {
-        GameStateHandler.Instance.OnGameStateChanged -= OnGameStateChanged;
-    }
-
-    private void OnGameStateChanged(GameStateHandler.GameState gameState)
-    {
-        if(gameState == GameStateHandler.GameState.Gameover) OnGameOver();
-    }
 
     private void FixedUpdate() {
         Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
@@ -105,10 +93,6 @@ public class PlayerController : MonoBehaviour
                 a.OnInteraction();
             }
         }
-    }
-
-    private void OnGameOver() {
-        transform.position = _startPosition;
     }
 
     public void PlayStepSound() {

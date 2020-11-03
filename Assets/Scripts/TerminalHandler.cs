@@ -35,7 +35,7 @@ public class TerminalHandler : MonoBehaviour
     {
         if(!Instance) {
             Instance = this;
-            DontDestroyOnLoad(this);
+            // DontDestroyOnLoad(this);
         } else if (Instance != this) {
             Destroy(this);
         }
@@ -106,7 +106,6 @@ public class TerminalHandler : MonoBehaviour
                 }
                 Resources.UnloadAsset(command);
             }
-            return;
         } else {
             var args = cmd.Split(new char[]{' '}, System.StringSplitOptions.RemoveEmptyEntries);
             foreach(var c in TerminalConfig.AvailableCommands) {

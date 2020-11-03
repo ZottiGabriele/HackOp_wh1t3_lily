@@ -12,7 +12,7 @@ public class VisionRayRelayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.layer == LayerMask.NameToLayer("Player") && !_triggered) {
-            _gameOver.Play();
+            GameStateHandler.Instance.GameOver();
             GeneralUIHandler.Instance.ShowText(_caughtText);
             _triggered = true;
         }

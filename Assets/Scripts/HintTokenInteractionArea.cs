@@ -6,10 +6,10 @@ public class HintTokenInteractionArea : TextInteractionArea
 {
     [SerializeField] bool isEnabled = true;
 
-    public override void OnInteraction()
+    protected override void onInteraction()
     {
         if(!isEnabled) return;
-        base.OnInteraction();
+        base.onInteraction();
         PlayerController.Instance.OnHintTokenFound();
         GameStateHandler.Instance.AddHintToken(1);
         SoundsHandler.Instance.PlayHintTokenFoundSound();

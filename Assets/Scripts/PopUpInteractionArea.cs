@@ -6,7 +6,7 @@ public class PopUpInteractionArea : IInteractionArea
 {
     [SerializeField] GeneralUIHandler.PopUpType _popUpType;
     
-    public override void OnInteraction()
+    protected override void onInteraction()
     {
         GeneralUIHandler.Instance.ShowPopUp(_popUpType);
     }

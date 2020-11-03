@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff3639bad002e24085d723c60731f48, type: 3}
   m_Name: TestGameData
   m_EditorClassIdentifier: 
-  HintTokenCount: 3
+  HintTokenCount: 999
   FirstTokenFound: 0
-  SecurityCameraFound: 1
-  InteractedWithComputer: 1
+  SecurityCameraFound: 0
+  InteractedWithComputer: 0
+  FirstChallengeCompleted: 1
+  SecondChallengeCompleted: 0
+  ThirdChallengeCompleted: 0
+  FourthChallengeCompleted: 0
