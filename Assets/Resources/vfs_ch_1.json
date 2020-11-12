@@ -13,6 +13,127 @@
       {
         "hidden": false,
         "readable": true,
+        "name": "bin",
+        "full_path": "/bin",
+        "r_path": "VFS/challenge_1/bin",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cat",
+            "full_path": "/bin/cat",
+            "r_path": "VFS/challenge_1/bin/CatCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cd",
+            "full_path": "/bin/cd",
+            "r_path": "VFS/challenge_1/bin/CdCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "clear",
+            "full_path": "/bin/clear",
+            "r_path": "VFS/challenge_1/bin/ClearCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "echo",
+            "full_path": "/bin/echo",
+            "r_path": "VFS/challenge_1/bin/EchoCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "exit",
+            "full_path": "/bin/exit",
+            "r_path": "VFS/challenge_1/bin/ExitCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "help",
+            "full_path": "/bin/help",
+            "r_path": "VFS/challenge_1/bin/HelpCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "ls",
+            "full_path": "/bin/ls",
+            "r_path": "VFS/challenge_1/bin/LsCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "pwd",
+            "full_path": "/bin/pwd",
+            "r_path": "VFS/challenge_1/bin/PwdCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "whoami",
+            "full_path": "/bin/whoami",
+            "r_path": "VFS/challenge_1/bin/WhoAmICommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
         "name": "home",
         "full_path": "/home",
         "r_path": "VFS/challenge_1/home",
@@ -35,113 +156,51 @@
               {
                 "hidden": false,
                 "readable": true,
-                "name": "asd",
-                "full_path": "/home/user/asd",
+                "name": "asd.txt",
+                "full_path": "/home/user/asd.txt",
                 "r_path": "VFS/challenge_1/home/user/asd",
-                "flags": "dr-xr-xr-x",
-                "user": "user",
-                "group": "group",
-                "type": "directory",
-                "childs": [
-                  {
-                    "hidden": false,
-                    "readable": true,
-                    "name": "lalal.txt",
-                    "full_path": "/home/user/asd/lalal.txt",
-                    "r_path": "VFS/challenge_1/home/user/asd/lalal",
-                    "flags": "-rw-rw-r--",
-                    "user": "user",
-                    "group": "group",
-                    "type": "file",
-                    "content": "Is this file even empty?\n\nNothing cool to see here..."
-                  }
-                ]
-              },
-              {
-                "hidden": false,
-                "readable": true,
-                "name": "asd2",
-                "full_path": "/home/user/asd2",
-                "r_path": "VFS/challenge_1/home/user/asd2",
-                "flags": "dr-xr-xr-x",
-                "user": "user",
-                "group": "group",
-                "type": "directory",
-                "childs": [
-                  {
-                    "hidden": false,
-                    "readable": true,
-                    "name": "ifasfoa.txt",
-                    "full_path": "/home/user/asd2/ifasfoa.txt",
-                    "r_path": "VFS/challenge_1/home/user/asd2/ifasfoa",
-                    "flags": "-rw-rw-r--",
-                    "user": "user",
-                    "group": "group",
-                    "type": "file",
-                    "content": ""
-                  }
-                ]
-              },
-              {
-                "hidden": false,
-                "readable": true,
-                "name": "asdasd.txt",
-                "full_path": "/home/user/asdasd.txt",
-                "r_path": "VFS/challenge_1/home/user/asdasd",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
                 "type": "file",
-                "content": "ASDASD... what did you expect?"
-              },
-              {
-                "hidden": true,
-                "readable": true,
-                "name": ".hidden.txt",
-                "full_path": "/home/user/.hidden.txt",
-                "r_path": "VFS/challenge_1/home/user/_h_hidden",
-                "flags": "-rw-rw-r--",
-                "user": "user",
-                "group": "group",
-                "type": "file",
-                "content": "How... How did you find me?!"
+                "content": "Weila mulon"
               }
             ]
           },
           {
-            "hidden": true,
+            "hidden": false,
             "readable": true,
-            "name": ".hidden_dir",
-            "full_path": "/home/.hidden_dir",
-            "r_path": "VFS/challenge_1/home/_h_hidden_dir",
+            "name": "root",
+            "full_path": "/home/root",
+            "r_path": "VFS/challenge_1/home/_r_root",
             "flags": "dr-xr-xr-x",
-            "user": "user",
-            "group": "group",
+            "user": "root",
+            "group": "root",
             "type": "directory",
             "childs": [
               {
                 "hidden": false,
-                "readable": true,
-                "name": "not_hidden.asd",
-                "full_path": "/home/.hidden_dir/not_hidden.asd",
-                "r_path": "VFS/challenge_1/home/_h_hidden_dir/not_hidden",
-                "flags": "-rw-rw-r--",
-                "user": "user",
-                "group": "group",
-                "type": "file",
+                "readable": false,
+                "name": "disable_security_camera",
+                "full_path": "/home/root/disable_security_camera",
+                "r_path": "VFS/challenge_1/home/_r_root/_ro_disable_security_camera",
+                "flags": "-r-xr-x---",
+                "user": "root",
+                "group": "root",
+                "type": "cmd",
                 "content": ""
               },
               {
-                "hidden": true,
+                "hidden": false,
                 "readable": true,
-                "name": ".hidden",
-                "full_path": "/home/.hidden_dir/.hidden",
-                "r_path": "VFS/challenge_1/home/_h_hidden_dir/_h_hidden",
+                "name": "welcome_message.txt",
+                "full_path": "/home/root/welcome_message.txt",
+                "r_path": "VFS/challenge_1/home/_r_root/_r_welcome_message",
                 "flags": "-rw-rw-r--",
-                "user": "user",
-                "group": "group",
+                "user": "root",
+                "group": "root",
                 "type": "file",
-                "content": "2"
+                "content": "\"Hello and welcome to HackOp!\""
               }
             ]
           }
@@ -149,15 +208,52 @@
       },
       {
         "hidden": false,
-        "readable": false,
-        "name": "welcome_user",
-        "full_path": "/welcome_user",
-        "r_path": "VFS/challenge_1/_u__r__s__x_welcome_user",
-        "flags": "sr-xr-xr-x",
-        "user": "root",
-        "group": "root",
-        "type": "file",
-        "content": ""
+        "readable": true,
+        "name": "usr",
+        "full_path": "/usr",
+        "r_path": "VFS/challenge_1/usr",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "bin",
+            "full_path": "/usr/bin",
+            "r_path": "VFS/challenge_1/usr/bin",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": []
+          },
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "local",
+            "full_path": "/usr/local",
+            "r_path": "VFS/challenge_1/usr/local",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": []
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "tmp",
+        "full_path": "/tmp",
+        "r_path": "VFS/challenge_1/_w_tmp",
+        "flags": "drwxrwxrwx",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": []
       }
     ]
   }

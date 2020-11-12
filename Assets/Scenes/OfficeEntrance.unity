@@ -100,7 +100,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 6d2ee65452a89ea468574a656e2a6abe,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -4348,7 +4348,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 95.2, y: 27.93}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &670502612
 MonoBehaviour:
@@ -11641,7 +11641,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 70.64, y: 27.93}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &887129004
 MonoBehaviour:
@@ -11811,10 +11811,10 @@ RectTransform:
   m_Father: {fileID: 1882528544}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -300}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890287386
 MonoBehaviour:
@@ -11994,7 +11994,7 @@ Transform:
   - {fileID: 330087643}
   - {fileID: 337826323}
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &893814942
 PolygonCollider2D:
@@ -12178,7 +12178,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 0
-  _conditionIndex: 4
+  _conditionIndex: 7
   onInteractionText: There must be a way to deactivate it...
 --- !u!60 &917952255
 PolygonCollider2D:
@@ -12226,7 +12226,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 1
-  _conditionIndex: 4
+  _conditionIndex: 7
   onInteractionText: Don't mind me...
 --- !u!1 &945026523
 GameObject:
@@ -12262,7 +12262,7 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 2217191271775546275, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 1683235915}
-  - key: {fileID: 6093788844064601767, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 1683235915}
   - key: {fileID: 7096352675530149390, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 1683235915}
@@ -12276,6 +12276,8 @@ PlayableDirector:
     value: {fileID: 1381861129}
   - key: {fileID: 6180690752326328688, guid: 766599389dce53f489317a585a32b0a5, type: 2}
     value: {fileID: 1683235915}
+  - key: {fileID: 1654400437817897057, guid: 766599389dce53f489317a585a32b0a5, type: 2}
+    value: {fileID: 1270681749}
   m_ExposedReferences:
     m_References:
     - 68c990229ce4fc143b8b6005e945e2ed: {fileID: 1571316788}
@@ -12298,7 +12300,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951483316
 GameObject:
@@ -12336,7 +12338,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -22, y: 9.89}
-  m_SizeDelta: {x: 90.42, y: 40.22}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &951483318
 MonoBehaviour:
@@ -12599,6 +12601,7 @@ GameObject:
   - component: {fileID: 961426821}
   - component: {fileID: 961426823}
   - component: {fileID: 961426824}
+  - component: {fileID: 961426822}
   m_Layer: 8
   m_Name: Computer
   m_TagString: Untagged
@@ -12671,6 +12674,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &961426822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961426819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a638abbbb99a194a96d0fe8b717f58a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hasCondition: 1
+  _condition: SecurityCameraFound
+  _conditionTarget: 0
+  _conditionIndex: 8
+  onInteractionText: Who left this computer on?
 --- !u!60 &961426823
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -12709,17 +12729,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 961426819}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4d3415195d853b4c9d5072e8cc3aa94, type: 3}
+  m_Script: {fileID: 11500000, guid: fd56cd63ca33f764bb13d7f74592aa7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hasCondition: 0
-  _condition: 
-  _conditionTarget: 0
-  _conditionIndex: 0
-  _preChallangeText: Who left this computer on?
-  _onChallangeText: Maybe I could use this computer to deactivate the camera...
+  _hasCondition: 1
+  _condition: SecurityCameraFound
+  _conditionTarget: 1
+  _conditionIndex: 8
+  _firstInteraction: {fileID: 1401846449}
   _zoomInOnScreen: {fileID: 1451045606}
-  _targetTimeIfAlreadyInteracted: 3.6
+  _targetChallenge: 1
 --- !u!1 &986908491
 GameObject:
   m_ObjectHideFlags: 0
@@ -13901,10 +13920,10 @@ RectTransform:
   m_Father: {fileID: 1882528544}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -125}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1168649277
 MonoBehaviour:
@@ -14625,7 +14644,7 @@ MonoBehaviour:
   _textBox: {fileID: 1914036541}
   _firstTokenFoundPopUp: {fileID: 214452109}
   _menu: {fileID: 740844823}
-  typingSpeed: 0.97
+  _typingSpeed: 0.965
   _text: {fileID: 1601860798}
 --- !u!1 &1272230217
 GameObject:
@@ -14655,7 +14674,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1311751354
 GameObject:
@@ -15028,6 +15047,70 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1401846448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1401846450}
+  - component: {fileID: 1401846449}
+  m_Layer: 0
+  m_Name: SecondChallengeFirstInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!320 &1401846449
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401846448}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 4c4a9d844bbb7154d82711714aaa4c36, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 2217191271775546275, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+    value: {fileID: 1683235915}
+  - key: {fileID: 7096352675530149390, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+    value: {fileID: 1683235915}
+  - key: {fileID: -6232131424628475983, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+    value: {fileID: 2103090208}
+  - key: {fileID: 5159058815355869629, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+    value: {fileID: 1270681749}
+  - key: {fileID: 3262672000786710514, guid: 4c4a9d844bbb7154d82711714aaa4c36, type: 2}
+    value: {fileID: 1270681749}
+  - key: {fileID: -4365267498560630398, guid: 4c4a9d844bbb7154d82711714aaa4c36, type: 2}
+    value: {fileID: 1683235915}
+  m_ExposedReferences:
+    m_References:
+    - 68c990229ce4fc143b8b6005e945e2ed: {fileID: 1571316788}
+    - ab5bdf39d4408ee4091d8006e697d8bf: {fileID: 1451045604}
+    - e2f7bf04f875ed74abcd8c4bf68883ca: {fileID: 1571316788}
+    - ea5d05ab10f92d043b8a7d6f949b2ef7: {fileID: 556870384}
+--- !u!4 &1401846450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1401846448}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1433800574
 GameObject:
   m_ObjectHideFlags: 0
@@ -15282,7 +15365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &1451045606
 PlayableDirector:
@@ -15301,7 +15384,7 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 2217191271775546275, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 6093788844064601767, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: 1256332906731054855, guid: d530abb38bcd4334a8e06f7abf098130, type: 2}
     value: {fileID: 1683235915}
@@ -15615,7 +15698,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 8.549999, y: -70}
-  m_SizeDelta: {x: 68.32, y: 27.93}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1517561929
 MonoBehaviour:
@@ -15857,10 +15940,10 @@ RectTransform:
   m_Father: {fileID: 1882528544}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -475}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1529635303
 MonoBehaviour:
@@ -16860,7 +16943,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500.1, y: 46.93}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1601860798
 MonoBehaviour:
@@ -16881,7 +16964,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is some sample text...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -16950,13 +17033,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1601860798}
-    characterCount: 27
+    characterCount: 0
     spriteCount: 0
-    spaceCount: 4
-    wordCount: 5
+    spaceCount: 0
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -17745,7 +17828,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1683235915
 MonoBehaviour:
@@ -17764,11 +17847,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8ccb6f2f98e0c0447bf88463efbf1717, type: 2}
     - {fileID: 11400000, guid: bb8cc7243d52bf04ebe89692c4d30eeb, type: 2}
     - {fileID: 11400000, guid: 6eb0b8243232680488e59d867cdd01a9, type: 2}
-    - {fileID: 11400000, guid: 7e68e971a1b2098418cf976ac292340a, type: 2}
-    - {fileID: 11400000, guid: cb1795b64765f704da28b488a5af4039, type: 2}
-    - {fileID: 11400000, guid: 90a1dddea88b03e47b7d50e55000fe9d, type: 2}
     - {fileID: 11400000, guid: 6695ba39e5141ab4e89d73002ff7ee5d, type: 2}
-    - {fileID: 0}
     - {fileID: 11400000, guid: b6490a8188b30f94fbe876bc460c4bd8, type: 2}
     - {fileID: 11400000, guid: ddd3282c6ba582648a08fc6f53eec6ec, type: 2}
     - {fileID: 11400000, guid: fdc24f0d4c76cc9488e2518e5690409f, type: 2}
@@ -17815,46 +17894,6 @@ MonoBehaviour:
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2116674436}
-          m_MethodName: InteractedWithComputer
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1270681749}
-          m_MethodName: ShowText
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Damn! The security camera is active...
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1270681749}
-          m_MethodName: ShowText
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: I have to find a way to deactivate it before getting
-              into the server rooms...
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 2116674436}
           m_MethodName: ResetPlayerPosition
           m_Mode: 1
           m_Arguments:
@@ -17867,19 +17906,6 @@ MonoBehaviour:
           m_CallState: 2
         - m_Target: {fileID: 1190824778}
           m_MethodName: RemoveTrigger
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 453187767}
-          m_MethodName: EnableInput
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -17917,17 +17943,6 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1270681749}
-          m_MethodName: ShowText
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Awesome! The security camera is now disabled!
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 1190824773}
           m_MethodName: SetActive
           m_Mode: 6
@@ -18380,7 +18395,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -70}
-  m_SizeDelta: {x: 52.17, y: 27.93}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848060355
 MonoBehaviour:
@@ -18565,7 +18580,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 0
-  _conditionIndex: 4
+  _conditionIndex: 7
   onInteractionText: I can't reach it if I don't deactivate the security camera first...
 --- !u!60 &1865243231
 PolygonCollider2D:
@@ -18679,7 +18694,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 1
-  _conditionIndex: 4
+  _conditionIndex: 7
   onInteractionText: CONGRATULATIONS! YOU PASSED THE SECOND CHALLENGE!
 --- !u!1 &1882321491
 GameObject:
@@ -18711,7 +18726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &1882321493
 PlayableDirector:
@@ -20234,12 +20249,12 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 2217191271775546275, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 1683235915}
-  - key: {fileID: 6093788844064601767, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
-    value: {fileID: 1683235915}
   - key: {fileID: 7096352675530149390, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 1683235915}
   - key: {fileID: -6232131424628475983, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 2103090208}
+  - key: {fileID: 5159058815355869629, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+    value: {fileID: 1270681749}
   m_ExposedReferences:
     m_References:
     - 68c990229ce4fc143b8b6005e945e2ed: {fileID: 1571316788}
@@ -20624,7 +20639,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!320 &2131272663
 PlayableDirector:
@@ -20643,7 +20658,7 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 2217191271775546275, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
     value: {fileID: 0}
-  - key: {fileID: 6093788844064601767, guid: 7e93f5be9b90fb245a457f5f88b5a47a, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 0}
   - key: {fileID: 0}
     value: {fileID: 0}
@@ -21642,7 +21657,7 @@ PrefabInstance:
     - target: {fileID: 5679583613663997587, guid: 22262f98bc38d6a4d85982722ea550ce,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 5679583613663997587, guid: 22262f98bc38d6a4d85982722ea550ce,
         type: 3}

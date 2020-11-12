@@ -11,7 +11,7 @@ public class GeneralUIHandler : MonoBehaviour
     [SerializeField] GameObject _textBox;
     [SerializeField] GameObject _firstTokenFoundPopUp;
     [SerializeField] GameObject _menu;
-    [SerializeField] [Range(0,1)] float typingSpeed = 0.95f;
+    [Range(0,1)] public float _typingSpeed = 0.95f;
     [SerializeField] TMP_Text _text;
 
     private bool isActive = true;
@@ -20,8 +20,9 @@ public class GeneralUIHandler : MonoBehaviour
     {
         if(!Instance) {
             Instance = this;
-            DontDestroyOnLoad(this);
+            // DontDestroyOnLoad(this);
         } else if (Instance != this) {
+            Debug.LogError("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }
@@ -39,6 +40,17 @@ public class GeneralUIHandler : MonoBehaviour
         _textBox.SetActive(true);
         StopAllCoroutines();
         StartCoroutine(startTypingEffect(text));
+    }
+
+    //USED BY TIMELINE INTEGRATION
+    public void PlayText(string text) {
+        _textBox.SetActive(true);
+        _text.text = text;
+    }
+
+    //USED BY TIMELINE INTEGRATION
+    public void StopText() {
+        _textBox.SetActive(false);
     }
 
     public void ShowPopUp(PopUpType popUpType) {
@@ -79,7 +91,7 @@ public class GeneralUIHandler : MonoBehaviour
         _text.text = "";
         foreach(var c in text) {
             _text.text += c;
-            yield return new WaitForSeconds(1 - typingSpeed);
+            yield return new WaitForSeconds(1 - _typingSpeed);
         }
         yield return new WaitForSeconds(2);
         _textBox.SetActive(false);

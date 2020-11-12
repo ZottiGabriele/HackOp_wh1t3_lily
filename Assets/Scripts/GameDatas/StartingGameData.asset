@@ -14,4 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HintTokenCount: 0
   FirstTokenFound: 0
+  InteractedWithFirstComputer: 0
+  FirstChallengeCompleted: 0
+  InteractedWithSecondComputer: 0
   SecurityCameraFound: 0
+  SecondChallengeCompleted: 0
+  InteractedWithThirdComputer: 0
+  ThirdChallengeCompleted: 0
+  InteractedWithFourthComputer: 0
+  FourthChallengeCompleted: 0

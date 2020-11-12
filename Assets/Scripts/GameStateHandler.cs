@@ -24,6 +24,7 @@ public class GameStateHandler : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         } else {
+            Debug.LogError("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }

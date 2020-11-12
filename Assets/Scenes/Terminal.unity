@@ -549,7 +549,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _startingTerminalConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 6f49e36b612e8d44395e884553d75af4,
+      objectReference: {fileID: 11400000, guid: c4dd389efe788ec45871d042dc743339,
         type: 2}
     - target: {fileID: 4051200116598363935, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
@@ -869,7 +869,17 @@ PrefabInstance:
     - target: {fileID: 4205122067133547619, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
       propertyPath: m_fontColor32.rgba
-      value: 4280414542
+      value: 4292267622
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205122067133547619, guid: 0248856fc9467fd4bbcc207293a6edac,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205122067133547619, guid: 0248856fc9467fd4bbcc207293a6edac,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4205122067394696700, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
@@ -939,12 +949,12 @@ PrefabInstance:
     - target: {fileID: 4205122068621228080, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 818
+      value: 802.625
       objectReference: {fileID: 0}
     - target: {fileID: 4205122068621228080, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1116
+      value: 1146.75
       objectReference: {fileID: 0}
     - target: {fileID: 4205122068621228080, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}

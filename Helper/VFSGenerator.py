@@ -97,5 +97,5 @@ def parse_custom_tags(d):
     d['full_path'] = d["full_path"].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "").replace("_ro_", "")
 
 if __name__ == "__main__":
-    for i in range(1, 5):
+    for i in range(0, 5):
         main(str(i))

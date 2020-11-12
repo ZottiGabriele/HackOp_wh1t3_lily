@@ -30,6 +30,8 @@ public class TerminalHandler : MonoBehaviour
     TMP_InputField _currentInputField;
     TMP_Text _currentPrompt;
     VirtualFileSystem _virtualFileSystem;
+    bool _readingInput = false;
+    Action<string> _onInputRead = _ => {};
 
     private void Awake()
     {
@@ -37,6 +39,7 @@ public class TerminalHandler : MonoBehaviour
             Instance = this;
             // DontDestroyOnLoad(this);
         } else if (Instance != this) {
+            Debug.LogError("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }
@@ -71,8 +74,13 @@ public class TerminalHandler : MonoBehaviour
     }
 
     public void OnCommandInputEnd(LineHandler line) {
-        TerminalConfig.AddToHistory(line.cmd);
-        ParseCommand(line.cmd);
+        if(!_readingInput) {
+            TerminalConfig.AddToHistory(line.cmd);
+            ParseCommand(line.cmd);
+        } else {
+            _onInputRead(line.cmd);
+            _readingInput = false;
+        }
     }
 
     public void InstantiateNewLine() {
@@ -142,6 +150,14 @@ public class TerminalHandler : MonoBehaviour
         InstantiateNewLine();
     }
 
+    public void ReadInput(string prompt, Action<string> callback) {
+        _readingInput = true;
+        InstantiateNewLine();
+        _currentPrompt.color = Color.white;
+        _currentPrompt.text = prompt;
+        _onInputRead = callback;
+    }
+
     public bool CheckPermissions(VirtualFileSystemEntry query_item, string flags) {
 
         bool p_user = TerminalHandler.Instance.TerminalConfig.CurrentUser == query_item.user;
@@ -198,7 +214,7 @@ public class TerminalHandler : MonoBehaviour
     public void BuildPrompt() {
         _currentPrompt = _currentLine.GetComponentInChildren<TMP_Text>();
         var user = TerminalConfig.TryGetEnvVar("$USER");
-        _currentPrompt.text = user + "@challenge_" + ((int)TerminalConfig.CurrentChallenge + 1) + " #";
+        _currentPrompt.text = user + "@" + TerminalConfig.HostName + " #";
         _currentPrompt.color = (user == "root") ? new Color(0.31f,0.94f,0.13f) : new Color(0.4f, 0.8078431f, 0.8392157f);
     }
 

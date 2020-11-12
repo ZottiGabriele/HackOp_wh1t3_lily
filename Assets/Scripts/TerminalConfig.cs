@@ -7,12 +7,13 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Custom/TerminalConfig", fileName = "NewTerminalConfig")]
 public class TerminalConfig : ScriptableObject
 {
+    public string HostName = "";
     public Dictionary<VirtualFileSystemEntry, ICommand> AvailableCommands = new Dictionary<VirtualFileSystemEntry, ICommand>();
     public string CurrentPath {get => TryGetEnvVar("$PWD"); set => SetEnvVar("$PWD", value);}
     public string HomePath {get => TryGetEnvVar("$HOME"); set => SetEnvVar("$HOME", value);}
     public string CurrentUser {get => TryGetEnvVar("$USER"); set => SetEnvVar("$USER", value);}
     public string CurrentGroup {get => TryGetEnvVar("$GROUP"); set => SetEnvVar("$GROUP", value);}
-    public string VFSJsonPath {get => "vfs_ch_" + ((int)_challenge + 1);}
+    public string VFSJsonPath {get => "vfs_ch_" + (int)_challenge;}
     public Challenge CurrentChallenge {get => _challenge;}
     
     [SerializeField] Challenge _challenge;
@@ -91,6 +92,7 @@ public class TerminalConfig : ScriptableObject
     }
 
     public enum Challenge {
+        zero,
         first,
         second,
         third,

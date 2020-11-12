@@ -2,25 +2,43 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//! IF ANY IS REMOVED THEN CHECK CONDITIONS ON IINTERACTIONAREA
+//! IF ANYTHING IS RENAMED CHECK CONDITIONS ON IINTERACTIONAREA
+[System.Serializable]
 [CreateAssetMenu(menuName = "Custom/GameData", fileName = "New GameData")]
 public class GameData : ScriptableObject
 {
+    //GENERAL
     public int HintTokenCount = 0;
     public bool FirstTokenFound = false;
-    public bool SecurityCameraFound = false;
-    public bool InteractedWithComputer = false;
 
+    //FIRST CHALLENGE
+    public bool InteractedWithFirstComputer = false;
+    public bool InteractedWithMailApp = false;
     public bool FirstChallengeCompleted = false;
+    
+    //SECOND CHALLENGE
+    public bool InteractedWithSecondComputer = false;
+    public bool SecurityCameraFound = false;
     public bool SecondChallengeCompleted = false;
+
+    //THIRD CHALLENGE
+    public bool InteractedWithThirdComputer = false;
     public bool ThirdChallengeCompleted = false;
+
+    //FOURTH CHALLENGE
+    public bool InteractedWithFourthComputer = false;
     public bool FourthChallengeCompleted = false;
+
 
     public void Reset() {
         HintTokenCount = 0;
         FirstTokenFound = false;
         SecurityCameraFound = false;
-        InteractedWithComputer = false;
+        
+        InteractedWithFirstComputer = false;
+        InteractedWithSecondComputer = false;
+        InteractedWithThirdComputer = false;
+        InteractedWithFourthComputer = false;
         
         FirstChallengeCompleted = false;
         SecondChallengeCompleted = false;

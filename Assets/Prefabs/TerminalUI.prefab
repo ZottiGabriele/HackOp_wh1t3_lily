@@ -1714,7 +1714,6 @@ MonoBehaviour:
   _currentLine: {fileID: 4205122068180166537}
   _startingTerminalConfig: {fileID: 0}
   _scrollRect: {fileID: 4051200115968690736}
-  _currentPrompt: {fileID: 4205122067133547619}
 --- !u!114 &4051200116598363921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3541,6 +3540,11 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4292267622
       objectReference: {fileID: 0}
+    - target: {fileID: 172079304434397156, guid: 6ec5f10277e32ec48b53bbc3a495d65a,
+        type: 3}
+      propertyPath: m_text
+      value: user@hostname #
+      objectReference: {fileID: 0}
     - target: {fileID: 172079304434397157, guid: 6ec5f10277e32ec48b53bbc3a495d65a,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3755,15 +3759,3 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4051200116712074119}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4205122067133547619 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 172079304434397156, guid: 6ec5f10277e32ec48b53bbc3a495d65a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4051200116712074119}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -13,10 +13,14 @@ MonoBehaviour:
   m_Name: TestGameData
   m_EditorClassIdentifier: 
   HintTokenCount: 999
-  FirstTokenFound: 0
-  SecurityCameraFound: 0
-  InteractedWithComputer: 0
-  FirstChallengeCompleted: 1
-  SecondChallengeCompleted: 0
+  FirstTokenFound: 1
+  InteractedWithFirstComputer: 1
+  InteractedWithMailApp: 1
+  FirstChallengeCompleted: 0
+  InteractedWithSecondComputer: 0
+  SecurityCameraFound: 1
+  SecondChallengeCompleted: 1
+  InteractedWithThirdComputer: 0
   ThirdChallengeCompleted: 0
+  InteractedWithFourthComputer: 0
   FourthChallengeCompleted: 0
