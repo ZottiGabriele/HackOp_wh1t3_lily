@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c4e62a4f792be4f8fbfa97350eab31, type: 3}
   m_Name: Ch_1_TerminalConfig
   m_EditorClassIdentifier: 
-  HostName: heckops
+  HostName: 69.142.134.12
   _challenge: 1
   _env:
   - name: PATH
     value: /bin:/usr/bin:/usr/local/bin
   - name: USER
-    value: user
+    value: wh1t3_lily
   - name: GROUP
     value: group
   - name: HOME

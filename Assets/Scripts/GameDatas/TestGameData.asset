@@ -16,7 +16,9 @@ MonoBehaviour:
   FirstTokenFound: 1
   InteractedWithFirstComputer: 1
   InteractedWithMailApp: 1
+  ConnectedViaSsh: 0
   FirstChallengeCompleted: 0
+  EnteredOffice: 0
   InteractedWithSecondComputer: 0
   SecurityCameraFound: 1
   SecondChallengeCompleted: 1

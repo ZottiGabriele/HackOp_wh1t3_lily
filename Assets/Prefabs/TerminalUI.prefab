@@ -2024,6 +2024,7 @@ GameObject:
   - component: {fileID: 4051200116943437442}
   - component: {fileID: 4051200116943437443}
   - component: {fileID: 4051200116943437440}
+  - component: {fileID: 4284467494131223995}
   m_Layer: 5
   m_Name: Left-sidebar
   m_TagString: Untagged
@@ -2107,6 +2108,27 @@ MonoBehaviour:
   m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
+--- !u!223 &4284467494131223995
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4051200116943437454}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &4051200116953268705
 GameObject:
   m_ObjectHideFlags: 0

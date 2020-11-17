@@ -288,18 +288,6 @@
             "group": "group",
             "type": "directory",
             "childs": []
-          },
-          {
-            "hidden": false,
-            "readable": true,
-            "name": "local",
-            "full_path": "/usr/local",
-            "r_path": "VFS/challenge_2/usr/local",
-            "flags": "dr-xr-xr-x",
-            "user": "user",
-            "group": "group",
-            "type": "directory",
-            "childs": []
           }
         ]
       },

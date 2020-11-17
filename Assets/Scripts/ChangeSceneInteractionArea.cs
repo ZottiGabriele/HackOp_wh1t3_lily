@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,9 +8,12 @@ using UnityEngine.SceneManagement;
 public class ChangeSceneInteractionArea : IInteractionArea
 {
     [SerializeField] [HideInInspector] int _sceneToLoad;
+    [SerializeField] Cutscene _fadeout;
+
     protected override void execute()
     {
-        if(SceneManager.GetSceneByBuildIndex(_sceneToLoad) == null) Debug.LogError("TRYING TO LOAD SCENE " + _sceneToLoad + " BUT NOT IN BUILD");
-        SceneManager.LoadScene(_sceneToLoad);
+        _fadeout.ForcePlay(() => {
+            GameStateHandler.Instance.ChengeScene(_sceneToLoad);
+        });
     }
 }

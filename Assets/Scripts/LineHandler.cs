@@ -20,11 +20,20 @@ public class LineHandler : MonoBehaviour
 
         this.cmd = cmd;
 
-        _inField.interactable = false;
+        // _inField.interactable = false;
         _inField.readOnly = true;
-        // _inField.GetComponent<LayoutElement>().flexibleHeight = 0;
+
+        optimizeUI(transform);
 
         TerminalHandler.Instance.OnCommandInputEnd(this);
+    }
+
+    private void optimizeUI(Transform target) {
+        
+    }
+
+    public void OnValueChanged() {
+        TerminalHandler.Instance.ScrollToBottom();
     }
 
     public void DisplayOutput(string output) {

@@ -22,7 +22,7 @@ public class GeneralUIHandler : MonoBehaviour
             Instance = this;
             // DontDestroyOnLoad(this);
         } else if (Instance != this) {
-            Debug.LogError("ATTENTION: " + this + " has been destroyed because of double singleton");
+            Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }

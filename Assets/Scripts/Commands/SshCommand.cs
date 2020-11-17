@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Custom/Commands/SshCommand", fileName = "SshCommand")]
 public class SshCommand : ICommand
 {
+    public static Action OnConnectionSuccessfull = () => {};
+
     [SerializeField] string _targetIP;
     [SerializeField] string _targetUser;
     [SerializeField] string _targetPsw;
     [SerializeField] TerminalConfig _targetConfig;
+
     bool _pswPassed = false;
     string _ip;
     string _user;
@@ -36,9 +40,14 @@ public class SshCommand : ICommand
 
     private void checkPsw(string psw) {
         if(psw == _targetPsw) {
-            TerminalHandler.Instance.DisplayOutput("NICE");
+            onConnectionSuccessfull();
         } else {
             TerminalHandler.Instance.DisplayOutput("ERROR: The host " + _ip + " refused connection for user " + _user + ": WRONG PASSWORD");
         }
+    }
+
+    private void onConnectionSuccessfull() {
+        TerminalHandler.Instance.NewSsh(_targetConfig);
+        OnConnectionSuccessfull();
     }
 }

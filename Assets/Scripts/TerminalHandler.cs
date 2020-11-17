@@ -17,7 +17,7 @@ public class TerminalHandler : MonoBehaviour
     }
 
     public TerminalConfig TerminalConfig {get => _configs.Peek();}
-    public VirtualFileSystem VirtualFileSystem {get => _virtualFileSystem;}
+    public VirtualFileSystem VirtualFileSystem {get => _virtualFileSystem.Peek();}
 
     public Action OnChallengeCompleted = () => {};
     
@@ -29,8 +29,9 @@ public class TerminalHandler : MonoBehaviour
     Stack<TerminalConfig> _configs = new Stack<TerminalConfig>();
     TMP_InputField _currentInputField;
     TMP_Text _currentPrompt;
-    VirtualFileSystem _virtualFileSystem;
+    Stack<VirtualFileSystem> _virtualFileSystem = new Stack<VirtualFileSystem>();
     bool _readingInput = false;
+    int _sshCount = 0;
     Action<string> _onInputRead = _ => {};
 
     private void Awake()
@@ -39,14 +40,14 @@ public class TerminalHandler : MonoBehaviour
             Instance = this;
             // DontDestroyOnLoad(this);
         } else if (Instance != this) {
-            Debug.LogError("ATTENTION: " + this + " has been destroyed because of double singleton");
+            Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }
 
     private void Start() {
         var json = Resources.Load(_startingTerminalConfig.VFSJsonPath) as TextAsset;
-        _virtualFileSystem = VirtualFileSystem.CreateFromJson(json.text);
+        _virtualFileSystem.Push(VirtualFileSystem.CreateFromJson(json.text));
         Resources.UnloadAsset(json);
 
         _startingTerminalConfig = ScriptableObject.Instantiate(_startingTerminalConfig);;
@@ -68,7 +69,7 @@ public class TerminalHandler : MonoBehaviour
             _currentInputField.stringPosition = _currentInputField.text.Length;
         }
 
-        if(EventSystem.current.currentSelectedGameObject != _currentInputField) {
+        if(EventSystem.current.currentSelectedGameObject != _currentInputField) { 
             EventSystem.current.SetSelectedGameObject(_currentInputField.gameObject);
         }
     }
@@ -185,6 +186,16 @@ public class TerminalHandler : MonoBehaviour
         return p_user || p_group || p_other || TerminalConfig.CurrentUser == "root";
     }
 
+    public void NewSsh(TerminalConfig tc) {
+        _sshCount++;
+        _configs.Push(ScriptableObject.Instantiate(tc));
+        var json = Resources.Load(tc.VFSJsonPath) as TextAsset;
+        _virtualFileSystem.Push(VirtualFileSystem.CreateFromJson(json.text));
+        Resources.UnloadAsset(json);
+        InstantiateNewLine();
+        TerminalConfig.LoadCmdsFromPATH();
+    }
+
     public void NewShell() {
         if(_configs.Count <= 5) {
             var config = ScriptableObject.Instantiate(_startingTerminalConfig);
@@ -200,9 +211,14 @@ public class TerminalHandler : MonoBehaviour
     }
 
     public void ExitShell() {
+        if(_sshCount > 0) {
+            _virtualFileSystem.Pop();
+            _sshCount--;
+        }
         if(_configs.Count == 1) {
             ScriptableObject.Destroy(_configs.Pop());
             _configs.Push(ScriptableObject.Instantiate(_startingTerminalConfig));
+            TerminalConfig.LoadCmdsFromPATH();
             ClearScreen();
             _terminalUI.SetActive(false);
         } else {
@@ -216,6 +232,10 @@ public class TerminalHandler : MonoBehaviour
         var user = TerminalConfig.TryGetEnvVar("$USER");
         _currentPrompt.text = user + "@" + TerminalConfig.HostName + " #";
         _currentPrompt.color = (user == "root") ? new Color(0.31f,0.94f,0.13f) : new Color(0.4f, 0.8078431f, 0.8392157f);
+    }
+
+    public void ScrollToBottom() {
+        StartCoroutine(scrollToBottom());
     }
 
     private IEnumerator scrollToBottom() {

@@ -178,43 +178,6 @@
                 "content": "Weila mulon"
               }
             ]
-          },
-          {
-            "hidden": false,
-            "readable": true,
-            "name": "root",
-            "full_path": "/home/root",
-            "r_path": "VFS/challenge_0/home/_r_root",
-            "flags": "dr-xr-xr-x",
-            "user": "root",
-            "group": "root",
-            "type": "directory",
-            "childs": [
-              {
-                "hidden": false,
-                "readable": false,
-                "name": "disable_security_camera",
-                "full_path": "/home/root/disable_security_camera",
-                "r_path": "VFS/challenge_0/home/_r_root/_ro_disable_security_camera",
-                "flags": "-r-xr-x---",
-                "user": "root",
-                "group": "root",
-                "type": "cmd",
-                "content": ""
-              },
-              {
-                "hidden": false,
-                "readable": true,
-                "name": "welcome_message.txt",
-                "full_path": "/home/root/welcome_message.txt",
-                "r_path": "VFS/challenge_0/home/_r_root/_r_welcome_message",
-                "flags": "-rw-rw-r--",
-                "user": "root",
-                "group": "root",
-                "type": "file",
-                "content": "\"Hello and welcome to HackOp!\""
-              }
-            ]
           }
         ]
       },

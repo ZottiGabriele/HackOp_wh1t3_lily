@@ -30,6 +30,6 @@ public class CutsceneTextBehaviour : PlayableBehaviour
 
     public float GetClipDurationFromText() {
         if (_guih == null) return 1;
-        return ((_text.Length + 2) * (1 - _guih._typingSpeed) + 2);
+        return ((_text.Length + 2) * (1 - _guih._typingSpeed) + 2.5f);
     }
 }

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686152246fc205f40930e770ef0268eb, type: 3}
-  m_Name: SshCommand
+  m_Script: {fileID: 11500000, guid: 4b122913ef6605542a221106561273a6, type: 3}
+  m_Name: generate_daily_code
   m_EditorClassIdentifier: 
-  _targetIP: 69.142.134.12
-  _targetUser: wh1t3_lily
-  _targetPsw: 0n3_sh0t_0nly
-  _targetConfig: {fileID: 11400000, guid: 68ae56af36a76d54fbcc7afe3c2217f4, type: 2}
+  _masterPsw: 

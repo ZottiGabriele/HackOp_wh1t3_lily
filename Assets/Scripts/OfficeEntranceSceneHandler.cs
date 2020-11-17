@@ -45,4 +45,8 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
     public void SecurityCameraFound() {
         GameStateHandler.Instance.GameData.SecurityCameraFound = true;
     }
+
+    public void EnteredOffice() {
+        GameStateHandler.Instance.GameData.EnteredOffice = true;
+    }
 }

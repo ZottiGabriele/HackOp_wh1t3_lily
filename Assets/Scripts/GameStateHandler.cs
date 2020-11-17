@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 
 //TODO: make this thing different per scene? State machine?
 public class GameStateHandler : MonoBehaviour
@@ -24,7 +25,7 @@ public class GameStateHandler : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(this);
         } else {
-            Debug.LogError("ATTENTION: " + this + " has been destroyed because of double singleton");
+            Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }
@@ -50,6 +51,10 @@ public class GameStateHandler : MonoBehaviour
         }
         _gameData.HintTokenCount += n;
         OnHintTokenUpdate();
+    }
+
+    public void ChengeScene(int sceneIndex) {
+        SceneManager.LoadScene(sceneIndex);
     }
 
     private void ChangeGameState(GameState newGameState) {

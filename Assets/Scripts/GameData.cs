@@ -14,9 +14,11 @@ public class GameData : ScriptableObject
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
     public bool InteractedWithMailApp = false;
+    public bool ConnectedViaSsh = false;
     public bool FirstChallengeCompleted = false;
     
     //SECOND CHALLENGE
+    public bool EnteredOffice = false;
     public bool InteractedWithSecondComputer = false;
     public bool SecurityCameraFound = false;
     public bool SecondChallengeCompleted = false;

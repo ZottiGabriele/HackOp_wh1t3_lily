@@ -10,10 +10,8 @@ public abstract class IGameDataObserver : MonoBehaviour
     [HideInInspector] [SerializeField] private int _conditionIndex;
 
     protected virtual void executeOnCondition() {
-        if(!_hasCondition) { execute(); }
-        else if((bool)typeof(GameData).GetField(_condition).GetValue(GameStateHandler.Instance.GameData) == _conditionTarget) {
-            execute();
-        }
+        bool shouldExecute = (!_hasCondition) || ((bool)typeof(GameData).GetField(_condition).GetValue(GameStateHandler.Instance.GameData) == _conditionTarget);
+        if(shouldExecute) execute();
     }
     protected abstract void execute();
 }
