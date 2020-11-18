@@ -1113,6 +1113,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4284467494131223995, guid: 0248856fc9467fd4bbcc207293a6edac,
+        type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 4288300932189082760, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}
       propertyPath: m_textInfo.characterCount

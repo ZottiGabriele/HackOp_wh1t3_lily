@@ -18,8 +18,8 @@ MonoBehaviour:
   InteractedWithMailApp: 1
   ConnectedViaSsh: 0
   FirstChallengeCompleted: 0
-  EnteredOffice: 0
-  InteractedWithSecondComputer: 0
+  EnteredOffice: 1
+  InteractedWithSecondComputer: 1
   SecurityCameraFound: 1
   SecondChallengeCompleted: 1
   InteractedWithThirdComputer: 0
