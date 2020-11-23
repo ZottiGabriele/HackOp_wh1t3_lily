@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfficeEntrance.unity
     guid: b8a8fd380a8df4c4c97318b32ebf19a0
+  - enabled: 1
+    path: Assets/Scenes/OfficePreServerRoom.unity
+    guid: edb4e33440f1a21488bd5659c653d9f1
   m_configObjects: {}

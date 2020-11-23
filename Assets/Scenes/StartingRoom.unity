@@ -3177,7 +3177,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: FirstChallengeCompleted
   _conditionTarget: 0
-  _conditionIndex: 1
+  _conditionIndex: 2
   _firstInteraction: {fileID: 430096621}
   _zoomInOnScreen: {fileID: 257695514}
   _targetChallenge: 0
@@ -3225,7 +3225,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: FirstChallengeCompleted
   _conditionTarget: 1
-  _conditionIndex: 1
+  _conditionIndex: 2
   onInteractionText: I shouldn't waste time
 --- !u!1 &430096620
 GameObject:
@@ -5077,7 +5077,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: FirstChallengeCompleted
   _conditionTarget: 1
-  _conditionIndex: 3
+  _conditionIndex: 2
   _sceneToLoad: 1
   _fadeout: {fileID: 1210923346}
 --- !u!114 &590336647
@@ -5158,7 +5158,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: InteractedWithMailApp
   _conditionTarget: 0
-  _conditionIndex: 7
+  _conditionIndex: 8
   onInteractionText: I have to check out the email ...
 --- !u!1 &602666320
 GameObject:
@@ -6015,9 +6015,9 @@ RectTransform:
   m_Father: {fileID: 766759089}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 86.165, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 86.165, y: -25}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &717184357

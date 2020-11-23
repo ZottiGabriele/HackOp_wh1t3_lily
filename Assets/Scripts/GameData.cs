@@ -24,6 +24,8 @@ public class GameData : ScriptableObject
     public bool SecondChallengeCompleted = false;
 
     //THIRD CHALLENGE
+    public bool InteractedWithKeypad = false;
+    public bool OpenedServerDoor = false;
     public bool InteractedWithThirdComputer = false;
     public bool ThirdChallengeCompleted = false;
 

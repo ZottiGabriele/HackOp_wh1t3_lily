@@ -8,14 +8,12 @@ using UnityEngine.UIElements;
 
 
 [CustomEditor(typeof(ChangeSceneInteractionArea))]
-public class ChangeSceneInteractionAreaCustomEditor : Editor
+public class ChangeSceneInteractionAreaCustomEditor : IGameDataObserverCustomInspector
 {
-   List<string> _scenes = new List<string>();
+    List<string> _scenes = new List<string>();
 
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
-
         ChangeSceneInteractionArea _t = (ChangeSceneInteractionArea) target;
         SerializedProperty _sceneToLoad = serializedObject.FindProperty("_sceneToLoad");
 
@@ -30,7 +28,8 @@ public class ChangeSceneInteractionAreaCustomEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
         EditorUtility.SetDirty(target);
-        
+
+        base.OnInspectorGUI();
     }
 
     private void buildScenesList() {
@@ -41,5 +40,4 @@ public class ChangeSceneInteractionAreaCustomEditor : Editor
             _scenes.Add(Path.GetFileNameWithoutExtension(path));
         }
     }
-
 }

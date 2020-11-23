@@ -12178,7 +12178,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 0
-  _conditionIndex: 9
+  _conditionIndex: 12
   onInteractionText: There must be a way to deactivate it...
 --- !u!60 &917952255
 PolygonCollider2D:
@@ -12226,7 +12226,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 1
-  _conditionIndex: 9
+  _conditionIndex: 12
   onInteractionText: Don't mind me...
 --- !u!1 &945026523
 GameObject:
@@ -18807,9 +18807,8 @@ GameObject:
   - component: {fileID: 1865243229}
   - component: {fileID: 1865243232}
   - component: {fileID: 1865243231}
-  - component: {fileID: 1865243233}
   - component: {fileID: 1865243230}
-  - component: {fileID: 1865243234}
+  - component: {fileID: 1865243233}
   m_Layer: 0
   m_Name: Door (1)
   m_TagString: Untagged
@@ -18846,7 +18845,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 0
-  _conditionIndex: 9
+  _conditionIndex: 12
   onInteractionText: I can't reach it if I don't deactivate the security camera first...
 --- !u!60 &1865243231
 PolygonCollider2D:
@@ -18943,26 +18942,9 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: SecondChallengeCompleted
   _conditionTarget: 1
-  _conditionIndex: 4
-  _sceneToLoad: 0
+  _conditionIndex: 12
+  _sceneToLoad: 2
   _fadeout: {fileID: 976836001}
---- !u!114 &1865243234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1865243228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a638abbbb99a194a96d0fe8b717f58a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hasCondition: 1
-  _condition: SecondChallengeCompleted
-  _conditionTarget: 1
-  _conditionIndex: 9
-  onInteractionText: CONGRATULATIONS! YOU PASSED THE SECOND CHALLENGE!
 --- !u!1 &1882321491
 GameObject:
   m_ObjectHideFlags: 0

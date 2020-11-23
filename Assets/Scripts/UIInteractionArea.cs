@@ -10,7 +10,7 @@ public class UIInteractionArea : IInteractionArea
     [SerializeField] UnityEvent _events;
 
     private void Start() {
-        GetComponent<Button>().onClick.AddListener(executeOnCondition);
+        GetComponent<Button>().onClick.AddListener(() => {executeOnCondition();});
     }
 
     protected override void execute()

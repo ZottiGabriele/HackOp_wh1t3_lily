@@ -25,16 +25,28 @@ public class Cutscene : IGameDataObserver
         executeOnCondition();
     }
 
-    public void ForcePlay(Action onCutsceneEnd = null) {
+    public void Play(Action<bool> onCutsceneEnd) {
+        bool hasExecuted = executeOnCondition();
+        Action<PlayableDirector> tmp = null;
+        tmp = _ => {
+            onCutsceneEnd(hasExecuted); 
+            _pd.stopped -= tmp; 
+        };
+        _pd.stopped += tmp;
+    }
+
+    public void ForcePlay() {
         execute();
-        if(onCutsceneEnd != null) {
-            Action<PlayableDirector> tmp = null;
-            tmp = _ => {
-                onCutsceneEnd(); 
-                _pd.stopped -= tmp; 
-            };
-            _pd.stopped += tmp;
-        }
+    }
+
+    public void ForcePlay(Action onCutsceneEnd) {
+        execute();
+        Action<PlayableDirector> tmp = null;
+        tmp = _ => {
+            onCutsceneEnd(); 
+            _pd.stopped -= tmp; 
+        };
+        _pd.stopped += tmp;
     }
 
     protected override void execute()
