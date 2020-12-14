@@ -13,6 +13,224 @@
       {
         "hidden": false,
         "readable": true,
+        "name": "bin",
+        "full_path": "/bin",
+        "r_path": "VFS/challenge_3/bin",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cat",
+            "full_path": "/bin/cat",
+            "r_path": "VFS/challenge_3/bin/CatCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cd",
+            "full_path": "/bin/cd",
+            "r_path": "VFS/challenge_3/bin/CdCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "clear",
+            "full_path": "/bin/clear",
+            "r_path": "VFS/challenge_3/bin/ClearCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "cp",
+            "full_path": "/bin/cp",
+            "r_path": "VFS/challenge_3/bin/CpCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "decode",
+            "full_path": "/bin/decode",
+            "r_path": "VFS/challenge_3/bin/DecodeCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "echo",
+            "full_path": "/bin/echo",
+            "r_path": "VFS/challenge_3/bin/EchoCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "exit",
+            "full_path": "/bin/exit",
+            "r_path": "VFS/challenge_3/bin/ExitCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "help",
+            "full_path": "/bin/help",
+            "r_path": "VFS/challenge_3/bin/HelpCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "imgview",
+            "full_path": "/bin/imgview",
+            "r_path": "VFS/challenge_3/bin/ImgViewCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "ls",
+            "full_path": "/bin/ls",
+            "r_path": "VFS/challenge_3/bin/LsCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "pwd",
+            "full_path": "/bin/pwd",
+            "r_path": "VFS/challenge_3/bin/PwdCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "sh",
+            "full_path": "/bin/sh",
+            "r_path": "VFS/challenge_3/bin/ShCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "su",
+            "full_path": "/bin/su",
+            "r_path": "VFS/challenge_3/bin/SuCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "sudo",
+            "full_path": "/bin/sudo",
+            "r_path": "VFS/challenge_3/bin/SudoCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "whoami",
+            "full_path": "/bin/whoami",
+            "r_path": "VFS/challenge_3/bin/WhoAmICommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "etc",
+        "full_path": "/etc",
+        "r_path": "VFS/challenge_3/etc",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "sudoers",
+            "full_path": "/etc/sudoers",
+            "r_path": "VFS/challenge_3/etc/_ro_sudoers",
+            "flags": "-r-xr-x---",
+            "user": "root",
+            "group": "root",
+            "type": "file",
+            "content": ""
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
         "name": "home",
         "full_path": "/home",
         "r_path": "VFS/challenge_3/home",
@@ -45,8 +263,143 @@
                 "content": ""
               }
             ]
+          },
+          {
+            "hidden": true,
+            "readable": true,
+            "name": ".wh1t3_l1ly",
+            "full_path": "/home/.wh1t3_l1ly",
+            "r_path": "VFS/challenge_3/home/_ro__h_wh1t3_l1ly",
+            "flags": "dr-xr-x---",
+            "user": "root",
+            "group": "root",
+            "type": "directory",
+            "childs": [
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "wh1t3_l1ly.jpg",
+                "full_path": "/home/.wh1t3_l1ly/wh1t3_l1ly.jpg",
+                "r_path": "VFS/challenge_3/home/_ro__h_wh1t3_l1ly/_ro_wh1t3_l1ly",
+                "flags": "-r-xr-x---",
+                "user": "root",
+                "group": "root",
+                "type": "file"
+              }
+            ]
+          },
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "root",
+            "full_path": "/home/root",
+            "r_path": "VFS/challenge_3/home/_r_root",
+            "flags": "dr-xr-xr-x",
+            "user": "root",
+            "group": "root",
+            "type": "directory",
+            "childs": [
+              {
+                "hidden": true,
+                "readable": true,
+                "name": ".passwd",
+                "full_path": "/home/root/.passwd",
+                "r_path": "VFS/challenge_3/home/_r_root/_ro__h_passwd",
+                "flags": "-r-xr-x---",
+                "user": "root",
+                "group": "root",
+                "type": "file",
+                "content": "B3_C4REFUL_0F_W1LD3C4RD5"
+              },
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "notes",
+                "full_path": "/home/root/notes",
+                "r_path": "VFS/challenge_3/home/_r_root/_r_notes",
+                "flags": "dr-xr-xr-x",
+                "user": "root",
+                "group": "root",
+                "type": "directory",
+                "childs": [
+                  {
+                    "hidden": false,
+                    "readable": true,
+                    "name": "note_1.txt",
+                    "full_path": "/home/root/notes/note_1.txt",
+                    "r_path": "VFS/challenge_3/home/_r_root/_r_notes/_ro_note_1",
+                    "flags": "-r-xr-x---",
+                    "user": "root",
+                    "group": "root",
+                    "type": "file",
+                    "content": "Client ID 10382 payed only half of what he owes. Remember to call him again on Monday to request the remaining sum."
+                  },
+                  {
+                    "hidden": false,
+                    "readable": true,
+                    "name": "note_2.txt",
+                    "full_path": "/home/root/notes/note_2.txt",
+                    "r_path": "VFS/challenge_3/home/_r_root/_r_notes/_ro_note_2",
+                    "flags": "-r-xr-x---",
+                    "user": "root",
+                    "group": "root",
+                    "type": "file",
+                    "content": "Whoever finished the toilet paper is kindly reminded that it does not replace itself ..."
+                  },
+                  {
+                    "hidden": false,
+                    "readable": true,
+                    "name": "to_do.txt",
+                    "full_path": "/home/root/notes/to_do.txt",
+                    "r_path": "VFS/challenge_3/home/_r_root/_r_notes/_ro_to_do",
+                    "flags": "-r-xr-x---",
+                    "user": "root",
+                    "group": "root",
+                    "type": "file",
+                    "content": "- Call client 10382 on Monday\n- Buy new toilet paper for the office\n- Find a better solution to make these files available to users (there might be a vulnerability!)\n- Fix the broken chair in server room HA-1\n- Upgrade server storage (Wait for Buyazon discounts?)"
+                  }
+                ]
+              }
+            ]
           }
         ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "usr",
+        "full_path": "/usr",
+        "r_path": "VFS/challenge_3/usr",
+        "flags": "dr-xr-xr-x",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": [
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "bin",
+            "full_path": "/usr/bin",
+            "r_path": "VFS/challenge_3/usr/bin",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": []
+          }
+        ]
+      },
+      {
+        "hidden": false,
+        "readable": true,
+        "name": "tmp",
+        "full_path": "/tmp",
+        "r_path": "VFS/challenge_3/_w_tmp",
+        "flags": "drwxrwxrwx",
+        "user": "user",
+        "group": "group",
+        "type": "directory",
+        "childs": []
       }
     ]
   }

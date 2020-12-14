@@ -31,6 +31,7 @@ public class Keypad : MonoBehaviour
         if(_displayText.text == _targetCode) {
             _rightCode.Play( _ => {
                 Clear();
+                GameStateHandler.Instance.GameData.OpenedServerDoor = true;
             });
         } else {
             _wrongCode.Play( _ => {

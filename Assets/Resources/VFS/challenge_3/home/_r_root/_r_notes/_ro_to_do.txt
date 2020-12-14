@@ -1,0 +1,5 @@
+- Call client 10382 on Monday
+- Buy new toilet paper for the office
+- Find a better solution to make these files available to users (there might be a vulnerability!)
+- Fix the broken chair in server room HA-1
+- Upgrade server storage (Wait for Buyazon discounts?)

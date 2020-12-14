@@ -20,7 +20,7 @@ def path_to_dict(start_path, path, vfs_path):
     d['readable'] = True
     d['name'] = file_name
     d['full_path'] = path[len(start_path):len(path)-len(os.path.basename(path))].replace("\\","/") + d['name']
-    d['r_path'], _ = os.path.splitext(path[len(vfs_path) - 3:].replace("\\","/"))
+    d['r_path'], ext = os.path.splitext(path[len(vfs_path) - 3:].replace("\\","/"))
     d['flags'] = "-rw-rw-r--"
     d['user'] = "user"
     d['group'] = "group"
@@ -40,9 +40,10 @@ def path_to_dict(start_path, path, vfs_path):
                 d['childs'].append(path_to_dict(start_path, os.path.join(path,x), vfs_path))
     else:
         d['type'] = "file"
-        f = open(path, "r")
-        d['content'] = f.read()
-        f.close()
+        if(ext != ".jpg"):
+            f = open(path, "r")
+            d['content'] = f.read()
+            f.close()
 
     parse_custom_tags(d)
 

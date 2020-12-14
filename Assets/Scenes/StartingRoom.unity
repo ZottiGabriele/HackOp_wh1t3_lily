@@ -100,7 +100,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 6d2ee65452a89ea468574a656e2a6abe,
     type: 2}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1545,6 +1545,8 @@ PlayableDirector:
     value: {fileID: 1381861129}
   m_ExposedReferences:
     m_References:
+    - f4770a24fb2219647a02d9ba7c59acab: {fileID: 1210923343}
+    - 0a2e97abf777ed54a9860a797aacc17f: {fileID: 842118878}
     - a0c60aa676dd7ac4f91c956b5b3dbba3: {fileID: 1571316788}
     - 84d205e7d6e54c543960e8c60f97d469: {fileID: 146523458}
 --- !u!1 &286090760
@@ -7192,7 +7194,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 9dedbda1d4ba26c479de6502825a2eae, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0

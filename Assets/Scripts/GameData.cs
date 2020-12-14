@@ -30,11 +30,12 @@ public class GameData : ScriptableObject
     public bool ThirdChallengeCompleted = false;
 
     //FOURTH CHALLENGE
-    public bool InteractedWithFourthComputer = false;
+    public bool ViewedImage = false;
     public bool FourthChallengeCompleted = false;
 
 
     public void Reset() {
+        //TODO: fill
         HintTokenCount = 0;
         FirstTokenFound = false;
         SecurityCameraFound = false;
@@ -42,7 +43,6 @@ public class GameData : ScriptableObject
         InteractedWithFirstComputer = false;
         InteractedWithSecondComputer = false;
         InteractedWithThirdComputer = false;
-        InteractedWithFourthComputer = false;
         
         FirstChallengeCompleted = false;
         SecondChallengeCompleted = false;

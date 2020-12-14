@@ -4,6 +4,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.Playables;
 
+[RequireComponent(typeof(PolygonCollider2D))]
 public class ComputerInteractionArea : IInteractionArea
 {
     [SerializeField] PlayableDirector _firstInteraction;
@@ -29,8 +30,9 @@ public class ComputerInteractionArea : IInteractionArea
                 GameStateHandler.Instance.GameData.InteractedWithThirdComputer = true;
                 break;
             case TerminalConfig.Challenge.fourth:
-                _interacted = GameStateHandler.Instance.GameData.InteractedWithFourthComputer;
-                GameStateHandler.Instance.GameData.InteractedWithFourthComputer = true;
+                //TODO: remove ?
+                // _interacted = GameStateHandler.Instance.GameData.InteractedWithFourthComputer;
+                // GameStateHandler.Instance.GameData.InteractedWithFourthComputer = true;
                 break;
         }
 

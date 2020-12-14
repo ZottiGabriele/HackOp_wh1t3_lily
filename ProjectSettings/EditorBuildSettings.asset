@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/OfficePreServerRoom.unity
     guid: edb4e33440f1a21488bd5659c653d9f1
+  - enabled: 1
+    path: Assets/Scenes/ServerRoom.unity
+    guid: 7be8b729f2710a54f8be2f5a41d348e7
   m_configObjects: {}

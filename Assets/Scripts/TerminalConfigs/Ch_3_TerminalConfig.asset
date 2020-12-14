@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c4e62a4f792be4f8fbfa97350eab31, type: 3}
+  m_Name: Ch_3_TerminalConfig
+  m_EditorClassIdentifier: 
+  HostName: hackops_servers
+  _challenge: 3
+  _env:
+  - name: PATH
+    value: /bin:/usr/bin:/usr/local/bin
+  - name: USER
+    value: user
+  - name: GROUP
+    value: group
+  - name: HOME
+    value: /home/user/
+  - name: PWD
+    value: /home/user/
