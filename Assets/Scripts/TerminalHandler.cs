@@ -60,6 +60,7 @@ public class TerminalHandler : MonoBehaviour
         TerminalConfig.LoadCmdsFromPATH();
 
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
+        EventSystem.current.SetSelectedGameObject(_currentInputField.gameObject);
         BuildPrompt();
     }
 
@@ -77,7 +78,7 @@ public class TerminalHandler : MonoBehaviour
             _currentInputField.stringPosition = _currentInputField.text.Length;
         }
 
-        if (EventSystem.current.currentSelectedGameObject != _currentInputField)
+        if (EventSystem.current.currentSelectedGameObject == null)
         {
             EventSystem.current.SetSelectedGameObject(_currentInputField.gameObject);
         }
@@ -101,6 +102,7 @@ public class TerminalHandler : MonoBehaviour
     {
         _currentLine = Instantiate(_lineTameplate, transform);
         _currentInputField = _currentLine.GetComponent<LineHandler>().InField;
+        EventSystem.current.SetSelectedGameObject(_currentInputField.gameObject);
         BuildPrompt();
         StartCoroutine(scrollToBottom());
     }
