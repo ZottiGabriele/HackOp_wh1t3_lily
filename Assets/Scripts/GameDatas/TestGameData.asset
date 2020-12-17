@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: TestGameData
   m_EditorClassIdentifier: 
   HintTokenCount: 999
-  FirstTokenFound: 0
-  InteractedWithFirstComputer: 0
-  InteractedWithMailApp: 0
-  ConnectedViaSsh: 0
-  FirstChallengeCompleted: 0
-  EnteredOffice: 0
-  InteractedWithSecondComputer: 0
-  SecurityCameraFound: 0
-  SecondChallengeCompleted: 0
-  InteractedWithKeypad: 0
-  OpenedServerDoor: 0
-  InteractedWithThirdComputer: 0
+  FirstTokenFound: 1
+  InteractedWithFirstComputer: 1
+  InteractedWithMailApp: 1
+  ConnectedViaSsh: 1
+  FirstChallengeCompleted: 1
+  EnteredOffice: 1
+  InteractedWithSecondComputer: 1
+  SecurityCameraFound: 1
+  SecondChallengeCompleted: 1
+  InteractedWithKeypad: 1
+  OpenedServerDoor: 1
+  InteractedWithThirdComputer: 1
   ThirdChallengeCompleted: 0
   ViewedImage: 0
   FourthChallengeCompleted: 0

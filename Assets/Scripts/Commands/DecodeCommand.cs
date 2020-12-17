@@ -8,21 +8,18 @@ using UnityEngine;
 public class DecodeCommand : ICommand
 {
     public override string GetCmdName() => "decode";
-    public override string GetCmdDescription() => "<b>decode [OPTIONS] <source></b> : decodes the contents of <source> based on the chosen method";
-    public override string GetCmdMatch() => "^ *decode +-\\w +\\S+ *$";
+    public override string GetCmdDescription() => "<b>decode [ALGORITHM] <target></b> : decodes <target> text based on the chosen [ALGORITHM]";
+    public override string GetCmdMatch() => "^ *decode +-\\w +\\S+";
 
     public override void OnCmdMatch()
     {
         var cmd = _cmd.Split(new char[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
         var option = cmd[1][1];
-        var src = cmd[2];
+        var content = _cmd.Replace(cmd[0], "").Replace(cmd[1], "").TrimStart();
         DecodeAlg alg;
 
         switch (option)
         {
-            case 'a':
-                alg = DecodeAlg.ASCII;
-                break;
             case 'b':
                 alg = DecodeAlg.Base64;
                 break;
@@ -33,46 +30,16 @@ public class DecodeCommand : ICommand
                 alg = DecodeAlg.Rot13;
                 break;
             default:
-                TerminalHandler.Instance.DisplayOutput("ERROR: Option not available. Type \"help\" to view the list of available options.");
+                TerminalHandler.Instance.DisplayOutput("ERROR: Option \"-" + option + "\" not available. Type \"help\" to view the list of available options.");
                 return;
         }
 
-        var src_item = TerminalHandler.Instance.VirtualFileSystem.Query(src);
-        if (src_item != null)
+        var output = decode(content, alg);
+        TerminalHandler.Instance.DisplayOutput(output);
+
+        if (output == "ANSWER{FORTYTWO}")
         {
-            if (src_item.type == "directory")
-            {
-                TerminalHandler.Instance.DisplayOutput("ERROR: Source file " + src + " is a directory");
-                return;
-            }
-            else
-            {
-                if (!TerminalHandler.Instance.CheckPermissions(src_item, "r--"))
-                {
-                    TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
-                    return;
-                }
-                if (src_item.readable)
-                {
-                    try
-                    {
-                        string decodedContent = decode(src_item.content, alg);
-                        TerminalHandler.Instance.DisplayOutput(decodedContent);
-                    }
-                    catch (Exception e)
-                    {
-                        TerminalHandler.Instance.DisplayOutput("ERROR: can't decode " + src + " with the selected algorithm.");
-                    }
-                }
-                else
-                {
-                    TerminalHandler.Instance.DisplayOutput("ERROR: can't read file contents");
-                }
-            }
-        }
-        else
-        {
-            TerminalHandler.Instance.DisplayOutput("ERROR: File " + src + " not found");
+            OfficeServerRoomHandler.OnFourthChallengeCompelted();
         }
     }
 
@@ -117,7 +84,6 @@ public class DecodeCommand : ICommand
 
 enum DecodeAlg
 {
-    ASCII,
     Base64,
     Hex,
     Rot13

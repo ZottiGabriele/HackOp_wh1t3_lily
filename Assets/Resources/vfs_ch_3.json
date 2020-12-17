@@ -24,6 +24,18 @@
           {
             "hidden": false,
             "readable": false,
+            "name": "binwalk",
+            "full_path": "/bin/binwalk",
+            "r_path": "VFS/challenge_3/bin/BinWalkCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
             "name": "cat",
             "full_path": "/bin/cat",
             "r_path": "VFS/challenge_3/bin/CatCommand",
@@ -183,6 +195,18 @@
             "name": "sudo",
             "full_path": "/bin/sudo",
             "r_path": "VFS/challenge_3/bin/SudoCommand",
+            "flags": "-r-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "cmd",
+            "content": ""
+          },
+          {
+            "hidden": false,
+            "readable": false,
+            "name": "unzip",
+            "full_path": "/bin/unzip",
+            "r_path": "VFS/challenge_3/bin/UnzipCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",

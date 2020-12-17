@@ -12,7 +12,8 @@ public class HelpCommand : ICommand
     {
         string output = "";
 
-        foreach(var c in TerminalHandler.Instance.TerminalConfig.AvailableCommands) {
+        foreach (var c in TerminalHandler.Instance.TerminalConfig.AvailableCommands)
+        {
             output += c.Value.GetCmdDescription() + "\n\n";
         }
 
