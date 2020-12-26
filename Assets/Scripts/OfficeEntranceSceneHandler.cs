@@ -14,7 +14,8 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
 
     Vector3 _playerStartingPosition;
 
-    private void Start() {
+    private void Start()
+    {
         GameStateHandler.Instance.OnGameStateChanged += OnGameStateChanged;
         _terminalHandler.OnChallengeCompleted += OnChallengeCompleted;
 
@@ -23,30 +24,39 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
         _playerStartingPosition = PlayerController.Instance.transform.position;
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         GameStateHandler.Instance.OnGameStateChanged -= OnGameStateChanged;
         _terminalHandler.OnChallengeCompleted -= OnChallengeCompleted;
     }
 
-    private void OnGameStateChanged(GameStateHandler.GameState gameState) {
-        
+    private void OnGameStateChanged(GameStateHandler.GameState gameState)
+    {
+
     }
 
-    public void ResetPlayerPosition() {
+    public void ResetPlayerPosition()
+    {
         PlayerController.Instance.transform.position = _playerStartingPosition;
     }
 
-    private void OnChallengeCompleted() {
-        if(GameStateHandler.Instance.GameData.SecondChallengeCompleted) return;
+    private void OnChallengeCompleted()
+    {
+        if (GameStateHandler.Instance.GameData.SecondChallengeCompleted) return;
         _secondChallengeCompleted.Play();
         GameStateHandler.Instance.GameData.SecondChallengeCompleted = true;
+        GameStateHandler.Instance.SaveGame();
     }
 
-    public void SecurityCameraFound() {
+    public void SecurityCameraFound()
+    {
         GameStateHandler.Instance.GameData.SecurityCameraFound = true;
+        GameStateHandler.Instance.SaveGame();
     }
 
-    public void EnteredOffice() {
+    public void EnteredOffice()
+    {
         GameStateHandler.Instance.GameData.EnteredOffice = true;
+        GameStateHandler.Instance.SaveGame();
     }
 }

@@ -16,7 +16,8 @@ public class ComputerInteractionArea : IInteractionArea
     protected override void execute()
     {
 
-        switch(_targetChallenge) {
+        switch (_targetChallenge)
+        {
             case TerminalConfig.Challenge.zero:
                 _interacted = GameStateHandler.Instance.GameData.InteractedWithFirstComputer;
                 GameStateHandler.Instance.GameData.InteractedWithFirstComputer = true;
@@ -36,10 +37,13 @@ public class ComputerInteractionArea : IInteractionArea
                 break;
         }
 
-        if(!_interacted) {
+        if (!_interacted)
+        {
             _firstInteraction.Play();
 
-        } else {
+        }
+        else
+        {
             _zoomInOnScreen.Play();
         }
     }

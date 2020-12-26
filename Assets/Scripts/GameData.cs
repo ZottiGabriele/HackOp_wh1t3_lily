@@ -8,15 +8,17 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     //GENERAL
+    public int CurrentScene = 0;
     public int HintTokenCount = 0;
     public bool FirstTokenFound = false;
+    public List<int> FoundHintIDs = new List<int>();
 
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
     public bool InteractedWithMailApp = false;
     public bool ConnectedViaSsh = false;
     public bool FirstChallengeCompleted = false;
-    
+
     //SECOND CHALLENGE
     public bool EnteredOffice = false;
     public bool InteractedWithSecondComputer = false;
@@ -31,22 +33,29 @@ public class GameData : ScriptableObject
 
     //FOURTH CHALLENGE
     public bool ViewedImage = false;
+    public bool ExtractedHiddenFolder = false;
     public bool FourthChallengeCompleted = false;
 
-
-    public void Reset() {
-        //TODO: fill
-        HintTokenCount = 0;
-        FirstTokenFound = false;
-        SecurityCameraFound = false;
-        
-        InteractedWithFirstComputer = false;
-        InteractedWithSecondComputer = false;
-        InteractedWithThirdComputer = false;
-        
-        FirstChallengeCompleted = false;
-        SecondChallengeCompleted = false;
-        ThirdChallengeCompleted = false;
-        FourthChallengeCompleted = false;
+    public void LoadGameSave(GameSave save)
+    {
+        CurrentScene = save.CurrentScene;
+        HintTokenCount = save.HintTokenCount;
+        FirstTokenFound = save.FirstTokenFound;
+        FoundHintIDs = save.FoundHintIDs;
+        InteractedWithFirstComputer = save.InteractedWithFirstComputer;
+        InteractedWithMailApp = save.InteractedWithMailApp;
+        ConnectedViaSsh = save.ConnectedViaSsh;
+        FirstChallengeCompleted = save.FirstChallengeCompleted;
+        EnteredOffice = save.EnteredOffice;
+        InteractedWithSecondComputer = save.InteractedWithSecondComputer;
+        SecurityCameraFound = save.SecurityCameraFound;
+        SecondChallengeCompleted = save.SecondChallengeCompleted;
+        InteractedWithKeypad = save.InteractedWithKeypad;
+        OpenedServerDoor = save.OpenedServerDoor;
+        InteractedWithThirdComputer = save.InteractedWithThirdComputer;
+        ThirdChallengeCompleted = save.ThirdChallengeCompleted;
+        ViewedImage = save.ViewedImage;
+        ExtractedHiddenFolder = save.ExtractedHiddenFolder;
+        FourthChallengeCompleted = save.FourthChallengeCompleted;
     }
 }

@@ -21,12 +21,19 @@ public class OfficeServerRoomHandler : MonoBehaviour
         imageViewedFirstTime = _imageViewedFirstTime;
         thirdChallengeCompletedCutscene = _thirdChallengeCompletedCutscene;
         fourthChallengeCompletedCutscene = _fourthChallengeCompletedCutscene;
+
+        if (GameStateHandler.Instance.GameData.ExtractedHiddenFolder)
+        {
+            ExtractHiddenFolder();
+            TerminalHandler.Instance.ClearScreen();
+        }
     }
 
     public static void OnThirdChallengeCompleted()
     {
         thirdChallengeCompletedCutscene.Play();
         GameStateHandler.Instance.GameData.ThirdChallengeCompleted = true;
+        GameStateHandler.Instance.SaveGame();
     }
 
     public static void ExtractHiddenFolder()
@@ -51,6 +58,8 @@ public class OfficeServerRoomHandler : MonoBehaviour
             "warning[wh1t3_l1ly.jpg]:  27295 extra bytes at beginning or within zipfile\n" +
             "  ls -a(attempting to process anyway)\n" +
             "  inflating: nothing_to_see_here / gibberish.txt");
+        GameStateHandler.Instance.GameData.ExtractedHiddenFolder = true;
+        GameStateHandler.Instance.SaveGame();
     }
 
 
@@ -58,6 +67,7 @@ public class OfficeServerRoomHandler : MonoBehaviour
     {
         fourthChallengeCompletedCutscene.Play();
         GameStateHandler.Instance.GameData.FourthChallengeCompleted = true;
+        GameStateHandler.Instance.SaveGame();
     }
 
     public static void ShowImg()

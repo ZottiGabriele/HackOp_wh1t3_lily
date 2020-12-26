@@ -12,8 +12,9 @@ public class ChangeSceneInteractionArea : IInteractionArea
 
     protected override void execute()
     {
-        _fadeout.ForcePlay(() => {
-            GameStateHandler.Instance.ChengeScene(_sceneToLoad);
+        _fadeout.ForcePlay(() =>
+        {
+            GameStateHandler.Instance.ChangeScene(_sceneToLoad);
         });
     }
 }

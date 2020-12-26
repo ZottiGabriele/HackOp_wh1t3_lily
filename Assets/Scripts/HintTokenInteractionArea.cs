@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class HintTokenInteractionArea : TextInteractionArea
 {
+    public int ID = -1;
     [SerializeField] bool isEnabled = true;
 
     protected override void execute()
     {
-        if(!isEnabled) return;
+        isEnabled = !GameStateHandler.Instance.GameData.FoundHintIDs.Contains(ID);
+
+        if (!isEnabled) return;
         base.execute();
         PlayerController.Instance.OnHintTokenFound();
-        GameStateHandler.Instance.AddHintToken(1);
+        GameStateHandler.Instance.AddHintToken(ID);
         SoundsHandler.Instance.PlayHintTokenFoundSound();
-        
+
         isEnabled = false;
     }
 }

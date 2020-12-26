@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class OfficePreServerRoomSceneHandler : MonoBehaviour
 {
-    public void RightCodeEntered() {
+    public void RightCodeEntered()
+    {
         GameStateHandler.Instance.GameData.OpenedServerDoor = true;
+        GameStateHandler.Instance.SaveGame();
     }
 }
