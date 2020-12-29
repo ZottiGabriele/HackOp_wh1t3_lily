@@ -27,6 +27,8 @@ public class TerminalHandler : MonoBehaviour
     [SerializeField] GameObject _currentLine;
     [SerializeField] TerminalConfig _startingTerminalConfig;
     [SerializeField] ScrollRect _scrollRect;
+    [SerializeField] List<GameObject> _hints = new List<GameObject>();
+
     Stack<TerminalConfig> _configs = new Stack<TerminalConfig>();
     TMP_InputField _currentInputField;
     TMP_Text _currentPrompt;
@@ -289,6 +291,11 @@ public class TerminalHandler : MonoBehaviour
         var user = TerminalConfig.TryGetEnvVar("$USER");
         _currentPrompt.text = user + "@" + TerminalConfig.HostName + " #";
         _currentPrompt.color = (user == "root") ? new Color(0.31f, 0.94f, 0.13f) : new Color(0.4f, 0.8078431f, 0.8392157f);
+    }
+
+    public void RevealHint()
+    {
+        //TODO:
     }
 
     public void ScrollToBottom()

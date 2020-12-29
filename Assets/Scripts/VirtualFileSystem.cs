@@ -58,6 +58,7 @@ public class VirtualFileSystem
 
     public string GetFinalPath(string path)
     {
+        if (path == "") return "";
 
         if (path[0] != '/') path = TerminalHandler.Instance.TerminalConfig.CurrentPath + path;
 

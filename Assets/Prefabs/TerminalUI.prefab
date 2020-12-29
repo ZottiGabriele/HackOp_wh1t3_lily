@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 387383017856143314}
   - component: {fileID: 3579988908190127212}
   m_Layer: 5
-  m_Name: Scroll View (1)
+  m_Name: TerminalArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 7606038140594236021}
   - component: {fileID: 3869990671350157655}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: TopPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1809,12 +1809,12 @@ Canvas:
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
-  m_OverrideSorting: 0
+  m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &4051200117709743547
 MonoBehaviour:
@@ -1872,7 +1872,7 @@ GameObject:
   - component: {fileID: 1210745303808992782}
   - component: {fileID: 2734817719961689664}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: SideBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

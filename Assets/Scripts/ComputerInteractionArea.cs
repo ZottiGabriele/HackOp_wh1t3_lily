@@ -40,7 +40,7 @@ public class ComputerInteractionArea : IInteractionArea
         if (!_interacted)
         {
             _firstInteraction.Play();
-
+            GameStateHandler.Instance.SaveGame();
         }
         else
         {

@@ -7,7 +7,7 @@ public class ShCommand : ICommand
 {
     public override string GetCmdName() => "sh";
     public override string GetCmdDescription() => "<b>sh</b> : starts a new shell";
-    public override string GetCmdMatch() => "^ *sh *$|^ *sh +";
+    public override string GetCmdMatch() => "^ *sh *$";
     public override void OnCmdMatch()
     {
         TerminalHandler.Instance.NewShell();

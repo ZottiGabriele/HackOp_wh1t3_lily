@@ -9,6 +9,7 @@ public class GameSave
     public int HintTokenCount = 0;
     public bool FirstTokenFound = false;
     public List<int> FoundHintIDs = new List<int>();
+    public List<int> BoughtHintIDs = new List<int>();
 
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
@@ -41,6 +42,7 @@ public class GameSave
         HintTokenCount = data.HintTokenCount;
         FirstTokenFound = data.FirstTokenFound;
         FoundHintIDs = data.FoundHintIDs;
+        BoughtHintIDs = data.BoughtHintIDs;
         InteractedWithFirstComputer = data.InteractedWithFirstComputer;
         InteractedWithMailApp = data.InteractedWithMailApp;
         ConnectedViaSsh = data.ConnectedViaSsh;

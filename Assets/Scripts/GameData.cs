@@ -12,6 +12,7 @@ public class GameData : ScriptableObject
     public int HintTokenCount = 0;
     public bool FirstTokenFound = false;
     public List<int> FoundHintIDs = new List<int>();
+    public List<int> BoughtHintIDs = new List<int>();
 
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
@@ -42,6 +43,7 @@ public class GameData : ScriptableObject
         HintTokenCount = save.HintTokenCount;
         FirstTokenFound = save.FirstTokenFound;
         FoundHintIDs = save.FoundHintIDs;
+        BoughtHintIDs = save.BoughtHintIDs;
         InteractedWithFirstComputer = save.InteractedWithFirstComputer;
         InteractedWithMailApp = save.InteractedWithMailApp;
         ConnectedViaSsh = save.ConnectedViaSsh;
