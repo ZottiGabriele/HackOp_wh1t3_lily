@@ -1,52 +1,64 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using TMPro;
 
-public class Hint : MonoBehaviour, ISerializationCallbackReceiver
+public class Hint : MonoBehaviour, IGUID
 {
-    Guid _guid = Guid.Empty;
-    public string GUID;
-    public bool UnlockCondition;
+    public string GUID => _guid;
+    [UniqueIdentifier] [SerializeField] string _guid;
 
-    public void OnBeforeSerialize()
+    [HideInInspector] [SerializeField] private string _condition = "";
+    [HideInInspector] [SerializeField] private int _conditionIndex;
+    public int LocalID = -1;
+    public bool Unlocked = false;
+    [SerializeField] TMP_Text _unlockText;
+    [SerializeField] GameObject _unlock;
+    [SerializeField] GameObject _lock;
+
+
+
+    private void Start()
     {
-        if (_guid != Guid.Empty)
+        Unlocked = GameStateHandler.Instance.GameData.UnlockedHintIDs.Contains(GUID);
+
+        _unlock.SetActive(!Unlocked);
+        _lock.SetActive(_condition != "None" && !getConditionValue());
+    }
+
+    private void FixedUpdate()
+    {
+        if (_lock.activeInHierarchy && getConditionValue())
         {
-            GUID = _guid.ToString();
+            _lock.SetActive(false);
         }
     }
 
-    public void OnAfterDeserialize()
+    private bool getConditionValue()
     {
-        if (GUID != null && GUID.Length == 16)
-        {
-            _guid = new Guid(GUID);
-        }
-    }
-
-    void CreateGuid()
-    {
-        // if our serialized data is invalid, then we are a new object and need a new GUID
-        if (GUID == null || GUID.Length != 16)
-        {
-            _guid = Guid.NewGuid();
-            GUID = _guid.ToString();
-        }
-        else if (_guid == Guid.Empty)
-        {
-            // otherwise, we should set our system guid to our serialized guid
-            _guid = new Guid(GUID);
-        }
-    }
-
-    private void Awake()
-    {
-        CreateGuid();
+        return (bool)typeof(GameData).GetField(_condition).GetValue(GameStateHandler.Instance.GameData);
     }
 
     public void Unlock()
     {
+        if (GameStateHandler.Instance.GameData.HintTokenCount > 0)
+        {
+            _unlock.SetActive(false);
+            HintManager.Instance.UnlockHint(GUID);
+        }
+        else
+        {
+            StopAllCoroutines();
+            _unlockText.text = "Not enough ";
+            StartCoroutine(resetUnlockText());
+        }
+    }
 
+    private IEnumerator resetUnlockText()
+    {
+        yield return new WaitForSeconds(1f);
+        _unlockText.text = "Unlock for 1 ";
     }
 }

@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 
 public class GameStateHandler : MonoBehaviour
 {
-    private string SAVE_PATH { get => Application.persistentDataPath + "/gamedata.save"; }
+    public string SAVE_PATH { get => Application.persistentDataPath + "/gamedata.save"; }
 
     public static GameStateHandler Instance;
 
@@ -68,6 +68,11 @@ public class GameStateHandler : MonoBehaviour
     {
         var binaryFormatter = new BinaryFormatter();
         _gameData.CurrentScene = SceneManager.GetActiveScene().buildIndex;
+        _gameData.PlayerPosition = new float[] {
+            PlayerController.Instance.gameObject.transform.position.x,
+            PlayerController.Instance.gameObject.transform.position.y,
+            PlayerController.Instance.gameObject.transform.position.z
+        };
         var save = new GameSave(_gameData);
         using (var fileStream = File.Create(SAVE_PATH))
         {
@@ -88,10 +93,11 @@ public class GameStateHandler : MonoBehaviour
             if (_gameData == null) _gameData = ScriptableObject.CreateInstance<GameData>();
             _gameData.LoadGameSave(save);
             if (SceneManager.GetActiveScene().buildIndex != _gameData.CurrentScene) ChangeScene(_gameData.CurrentScene);
+            PlayerController.Instance.transform.position = new Vector3(_gameData.PlayerPosition[0], _gameData.PlayerPosition[1], _gameData.PlayerPosition[2]);
         }
     }
 
-    public void AddHintToken(int ID)
+    public void AddHintToken(string GUID)
     {
         if (!_gameData.FirstTokenFound)
         {
@@ -99,8 +105,9 @@ public class GameStateHandler : MonoBehaviour
             _gameData.FirstTokenFound = true;
         }
         _gameData.HintTokenCount++;
-        _gameData.FoundHintIDs.Add(ID);
+        _gameData.FoundHintIDs.Add(GUID);
         OnHintTokenUpdate();
+        SaveGame();
     }
 
     public void ChangeScene(int sceneIndex)

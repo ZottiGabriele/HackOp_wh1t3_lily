@@ -6,10 +6,11 @@ using UnityEngine;
 public class GameSave
 {
     public int CurrentScene = 0;
+    public float[] PlayerPosition = { 0, 0, 0 };
     public int HintTokenCount = 0;
     public bool FirstTokenFound = false;
-    public List<int> FoundHintIDs = new List<int>();
-    public List<int> BoughtHintIDs = new List<int>();
+    public List<string> FoundHintIDs = new List<string>();
+    public List<string> UnlockedHintIDs = new List<string>();
 
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
@@ -39,10 +40,11 @@ public class GameSave
     public GameSave(GameData data)
     {
         CurrentScene = data.CurrentScene;
+        PlayerPosition = data.PlayerPosition;
         HintTokenCount = data.HintTokenCount;
         FirstTokenFound = data.FirstTokenFound;
         FoundHintIDs = data.FoundHintIDs;
-        BoughtHintIDs = data.BoughtHintIDs;
+        UnlockedHintIDs = data.UnlockedHintIDs;
         InteractedWithFirstComputer = data.InteractedWithFirstComputer;
         InteractedWithMailApp = data.InteractedWithMailApp;
         ConnectedViaSsh = data.ConnectedViaSsh;

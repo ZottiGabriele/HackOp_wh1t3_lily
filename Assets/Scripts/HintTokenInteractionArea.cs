@@ -2,19 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HintTokenInteractionArea : TextInteractionArea
+public class HintTokenInteractionArea : TextInteractionArea, IGUID
 {
-    public int ID = -1;
+    public string GUID => _guid;
+    [UniqueIdentifier] [SerializeField] string _guid;
     [SerializeField] bool isEnabled = true;
+
 
     protected override void execute()
     {
-        isEnabled = !GameStateHandler.Instance.GameData.FoundHintIDs.Contains(ID);
+        isEnabled = !GameStateHandler.Instance.GameData.FoundHintIDs.Contains(GUID);
 
         if (!isEnabled) return;
         base.execute();
         PlayerController.Instance.OnHintTokenFound();
-        GameStateHandler.Instance.AddHintToken(ID);
+        GameStateHandler.Instance.AddHintToken(GUID);
         SoundsHandler.Instance.PlayHintTokenFoundSound();
 
         isEnabled = false;

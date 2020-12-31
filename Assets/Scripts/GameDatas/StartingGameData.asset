@@ -12,14 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff3639bad002e24085d723c60731f48, type: 3}
   m_Name: StartingGameData
   m_EditorClassIdentifier: 
+  CurrentScene: 0
   HintTokenCount: 0
   FirstTokenFound: 0
+  FoundHintIDs: 
+  UnlockedHintIDs: []
   InteractedWithFirstComputer: 0
+  InteractedWithMailApp: 0
+  ConnectedViaSsh: 0
   FirstChallengeCompleted: 0
+  EnteredOffice: 0
   InteractedWithSecondComputer: 0
   SecurityCameraFound: 0
   SecondChallengeCompleted: 0
+  InteractedWithKeypad: 0
+  OpenedServerDoor: 0
   InteractedWithThirdComputer: 0
   ThirdChallengeCompleted: 0
-  InteractedWithFourthComputer: 0
+  ViewedImage: 0
+  ExtractedHiddenFolder: 0
   FourthChallengeCompleted: 0
