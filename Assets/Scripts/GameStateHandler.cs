@@ -124,6 +124,7 @@ public class GameStateHandler : MonoBehaviour
     public void GameOver()
     {
         ChangeGameState(GameState.Gameover);
+        LoadGame();
     }
 
     public void UnpausableCutsceneStarted()

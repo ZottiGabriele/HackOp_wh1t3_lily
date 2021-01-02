@@ -12,32 +12,17 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
     [SerializeField] GameObject _securityCameraRay;
     [SerializeField] PlayableDirector _secondChallengeCompleted;
 
-    Vector3 _playerStartingPosition;
-
     private void Start()
     {
-        GameStateHandler.Instance.OnGameStateChanged += OnGameStateChanged;
         _terminalHandler.OnChallengeCompleted += OnChallengeCompleted;
 
         _cameraFoundTrigger.enabled = !GameStateHandler.Instance.GameData.SecurityCameraFound;
         _securityCameraRay.SetActive(!GameStateHandler.Instance.GameData.SecondChallengeCompleted);
-        _playerStartingPosition = PlayerController.Instance.transform.position;
     }
 
     private void OnDestroy()
     {
-        GameStateHandler.Instance.OnGameStateChanged -= OnGameStateChanged;
         _terminalHandler.OnChallengeCompleted -= OnChallengeCompleted;
-    }
-
-    private void OnGameStateChanged(GameStateHandler.GameState gameState)
-    {
-
-    }
-
-    public void ResetPlayerPosition()
-    {
-        PlayerController.Instance.transform.position = _playerStartingPosition;
     }
 
     private void OnChallengeCompleted()
@@ -52,6 +37,11 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
     {
         GameStateHandler.Instance.GameData.SecurityCameraFound = true;
         GameStateHandler.Instance.SaveGame();
+    }
+
+    public void GameOver()
+    {
+        GameStateHandler.Instance.GameOver();
     }
 
     public void EnteredOffice()

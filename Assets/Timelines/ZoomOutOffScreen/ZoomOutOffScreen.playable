@@ -167,25 +167,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -198,7 +180,7 @@ MonoBehaviour:
     m_PreExtrapolationMode: 0
     m_PostExtrapolationTime: 0
     m_PreExtrapolationTime: 0
-    m_DisplayName: CM vcam3
+    m_DisplayName: CM vcam2
   - m_Version: 1
     m_Start: 0.7166666666666667
     m_ClipIn: 0
@@ -252,6 +234,22 @@ MonoBehaviour:
     m_DisplayName: CM vcam1
   m_Markers:
     m_Objects: []
+--- !u!114 &-2405591306151463594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 1.5
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: cdefec076cefa5f429ecad8159122fa8, type: 2}
 --- !u!114 &-451688241987777547
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -468,10 +466,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Version: 0
   m_Tracks:
+  - {fileID: 955593873360196288}
   - {fileID: -3601778988834009567}
   - {fileID: -313314683325641132}
   - {fileID: -6133678186347732353}
-  - {fileID: 955593873360196288}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -501,6 +499,7 @@ MonoBehaviour:
   m_Markers:
     m_Objects:
     - {fileID: -4203458960664898783}
+    - {fileID: -2405591306151463594}
 --- !u!114 &1038827954554871769
 MonoBehaviour:
   m_ObjectHideFlags: 1

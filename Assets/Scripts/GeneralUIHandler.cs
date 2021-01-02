@@ -13,8 +13,11 @@ public class GeneralUIHandler : MonoBehaviour
     [SerializeField] GameObject _menu;
     [Range(0, 1)] public float _typingSpeed = 0.95f;
     [SerializeField] TMP_Text _text;
+    [SerializeField] Cutscene fadeOut;
+    [SerializeField] Cutscene fadein;
 
     private bool isActive = true;
+    private bool _canPause = true;
 
     private void Awake()
     {
@@ -71,9 +74,19 @@ public class GeneralUIHandler : MonoBehaviour
         }
     }
 
+    public void NoPause()
+    {
+        _canPause = false;
+    }
+
+    public void CanPause()
+    {
+        _canPause = true;
+    }
+
     public void ShowMenu()
     {
-        if (GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.Gameover ||
+        if (!_canPause || GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.Gameover ||
            GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.UnpausableCutscene) return;
         _menu.SetActive(true);
         GameStateHandler.Instance.PauseGame();
@@ -81,6 +94,7 @@ public class GeneralUIHandler : MonoBehaviour
 
     public void HideMenu()
     {
+        if (!_canPause) return;
         _menu.SetActive(false);
         GameStateHandler.Instance.ResumeGame();
     }
@@ -104,7 +118,15 @@ public class GeneralUIHandler : MonoBehaviour
 
     public void OnLoadGamePressed()
     {
+        HideMenu();
+        fadeOut.ForcePlay(() => StartCoroutine(loadGameTransition()));
+    }
+
+    IEnumerator loadGameTransition()
+    {
         GameStateHandler.Instance.LoadGame();
+        yield return new WaitForSeconds(0.5f);
+        fadein.ForcePlay();
     }
 
     IEnumerator showFirstTokenFoundPopUp()

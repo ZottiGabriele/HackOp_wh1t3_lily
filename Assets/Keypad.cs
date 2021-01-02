@@ -10,37 +10,50 @@ public class Keypad : MonoBehaviour
     [SerializeField] Cutscene _wrongCode;
     [SerializeField] Cutscene _rightCode;
     [SerializeField] string _targetCode;
-    
-    public void PressedKey(string key) {
-        if(_displayText.text.Length < 5) {
+
+    public void PressedKey(string key)
+    {
+        if (_displayText.text.Length < 5)
+        {
             _displayText.text += key;
         }
     }
 
-    public void DeleteKey() {
-        if(_displayText.text.Length > 0) {
+    public void DeleteKey()
+    {
+        if (_displayText.text.Length > 0)
+        {
             _displayText.text = _displayText.text.Substring(0, _displayText.text.Length - 1);
         }
     }
 
-    public void Leave() {
+    public void Leave()
+    {
         _zoomOut.Play();
     }
 
-    public void ConfirmKey() {
-        if(_displayText.text == _targetCode) {
-            _rightCode.Play( _ => {
+    public void ConfirmKey()
+    {
+        if (_displayText.text == _targetCode)
+        {
+            _rightCode.Play(_ =>
+            {
                 Clear();
                 GameStateHandler.Instance.GameData.OpenedServerDoor = true;
+                GameStateHandler.Instance.SaveGame();
             });
-        } else {
-            _wrongCode.Play( _ => {
+        }
+        else
+        {
+            _wrongCode.Play(_ =>
+            {
                 Clear();
             });
         }
     }
 
-    public void Clear() {
+    public void Clear()
+    {
         _displayText.text = "";
     }
 }

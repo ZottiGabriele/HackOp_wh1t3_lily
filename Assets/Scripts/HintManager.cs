@@ -7,8 +7,10 @@ public class HintManager : MonoBehaviour
     public static HintManager Instance;
 
     public List<Hint> Hints => _hints;
+    public Solution Solution => _solution;
 
     [SerializeField] private List<Hint> _hints;
+    [SerializeField] private Solution _solution;
 
     private void Awake()
     {
@@ -41,6 +43,7 @@ public class HintManager : MonoBehaviour
         }
 
         if (i < _hints.Count) _hints[i].gameObject.SetActive(true);
+        _solution.gameObject.SetActive(GameStateHandler.Instance.GameData.UnlockedHintIDs.Contains(_solution.GUID));
     }
 
     public void UnlockHint(string GUID)
@@ -49,6 +52,19 @@ public class HintManager : MonoBehaviour
         GameStateHandler.Instance.GameData.UnlockedHintIDs.Add(GUID);
         GameStateHandler.Instance.SaveGame();
         int i = _hints.FindIndex(0, _hints.Count, (h) => h.GUID == GUID);
-        if (i < _hints.Count - 1) _hints[i + 1].gameObject.SetActive(true);
+        if (i < _hints.Count - 1)
+        {
+            _hints[i + 1].gameObject.SetActive(true);
+        }
+        else
+        {
+            _solution.gameObject.SetActive(true);
+        }
+    }
+
+    public void UnlockSolution(string GUID)
+    {
+        GameStateHandler.Instance.GameData.UnlockedHintIDs.Add(GUID);
+        GameStateHandler.Instance.SaveGame();
     }
 }

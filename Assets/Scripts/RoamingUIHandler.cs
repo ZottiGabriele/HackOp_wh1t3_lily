@@ -8,12 +8,14 @@ public class RoamingUiHandler : MonoBehaviour
 {
     [SerializeField] TMP_Text hintTokenCount;
 
-    private void Start() {
+    private void Start()
+    {
         GameStateHandler.Instance.OnHintTokenUpdate += OnHintTokenUpdate;
         OnHintTokenUpdate();
     }
 
-    private void OnDestroy() {
+    private void OnDestroy()
+    {
         GameStateHandler.Instance.OnHintTokenUpdate -= OnHintTokenUpdate;
     }
 

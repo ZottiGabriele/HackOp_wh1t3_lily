@@ -9,4 +9,9 @@ public class OfficePreServerRoomSceneHandler : MonoBehaviour
         GameStateHandler.Instance.GameData.OpenedServerDoor = true;
         GameStateHandler.Instance.SaveGame();
     }
+
+    public void GameOver()
+    {
+        GameStateHandler.Instance.GameOver();
+    }
 }

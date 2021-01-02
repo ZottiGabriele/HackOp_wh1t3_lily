@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator), typeof(Rigidbody2D), typeof(PlayerInput)), RequireComponent(typeof(AudioSource))]
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance {get; private set;}
+    public static PlayerController Instance { get; private set; }
 
     [SerializeField] float _movementSpeed = 1.2f;
     [SerializeField] float _runningSpeedMultiplyer = 2;
@@ -21,18 +21,23 @@ public class PlayerController : MonoBehaviour
     bool _isRunning = false;
     bool _wasInputActive;
 
-    private void Awake() {
+    private void Awake()
+    {
 
-        if(!Instance) {
+        if (!Instance)
+        {
             Instance = this;
             // DontDestroyOnLoad(this);
-        } else if (Instance != this) {
+        }
+        else if (Instance != this)
+        {
             Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
     }
 
-    private void Start() {
+    private void Start()
+    {
         _animator = GetComponent<Animator>();
         _rigidBody = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
@@ -40,63 +45,83 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
-        if(_isRunning) translation *= _runningSpeedMultiplyer;
+        if (_isRunning) translation *= _runningSpeedMultiplyer;
         transform.Translate(translation);
-        _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y ) >= 0.01f);
+        _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y) >= 0.01f);
         _animator.SetBool("is_running", _isRunning);
     }
 
-    public void DisableInput() {
-        _wasInputActive = _playerInput.enabled;
-        _playerInput.enabled = false;
+    public void DisableInput()
+    {
+        _wasInputActive = _playerInput.inputIsActive;
+        _playerInput.DeactivateInput();
     }
 
-    public void EnableInput() {
-        _playerInput.enabled = true;
+    public void EnableInput()
+    {
+        _playerInput.ActivateInput();
     }
 
-    //This method restores the input as it was before the disabling
-    public void RestoreInput() {
-        _playerInput.enabled = _wasInputActive;
+    //This method is used by the in game menu to restore input as before pausing
+    public void RestoreInput()
+    {
+        if (_wasInputActive)
+        {
+            _playerInput.ActivateInput();
+        }
+        else
+        {
+            _playerInput.DeactivateInput();
+        }
     }
 
-    public void OnHintTokenFound() {
+    public void OnHintTokenFound()
+    {
         _animator.SetTrigger("hint_token_found");
     }
 
-    private void OnJump() {
-        if(Mathf.Abs(_rigidBody.velocity.y ) <= 0.01f) _rigidBody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
+    private void OnJump()
+    {
+        if (Mathf.Abs(_rigidBody.velocity.y) <= 0.01f) _rigidBody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
     }
 
-    private void OnMove(InputValue inputValue) {
+    private void OnMove(InputValue inputValue)
+    {
         _velocity.x = inputValue.Get<float>();
         _animator.SetBool("is_moving", _velocity.x != 0);
-        if(_velocity.x != 0) transform.localScale = new Vector3(_velocity.x,1,1);
+        if (_velocity.x != 0) transform.localScale = new Vector3(_velocity.x, 1, 1);
     }
 
-    private void OnRunStart(){ 
+    private void OnRunStart()
+    {
         _isRunning = true;
     }
 
-    private void OnRunStop(){ 
+    private void OnRunStop()
+    {
         _isRunning = false;
     }
 
-    private void OnInteract() {
+    private void OnInteract()
+    {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         var hit = Physics2D.Raycast(mousePos + Vector3.forward, -Vector3.forward, 20, LayerMask.GetMask("Interaction"));
 
-        if(hit.transform != null) {
+        if (hit.transform != null)
+        {
             var areas = hit.transform.GetComponents<IInteractionArea>();
-            foreach(var a in areas) {
+            foreach (var a in areas)
+            {
                 a.OnInteraction();
             }
         }
     }
 
-    public void PlayStepSound() {
+    public void PlayStepSound()
+    {
         _audioSource.Play();
     }
 }

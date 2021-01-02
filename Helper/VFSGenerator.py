@@ -98,7 +98,7 @@ def parse_custom_tags(d):
     if(readable):
         d['flags'] =  d['flags'][0] + "r" + d['flags'][2:4] + "r" + d['flags'][5:7] + "r" + d['flags'][8:]
 
-    d['name'] = d['name'].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "").replace("_ro_", "")
+    d['name'] = d['name'].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "").replace("_ro_", "").replace("_re_", "")
     d['full_path'] = d["full_path"].replace("_x_", "").replace("_r_", "").replace("_s_", "").replace("_u_", "").replace("_w_", "").replace("_ro_", "").replace("_re_", "")
 
 if __name__ == "__main__":

@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Time: 0.5
   m_Retroactive: 0
   m_EmitOnce: 0
-  m_Asset: {fileID: 11400000, guid: 9830a5d20516d72448cf474b52faaaf8, type: 2}
+  m_Asset: {fileID: 0}
 --- !u!114 &6915548661967131038
 MonoBehaviour:
   m_ObjectHideFlags: 1

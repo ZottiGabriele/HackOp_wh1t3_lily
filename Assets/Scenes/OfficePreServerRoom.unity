@@ -7719,7 +7719,7 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 206159180}
+        - m_Target: {fileID: 2116674436}
           m_MethodName: GameOver
           m_Mode: 1
           m_Arguments:
@@ -7962,6 +7962,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 9097207707616648808, guid: 47abf9b80b5c28246a40a631f6840cdd,
+        type: 3}
+      propertyPath: fadeOut
+      value: 
+      objectReference: {fileID: 976836001}
+    - target: {fileID: 9097207707616648808, guid: 47abf9b80b5c28246a40a631f6840cdd,
+        type: 3}
+      propertyPath: fadein
+      value: 
+      objectReference: {fileID: 1196481777}
     - target: {fileID: 9097207707616648809, guid: 47abf9b80b5c28246a40a631f6840cdd,
         type: 3}
       propertyPath: m_LocalPosition.x

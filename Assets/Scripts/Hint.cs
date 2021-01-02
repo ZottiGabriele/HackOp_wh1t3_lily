@@ -12,7 +12,6 @@ public class Hint : MonoBehaviour, IGUID
 
     [HideInInspector] [SerializeField] private string _condition = "";
     [HideInInspector] [SerializeField] private int _conditionIndex;
-    public int LocalID = -1;
     public bool Unlocked = false;
     [SerializeField] TMP_Text _unlockText;
     [SerializeField] GameObject _unlock;

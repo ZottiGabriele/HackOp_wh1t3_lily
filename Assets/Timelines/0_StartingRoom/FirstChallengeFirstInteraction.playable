@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8979341775725340270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 17.135002040863036
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: ddd3282c6ba582648a08fc6f53eec6ec, type: 2}
 --- !u!114 &-8629819857097243316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -474,6 +490,22 @@ MonoBehaviour:
   searchHierarchy: 0
   active: 1
   postPlayback: 0
+--- !u!114 &-7527914934499426505
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 0
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: 283deb7cb1c463349afa6423ce0100bd, type: 2}
 --- !u!74 &-6181295861272179295
 AnimationClip:
   m_ObjectHideFlags: 0
@@ -602,6 +634,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _template:
     _text: Finally some time to relax
+--- !u!114 &-4931217855173999964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
+  m_Name: Signal Emitter
+  m_EditorClassIdentifier: 
+  m_Time: 0
+  m_Retroactive: 0
+  m_EmitOnce: 0
+  m_Asset: {fileID: 11400000, guid: b6490a8188b30f94fbe876bc460c4bd8, type: 2}
 --- !u!114 &-4519834017967371297
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,6 +766,9 @@ MonoBehaviour:
   m_Markers:
     m_Objects:
     - {fileID: 600089940976953318}
+    - {fileID: -4931217855173999964}
+    - {fileID: -8979341775725340270}
+    - {fileID: -7527914934499426505}
 --- !u!114 &600089940976953318
 MonoBehaviour:
   m_ObjectHideFlags: 1

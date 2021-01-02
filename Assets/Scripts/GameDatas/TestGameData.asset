@@ -13,21 +13,24 @@ MonoBehaviour:
   m_Name: TestGameData
   m_EditorClassIdentifier: 
   CurrentScene: 0
-  HintTokenCount: 999
+  PlayerPosition:
+  - 1.4440035
+  - -0.00032615662
+  - 0
+  HintTokenCount: 0
   FirstTokenFound: 1
-  FoundHintIDs: 
-  UnlockedHintIDs:
-  - 
+  FoundHintIDs: []
+  UnlockedHintIDs: []
   InteractedWithFirstComputer: 1
   InteractedWithMailApp: 1
-  ConnectedViaSsh: 0
-  FirstChallengeCompleted: 1
-  EnteredOffice: 1
-  InteractedWithSecondComputer: 1
-  SecurityCameraFound: 1
-  SecondChallengeCompleted: 1
-  InteractedWithKeypad: 1
-  OpenedServerDoor: 1
+  ConnectedViaSsh: 1
+  FirstChallengeCompleted: 0
+  EnteredOffice: 0
+  InteractedWithSecondComputer: 0
+  SecurityCameraFound: 0
+  SecondChallengeCompleted: 0
+  InteractedWithKeypad: 0
+  OpenedServerDoor: 0
   InteractedWithThirdComputer: 0
   ThirdChallengeCompleted: 0
   ViewedImage: 0

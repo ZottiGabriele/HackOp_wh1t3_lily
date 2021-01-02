@@ -241,7 +241,7 @@
               {
                 "hidden": false,
                 "readable": false,
-                "name": "_re_disable_security_camera",
+                "name": "disable_security_camera",
                 "full_path": "/home/root/disable_security_camera",
                 "r_path": "VFS/challenge_2/home/_r_root/_ro__re_disable_security_camera",
                 "flags": "-r-xr-xr--",

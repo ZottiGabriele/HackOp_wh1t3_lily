@@ -121,6 +121,8 @@ MonoBehaviour:
   _menu: {fileID: 9097207709219613674}
   _typingSpeed: 0.965
   _text: {fileID: 9097207707821734467}
+  fadeOut: {fileID: 0}
+  fadein: {fileID: 0}
 --- !u!1 &9097207707705938988
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9097207707946181325
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1274,7 +1276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -440}
+  m_AnchoredPosition: {x: 960, y: -427.5}
   m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9097207708547840148
@@ -2342,7 +2344,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -640}
+  m_AnchoredPosition: {x: 960, y: -652.5}
   m_SizeDelta: {x: 270, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9097207709133957360
@@ -2596,8 +2598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -440}
-  m_SizeDelta: {x: 270, y: 75}
+  m_AnchoredPosition: {x: 960, y: -540}
+  m_SizeDelta: {x: 270, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9097207709517267328
 CanvasRenderer:
@@ -2706,7 +2708,7 @@ MonoBehaviour:
   m_MinWidth: 0
   m_MinHeight: 0
   m_PreferredWidth: 270
-  m_PreferredHeight: 75
+  m_PreferredHeight: 100
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -2774,7 +2776,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Load Game
+  m_text: Load Last Checkpoint
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2843,12 +2845,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 9097207709647160075}
-    characterCount: 6
+    characterCount: 20
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 1
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -2966,18 +2968,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8692385039965800380, guid: 3c7b391641dd4324a9a8f5f6a972981b,
         type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8692385039965800380, guid: 3c7b391641dd4324a9a8f5f6a972981b,
-        type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8692385039965800380, guid: 3c7b391641dd4324a9a8f5f6a972981b,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8692385039965800380, guid: 3c7b391641dd4324a9a8f5f6a972981b,
         type: 3}
