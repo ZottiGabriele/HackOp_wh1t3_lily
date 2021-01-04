@@ -9,8 +9,12 @@ public class OfficeServerRoomHandler : MonoBehaviour
     [SerializeField] Cutscene _fourthChallengeCompletedCutscene;
     [SerializeField] Cutscene _imageViewedFirstTime;
     [SerializeField] GameObject _imgViewer;
+    [SerializeField] GameObject _partOneSideBar;
+    [SerializeField] GameObject _partTwoSideBar;
 
     static GameObject imgViewer;
+    static GameObject partOneSideBar;
+    static GameObject partTwoSideBar;
     static Cutscene imageViewedFirstTime;
     static Cutscene thirdChallengeCompletedCutscene;
     static Cutscene fourthChallengeCompletedCutscene;
@@ -18,6 +22,8 @@ public class OfficeServerRoomHandler : MonoBehaviour
     private void Start()
     {
         imgViewer = _imgViewer;
+        partOneSideBar = _partOneSideBar;
+        partTwoSideBar = _partTwoSideBar;
         imageViewedFirstTime = _imageViewedFirstTime;
         thirdChallengeCompletedCutscene = _thirdChallengeCompletedCutscene;
         fourthChallengeCompletedCutscene = _fourthChallengeCompletedCutscene;
@@ -27,12 +33,17 @@ public class OfficeServerRoomHandler : MonoBehaviour
             ExtractHiddenFolder();
             TerminalHandler.Instance.ClearScreen();
         }
+
+        partOneSideBar.SetActive(!GameStateHandler.Instance.GameData.ThirdChallengeCompleted);
+        partTwoSideBar.SetActive(GameStateHandler.Instance.GameData.ThirdChallengeCompleted);
     }
 
     public static void OnThirdChallengeCompleted()
     {
         thirdChallengeCompletedCutscene.Play();
         GameStateHandler.Instance.GameData.ThirdChallengeCompleted = true;
+        partOneSideBar.SetActive(false);
+        partTwoSideBar.SetActive(true);
         GameStateHandler.Instance.SaveGame();
     }
 

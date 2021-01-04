@@ -100,7 +100,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 6d2ee65452a89ea468574a656e2a6abe,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -909,7 +909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc87ae7638ab42b488428aa755799119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameData: {fileID: 11400000, guid: e990cd8501674c14bbca309a6ad109f4, type: 2}
+  _gameData: {fileID: 0}
   _saveGameDataDuringPlay: 0
   _loadDataFromSaveFile: 1
   _currentGameState: 0
@@ -15772,8 +15772,8 @@ PrefabInstance:
         <b>cd .can_you_see_me</b> and then <b>ls</b> you will find a file named \"findme\".\r\n\r\nUsing
         <b>cat findme</b> you will output the contents of the file, and reading through
         it it reads that \"what you are looking for is the only line that appears
-        only once in this file\". To easly find it, use <b>sort findme</b>, revealing
-        the master password: \"<b>Alea Iacta Est</b>\"."
+        only once in this file\". To easly find it, use <b>sort findme</b> in order
+        to group together all the strings that appear more then once."
       objectReference: {fileID: 0}
     - target: {fileID: 3626804527909973739, guid: 0248856fc9467fd4bbcc207293a6edac,
         type: 3}

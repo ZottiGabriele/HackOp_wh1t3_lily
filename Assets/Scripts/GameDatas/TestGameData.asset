@@ -17,7 +17,7 @@ MonoBehaviour:
   - 1.4440035
   - -0.00032615662
   - 0
-  HintTokenCount: 0
+  HintTokenCount: 999
   FirstTokenFound: 1
   FoundHintIDs: []
   UnlockedHintIDs: []
