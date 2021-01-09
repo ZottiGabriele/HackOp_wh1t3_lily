@@ -13,12 +13,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _runningSpeedMultiplyer = 2;
     [SerializeField] float _jumpSpeed = 4f;
 
+    public static bool ShouldLoadPosition = false;
+
     Vector2 _velocity = Vector2.zero;
     Animator _animator;
     Rigidbody2D _rigidBody;
     PlayerInput _playerInput;
     AudioSource _audioSource;
     bool _isRunning = false;
+    bool _shouldInteract = true;
     bool _wasInputActive;
 
     private void Awake()
@@ -42,27 +45,57 @@ public class PlayerController : MonoBehaviour
         _rigidBody = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
         _audioSource = GetComponent<AudioSource>();
+
+        GameStateHandler.Instance.OnGameStateChanged += onGameStateChanged;
+
+        if (ShouldLoadPosition) LoadPlayerPos();
+
+        onGameStateChanged(GameStateHandler.Instance.CurrentGameState);
     }
 
+    private void OnDestroy()
+    {
+        GameStateHandler.Instance.OnGameStateChanged -= onGameStateChanged;
+    }
+
+    private void onGameStateChanged(GameStateHandler.GameState gameState)
+    {
+        switch (gameState)
+        {
+            case GameStateHandler.GameState.UnpausableCutscene:
+            case GameStateHandler.GameState.InteractingWithComputer:
+                DisableInput();
+                break;
+            default:
+                EnableInput();
+                break;
+        }
+    }
 
     private void FixedUpdate()
     {
+        if (!_shouldInteract) return;
+
         Vector2 translation = transform.right * _velocity.x * _movementSpeed * Time.fixedDeltaTime;
-        if (_isRunning) translation *= _runningSpeedMultiplyer;
+        // if (_isRunning) translation *= _runningSpeedMultiplyer;
+        translation *= _runningSpeedMultiplyer;
         transform.Translate(translation);
         _animator.SetBool("is_jumping", Mathf.Abs(_rigidBody.velocity.y) >= 0.01f);
-        _animator.SetBool("is_running", _isRunning);
+        // _animator.SetBool("is_running", _isRunning);
+        _animator.SetBool("is_running", true);
     }
 
     public void DisableInput()
     {
         _wasInputActive = _playerInput.inputIsActive;
         _playerInput.DeactivateInput();
+        _shouldInteract = false;
     }
 
     public void EnableInput()
     {
         _playerInput.ActivateInput();
+        _shouldInteract = true;
     }
 
     //This method is used by the in game menu to restore input as before pausing
@@ -70,12 +103,19 @@ public class PlayerController : MonoBehaviour
     {
         if (_wasInputActive)
         {
-            _playerInput.ActivateInput();
+            EnableInput();
         }
         else
         {
-            _playerInput.DeactivateInput();
+            DisableInput();
         }
+    }
+
+    public void LoadPlayerPos()
+    {
+        var pos = GameStateHandler.Instance.GameData.PlayerPosition;
+        transform.position = new Vector3(pos[0], pos[1], pos[2]);
+        ShouldLoadPosition = false;
     }
 
     public void OnHintTokenFound()
@@ -83,27 +123,29 @@ public class PlayerController : MonoBehaviour
         _animator.SetTrigger("hint_token_found");
     }
 
-    private void OnJump()
-    {
-        if (Mathf.Abs(_rigidBody.velocity.y) <= 0.01f) _rigidBody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
-    }
+    // private void OnJump()
+    // {
+    //     if (Mathf.Abs(_rigidBody.velocity.y) <= 0.01f) _rigidBody.AddForce(Vector2.up * _jumpSpeed, ForceMode2D.Impulse);
+    // }
 
     private void OnMove(InputValue inputValue)
     {
+        if (!_shouldInteract) return;
+
         _velocity.x = inputValue.Get<float>();
         _animator.SetBool("is_moving", _velocity.x != 0);
         if (_velocity.x != 0) transform.localScale = new Vector3(_velocity.x, 1, 1);
     }
 
-    private void OnRunStart()
-    {
-        _isRunning = true;
-    }
+    // private void OnRunStart()
+    // {
+    //     _isRunning = true;
+    // }
 
-    private void OnRunStop()
-    {
-        _isRunning = false;
-    }
+    // private void OnRunStop()
+    // {
+    //     _isRunning = false;
+    // }
 
     private void OnInteract()
     {
@@ -118,6 +160,11 @@ public class PlayerController : MonoBehaviour
                 a.OnInteraction();
             }
         }
+    }
+
+    private void OnToggleMenu()
+    {
+        GeneralUIHandler.Instance.ToggleMenu();
     }
 
     public void PlayStepSound()

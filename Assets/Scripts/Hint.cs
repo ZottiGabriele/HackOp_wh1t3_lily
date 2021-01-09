@@ -17,6 +17,7 @@ public class Hint : MonoBehaviour, IGUID
     [SerializeField] GameObject _unlock;
     [SerializeField] GameObject _lock;
 
+    HintManager _hintManager;
 
 
     private void Start()
@@ -45,7 +46,7 @@ public class Hint : MonoBehaviour, IGUID
         if (GameStateHandler.Instance.GameData.HintTokenCount > 0)
         {
             _unlock.SetActive(false);
-            HintManager.Instance.UnlockHint(GUID);
+            _hintManager.UnlockHint(GUID);
         }
         else
         {
@@ -53,6 +54,11 @@ public class Hint : MonoBehaviour, IGUID
             _unlockText.text = "Not enough ";
             StartCoroutine(resetUnlockText());
         }
+    }
+
+    public void SetHintManager(HintManager manager)
+    {
+        _hintManager = manager;
     }
 
     private IEnumerator resetUnlockText()

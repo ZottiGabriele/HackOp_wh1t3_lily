@@ -5,10 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class GameSave
 {
-    public int CurrentScene = 0;
-    public float[] PlayerPosition = { 0, 0, 0 };
+    public int CurrentScene = 1;
+    public float[] PlayerPosition = { 4.7f, 0, 0 };
     public int HintTokenCount = 0;
+    public bool IntroPlayed = false;
     public bool FirstTokenFound = false;
+    public bool TutorialCompleted = false;
     public List<string> FoundHintIDs = new List<string>();
     public List<string> UnlockedHintIDs = new List<string>();
 
@@ -42,7 +44,9 @@ public class GameSave
         CurrentScene = data.CurrentScene;
         PlayerPosition = data.PlayerPosition;
         HintTokenCount = data.HintTokenCount;
+        IntroPlayed = data.IntroPlayed;
         FirstTokenFound = data.FirstTokenFound;
+        TutorialCompleted = data.TutorialCompleted;
         FoundHintIDs = data.FoundHintIDs;
         UnlockedHintIDs = data.UnlockedHintIDs;
         InteractedWithFirstComputer = data.InteractedWithFirstComputer;

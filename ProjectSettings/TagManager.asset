@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Background
   - Output
+  - Intro_pt2
   layers:
   - Default
   - TransparentFX

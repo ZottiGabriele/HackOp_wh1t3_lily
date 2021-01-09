@@ -57,6 +57,14 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToggleMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""fefe7de0-4b87-46e3-9bad-7128a8435cad"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -136,6 +144,17 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""action"": ""RunStop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c0e6485-813e-4753-81f6-1b7a35adda68"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse"",
+                    ""action"": ""ToggleMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -166,6 +185,7 @@ public class @InputController : IInputActionCollection, IDisposable
         m_Player_RunStart = m_Player.FindAction("RunStart", throwIfNotFound: true);
         m_Player_RunStop = m_Player.FindAction("RunStop", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ToggleMenu = m_Player.FindAction("ToggleMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -220,6 +240,7 @@ public class @InputController : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_RunStart;
     private readonly InputAction m_Player_RunStop;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ToggleMenu;
     public struct PlayerActions
     {
         private @InputController m_Wrapper;
@@ -229,6 +250,7 @@ public class @InputController : IInputActionCollection, IDisposable
         public InputAction @RunStart => m_Wrapper.m_Player_RunStart;
         public InputAction @RunStop => m_Wrapper.m_Player_RunStop;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ToggleMenu => m_Wrapper.m_Player_ToggleMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -253,6 +275,9 @@ public class @InputController : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @ToggleMenu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMenu;
+                @ToggleMenu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMenu;
+                @ToggleMenu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -272,6 +297,9 @@ public class @InputController : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @ToggleMenu.started += instance.OnToggleMenu;
+                @ToggleMenu.performed += instance.OnToggleMenu;
+                @ToggleMenu.canceled += instance.OnToggleMenu;
             }
         }
     }
@@ -292,5 +320,6 @@ public class @InputController : IInputActionCollection, IDisposable
         void OnRunStart(InputAction.CallbackContext context);
         void OnRunStop(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnToggleMenu(InputAction.CallbackContext context);
     }
 }

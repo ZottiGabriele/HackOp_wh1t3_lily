@@ -7,8 +7,8 @@ using UnityEngine.Playables;
 [RequireComponent(typeof(PolygonCollider2D))]
 public class ComputerInteractionArea : IInteractionArea
 {
-    [SerializeField] PlayableDirector _firstInteraction;
-    [SerializeField] PlayableDirector _zoomInOnScreen;
+    [SerializeField] Cutscene _firstInteraction;
+    [SerializeField] Cutscene _zoomInOnScreen;
     [SerializeField] TerminalConfig.Challenge _targetChallenge;
 
     bool _interacted = false;

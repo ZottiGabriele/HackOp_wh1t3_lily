@@ -168,14 +168,14 @@
               {
                 "hidden": false,
                 "readable": true,
-                "name": "asd.txt",
-                "full_path": "/home/user/asd.txt",
-                "r_path": "VFS/challenge_0/home/user/asd",
+                "name": "whishlist.txt",
+                "full_path": "/home/user/whishlist.txt",
+                "r_path": "VFS/challenge_0/home/user/whishlist",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",
                 "type": "file",
-                "content": "Weila mulon"
+                "content": "- Second monitor\n- VR headset\n- New GPU to support that ^\n- New desk (the more space the better)"
               }
             ]
           }

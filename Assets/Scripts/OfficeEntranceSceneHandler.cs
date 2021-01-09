@@ -33,6 +33,11 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
         GameStateHandler.Instance.SaveGame();
     }
 
+    public void OnInteractingWithComputer(bool isInteracting)
+    {
+        GameStateHandler.Instance.InteractingWithComputer(isInteracting);
+    }
+
     public void SecurityCameraFound()
     {
         GameStateHandler.Instance.GameData.SecurityCameraFound = true;
@@ -48,5 +53,15 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
     {
         GameStateHandler.Instance.GameData.EnteredOffice = true;
         GameStateHandler.Instance.SaveGame();
+    }
+
+    public void OnUnpausableCutsceneStarted()
+    {
+        GameStateHandler.Instance.UnpausableCutsceneStarted();
+    }
+
+    public void OnUnpausableCutsceneEnded()
+    {
+        GameStateHandler.Instance.UnpausableCutsceneEnded();
     }
 }

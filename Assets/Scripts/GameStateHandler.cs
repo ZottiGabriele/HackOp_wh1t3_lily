@@ -14,7 +14,7 @@ public class GameStateHandler : MonoBehaviour
     public static GameStateHandler Instance;
 
     public GameData GameData { get => _gameData; }
-    public GameState CurrentGameState { get => _currentGameState; }
+    public GameState CurrentGameState { get => _gameStateHistory.Peek(); }
 
     public Action<GameState> OnGameStateChanged = _ => { };
     public Action OnHintTokenUpdate = () => { };
@@ -22,7 +22,9 @@ public class GameStateHandler : MonoBehaviour
     [SerializeField] GameData _gameData;
     [SerializeField] bool _saveGameDataDuringPlay = false;
     [SerializeField] bool _loadDataFromSaveFile = true;
-    [SerializeField] GameState _currentGameState;
+    [SerializeField] GameState _startingGameState = GameState.Playing;
+    [SerializeField] Texture2D _pointer;
+    private Stack<GameState> _gameStateHistory = new Stack<GameState>();
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class GameStateHandler : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
+            InitializeGame();
         }
         else
         {
@@ -38,30 +41,46 @@ public class GameStateHandler : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void InitializeGame()
     {
-        if (_loadDataFromSaveFile)
-        {
-            LoadGame();
-        }
+        _gameStateHistory = new Stack<GameState>();
+        _gameStateHistory.Push(_startingGameState);
 
-        if (_gameData == null)
-        {
-            Debug.LogWarning("No GameData assigned to " + this + " -> creating new instance");
-            _gameData = ScriptableObject.CreateInstance<GameData>();
-        }
-
-        if (!_saveGameDataDuringPlay)
+        //if custom game data manually assigned from editor, just use that
+        if (_gameData != null)
         {
             _gameData = Instantiate(_gameData);
+            _gameData.CurrentScene = SceneManager.GetActiveScene().buildIndex;
+            Debug.LogWarning("Custom GameData assigned: GAME WILL NOT LOAD SAVE DATA!");
+        }
+        else
+        {
+            _gameData = ScriptableObject.CreateInstance<GameData>();
+
+            if (_loadDataFromSaveFile)
+            {
+                LoadGame();
+            }
         }
 
-        SceneManager.sceneLoaded += (_, __) => SaveGame();
+
+        // SceneManager.sceneLoaded += (_, __) => SaveGame();
         QualitySettings.vSyncCount = 1;
+        Cursor.SetCursor(_pointer, Vector2.one * 6, CursorMode.Auto);
 
 #if UNITY_EDITOR
         Application.targetFrameRate = 60;
 #endif
+    }
+
+    public void NewGame()
+    {
+        if (File.Exists(SAVE_PATH))
+        {
+            File.Delete(SAVE_PATH);
+            _gameData = null;
+            InitializeGame();
+        }
     }
 
     public void SaveGame()
@@ -80,7 +99,7 @@ public class GameStateHandler : MonoBehaviour
         }
     }
 
-    public void LoadGame()
+    public bool LoadGame()
     {
         if (File.Exists(SAVE_PATH))
         {
@@ -92,9 +111,16 @@ public class GameStateHandler : MonoBehaviour
             }
             if (_gameData == null) _gameData = ScriptableObject.CreateInstance<GameData>();
             _gameData.LoadGameSave(save);
-            if (SceneManager.GetActiveScene().buildIndex != _gameData.CurrentScene) ChangeScene(_gameData.CurrentScene);
-            PlayerController.Instance.transform.position = new Vector3(_gameData.PlayerPosition[0], _gameData.PlayerPosition[1], _gameData.PlayerPosition[2]);
+            return true;
         }
+
+        return false;
+    }
+
+    public void ReloadLastSave()
+    {
+        LoadGame();
+        ChangeScene(_gameData.CurrentScene);
     }
 
     public void AddHintToken(string GUID)
@@ -110,6 +136,13 @@ public class GameStateHandler : MonoBehaviour
         SaveGame();
     }
 
+    public void UseHintToken()
+    {
+        _gameData.HintTokenCount--;
+        OnHintTokenUpdate();
+        SaveGame();
+    }
+
     public void ChangeScene(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
@@ -117,14 +150,25 @@ public class GameStateHandler : MonoBehaviour
 
     private void ChangeGameState(GameState newGameState)
     {
-        _currentGameState = newGameState;
-        OnGameStateChanged(_currentGameState);
+        var prev = CurrentGameState;
+        _gameStateHistory.Push(newGameState);
+        Cursor.visible = !(CurrentGameState == GameState.UnpausableCutscene);
+        OnGameStateChanged(CurrentGameState);
+        Debug.Log(prev + " --> " + CurrentGameState);
+    }
+
+    private void ResumePrevGameState()
+    {
+        var prev = CurrentGameState;
+        _gameStateHistory.Pop();
+        Cursor.visible = !(CurrentGameState == GameState.UnpausableCutscene);
+        OnGameStateChanged(CurrentGameState);
+        Debug.Log(prev + " --> " + CurrentGameState);
     }
 
     public void GameOver()
     {
-        ChangeGameState(GameState.Gameover);
-        LoadGame();
+        ReloadLastSave();
     }
 
     public void UnpausableCutsceneStarted()
@@ -134,12 +178,24 @@ public class GameStateHandler : MonoBehaviour
 
     public void UnpausableCutsceneEnded()
     {
-        ChangeGameState(GameState.Playing);
+        ResumePrevGameState();
+    }
+
+    public void InteractingWithComputer(bool isInteracting)
+    {
+        if (isInteracting)
+        {
+            ChangeGameState(GameState.InteractingWithComputer);
+        }
+        else
+        {
+            ResumePrevGameState();
+        }
     }
 
     public void PauseGame()
     {
-        if (_currentGameState == GameState.UnpausableCutscene || _currentGameState == GameState.Gameover) return;
+        if (CurrentGameState == GameState.UnpausableCutscene) return;
         Time.timeScale = 0;
         PlayerController.Instance.DisableInput();
         ChangeGameState(GameState.Paused);
@@ -155,14 +211,17 @@ public class GameStateHandler : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.ExitPlaymode();
+#endif
     }
 
     public enum GameState
     {
         Playing,
         Paused,
-        Cutscene,
         UnpausableCutscene,
-        Gameover
+        InteractingWithComputer
     }
 }

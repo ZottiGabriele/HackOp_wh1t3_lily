@@ -10,28 +10,37 @@ public class CdCommand : ICommand
     public override string GetCmdMatch() => "^ *cd *$|^ *cd +\\S* *$";
     public override void OnCmdMatch()
     {
-        var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
+        var cmd = _cmd.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
 
-        if(cmd.Length != 2) {
+        if (cmd.Length != 2)
+        {
             var temp = new List<string>(cmd);
             temp.Add(TerminalHandler.Instance.TerminalConfig.HomePath);
             cmd = temp.ToArray();
         }
 
         string arg = cmd[1];
-        if(arg != "/") arg.TrimEnd('/');
+        if (arg != "/") arg.TrimEnd('/');
         var query_item = TerminalHandler.Instance.VirtualFileSystem.Query(arg);
-        if(query_item != null) {
-            if(query_item.type != "directory") {
+        if (query_item != null)
+        {
+            if (query_item.type != "directory")
+            {
                 TerminalHandler.Instance.DisplayOutput("ERROR: The file " + arg + " is not a directory");
-            } else if(!TerminalHandler.Instance.CheckPermissions(query_item, "r-x")) {
+            }
+            else if (!TerminalHandler.Instance.CheckPermissions(query_item, "r-x"))
+            {
                 TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
-            } else {
+            }
+            else
+            {
                 string currentPath = (query_item.full_path == "/") ? "/" : query_item.full_path + "/";
                 TerminalHandler.Instance.TerminalConfig.CurrentPath = currentPath;
                 TerminalHandler.Instance.InstantiateNewLine();
             }
-        } else {
+        }
+        else
+        {
             TerminalHandler.Instance.DisplayOutput("ERROR: Directory " + arg + " not found");
         }
     }

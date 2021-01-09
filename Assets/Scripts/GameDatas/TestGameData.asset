@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ff3639bad002e24085d723c60731f48, type: 3}
   m_Name: TestGameData
   m_EditorClassIdentifier: 
-  CurrentScene: 0
+  CurrentScene: 2
   PlayerPosition:
-  - 1.4440035
+  - 4.444005
   - -0.00032615662
   - 0
-  HintTokenCount: 999
-  FirstTokenFound: 1
+  HintTokenCount: 0
+  IntroPlayed: 1
+  FirstTokenFound: 0
+  TutorialCompleted: 0
   FoundHintIDs: []
   UnlockedHintIDs: []
   InteractedWithFirstComputer: 1

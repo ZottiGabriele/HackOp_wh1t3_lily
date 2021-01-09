@@ -13,14 +13,17 @@ public class GameStateListener : MonoBehaviour
         GameStateHandler.Instance.OnGameStateChanged += onGameStateChanged;
     }
 
-    private void OnDestroy() 
+    private void OnDestroy()
     {
         GameStateHandler.Instance.OnGameStateChanged -= onGameStateChanged;
     }
 
-    private void onGameStateChanged(GameStateHandler.GameState state) {
-        foreach(var e in events) {
-            if(e.targetState == state) {
+    private void onGameStateChanged(GameStateHandler.GameState state)
+    {
+        foreach (var e in events)
+        {
+            if (e.targetState == state)
+            {
                 e.callback.Invoke();
             }
         }
@@ -28,7 +31,8 @@ public class GameStateListener : MonoBehaviour
 }
 
 [System.Serializable]
-public struct GameStateEvent {
+public struct GameStateEvent
+{
     public GameStateHandler.GameState targetState;
     public UnityEvent callback;
 }

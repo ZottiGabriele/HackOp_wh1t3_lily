@@ -1,2 +1,4 @@
-Something is hidden at the "bottom of the tree",
-I just wonder what that could be ...
+TODO:
+ - Create new Master Password to generate daily codes.
+ - Safely <b>hide</b> the Master Password somewhere on this computer.
+ - Delete this file after it's done.

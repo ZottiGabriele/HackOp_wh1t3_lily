@@ -7,7 +7,7 @@ public class ExitCommand : ICommand
 {
     public override string GetCmdName() => "exit";
     public override string GetCmdDescription() => "<b>exit</b> : exits active shell";
-    public override string GetCmdMatch() =>"^ *exit *$";
+    public override string GetCmdMatch() => "^ *exit *$";
     public override void OnCmdMatch()
     {
         TerminalHandler.Instance.ExitShell();

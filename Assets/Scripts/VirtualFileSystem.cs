@@ -47,12 +47,11 @@ public class VirtualFileSystem
 
     public VirtualFileSystemEntry Query(string path)
     {
-
         VirtualFileSystemEntry output = null;
 
         path = GetFinalPath(path);
-
         _hashTable.TryGetValue(path, out output);
+
         return output;
     }
 
@@ -73,7 +72,7 @@ public class VirtualFileSystem
             }
             else if (s == "..")
             {
-                return null;
+                return "/";
             }
             else
             {

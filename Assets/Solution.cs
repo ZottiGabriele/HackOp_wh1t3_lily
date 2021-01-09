@@ -9,6 +9,8 @@ public class Solution : MonoBehaviour, IGUID
     [SerializeField] GameObject _unlock;
     public bool Unlocked = false;
 
+    HintManager _hintManager;
+
     private void Start()
     {
         Unlocked = GameStateHandler.Instance.GameData.UnlockedHintIDs.Contains(GUID);
@@ -19,7 +21,12 @@ public class Solution : MonoBehaviour, IGUID
     public void Unlock()
     {
         _unlock.SetActive(false);
-        HintManager.Instance.UnlockSolution(GUID);
+        _hintManager.UnlockSolution(GUID);
+    }
+
+    public void SetHintManager(HintManager manager)
+    {
+        _hintManager = manager;
     }
 
 }

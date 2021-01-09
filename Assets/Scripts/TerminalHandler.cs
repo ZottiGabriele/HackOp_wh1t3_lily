@@ -113,6 +113,14 @@ public class TerminalHandler : MonoBehaviour
     {
         bool match = false;
 
+        //Exit always available
+        Match m = Regex.Match(cmd, "^ *exit *$");
+        if (m.Success)
+        {
+            ExitShell();
+            return;
+        }
+
         //TARGETING SPECIFIC FILE
         if (cmd.StartsWith("./") || cmd.StartsWith("/") || cmd.StartsWith("../"))
         {

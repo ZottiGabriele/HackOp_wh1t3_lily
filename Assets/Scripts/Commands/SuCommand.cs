@@ -19,13 +19,16 @@ public class SuCommand : ICommand
 
     private void checkPassword(string password)
     {
-        if(password == _targetPassword) {
+        if (password == _targetPassword)
+        {
             TerminalHandler.Instance.NewShell();
             TerminalHandler.Instance.TerminalConfig.CurrentUser = "root";
             TerminalHandler.Instance.TerminalConfig.CurrentGroup = "root";
             TerminalHandler.Instance.BuildPrompt();
             OfficeServerRoomHandler.OnThirdChallengeCompleted();
-        } else {
+        }
+        else
+        {
             TerminalHandler.Instance.DisplayOutput("ERROR: authorization failed.");
         }
     }

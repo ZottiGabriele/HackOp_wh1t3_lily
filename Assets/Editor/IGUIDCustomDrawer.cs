@@ -9,7 +9,15 @@ public class IGUIDCustomDrawer : PropertyDrawer
     {
         if (property.stringValue != "")
         {
-            EditorGUI.LabelField(position, label, new GUIContent(property.stringValue));
+            var textPos = new Rect(position.x, position.y, position.width - 50, position.height);
+            var btnPos = new Rect(position.width - 50, position.y, 50, position.height);
+
+            if (GUI.Button(btnPos, "Reset"))
+            {
+                property.stringValue = "";
+            }
+
+            EditorGUI.LabelField(textPos, label, new GUIContent(property.stringValue));
             return;
         }
 

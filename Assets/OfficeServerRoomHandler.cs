@@ -28,11 +28,11 @@ public class OfficeServerRoomHandler : MonoBehaviour
         thirdChallengeCompletedCutscene = _thirdChallengeCompletedCutscene;
         fourthChallengeCompletedCutscene = _fourthChallengeCompletedCutscene;
 
-        if (GameStateHandler.Instance.GameData.ExtractedHiddenFolder)
-        {
-            ExtractHiddenFolder();
-            TerminalHandler.Instance.ClearScreen();
-        }
+        // if (GameStateHandler.Instance.GameData.ExtractedHiddenFolder)
+        // {
+        //     ExtractHiddenFolder();
+        //     TerminalHandler.Instance.ClearScreen();
+        // }
 
         partOneSideBar.SetActive(!GameStateHandler.Instance.GameData.ThirdChallengeCompleted);
         partTwoSideBar.SetActive(GameStateHandler.Instance.GameData.ThirdChallengeCompleted);
@@ -86,5 +86,20 @@ public class OfficeServerRoomHandler : MonoBehaviour
         imgViewer.SetActive(true);
         imageViewedFirstTime.Play();
         GameStateHandler.Instance.GameData.ViewedImage = true;
+    }
+
+    public void InteractingWithComputer(bool isInteracting)
+    {
+        GameStateHandler.Instance.InteractingWithComputer(isInteracting);
+    }
+
+    public void UnpausableCutsceneStarted()
+    {
+        GameStateHandler.Instance.UnpausableCutsceneStarted();
+    }
+
+    public void UnpausableCutsceneEnded()
+    {
+        GameStateHandler.Instance.UnpausableCutsceneEnded();
     }
 }

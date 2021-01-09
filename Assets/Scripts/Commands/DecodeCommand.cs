@@ -8,7 +8,15 @@ using UnityEngine;
 public class DecodeCommand : ICommand
 {
     public override string GetCmdName() => "decode";
-    public override string GetCmdDescription() => "<b>decode [ALGORITHM] <target></b> : decodes <target> text based on the chosen [ALGORITHM]";
+    public override string GetCmdDescription()
+    {
+        string description = "<b>decode [ALGORITHM] <target></b> : decodes <target> text based on the chosen [ALGORITHM]\n";
+        description += "\nALGORITHM\n";
+        description += "\t<b>-b</b> : Base64 decoder\n";
+        description += "\t<b>-h</b> : Hexadecimal decoder\n";
+        description += "\t<b>-r</b> : Rot13 decoder";
+        return description;
+    }
     public override string GetCmdMatch() => "^ *decode +-\\w +\\S+";
 
     public override void OnCmdMatch()

@@ -156,18 +156,6 @@
           {
             "hidden": false,
             "readable": false,
-            "name": "sh",
-            "full_path": "/bin/sh",
-            "r_path": "VFS/challenge_2/bin/ShCommand",
-            "flags": "-r-xr-xr-x",
-            "user": "user",
-            "group": "group",
-            "type": "cmd",
-            "content": ""
-          },
-          {
-            "hidden": false,
-            "readable": false,
             "name": "whoami",
             "full_path": "/bin/whoami",
             "r_path": "VFS/challenge_2/bin/WhoAmICommand",

@@ -17,7 +17,6 @@ public class GeneralUIHandler : MonoBehaviour
     [SerializeField] Cutscene fadein;
 
     private bool isActive = true;
-    private bool _canPause = true;
 
     private void Awake()
     {
@@ -30,17 +29,6 @@ public class GeneralUIHandler : MonoBehaviour
         {
             Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
-        }
-    }
-
-    private void Update()
-    {
-        if (GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.Gameover ||
-           GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.UnpausableCutscene) return;
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ToggleMenu();
         }
     }
 
@@ -74,27 +62,22 @@ public class GeneralUIHandler : MonoBehaviour
         }
     }
 
-    public void NoPause()
-    {
-        _canPause = false;
-    }
-
-    public void CanPause()
-    {
-        _canPause = true;
-    }
-
     public void ShowMenu()
     {
-        if (!_canPause || GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.Gameover ||
-           GameStateHandler.Instance.CurrentGameState == GameStateHandler.GameState.UnpausableCutscene) return;
-        _menu.SetActive(true);
-        GameStateHandler.Instance.PauseGame();
+        switch (GameStateHandler.Instance.CurrentGameState)
+        {
+            case GameStateHandler.GameState.UnpausableCutscene:
+            case GameStateHandler.GameState.InteractingWithComputer:
+                return;
+            default:
+                _menu.SetActive(true);
+                GameStateHandler.Instance.PauseGame();
+                break;
+        }
     }
 
     public void HideMenu()
     {
-        if (!_canPause) return;
         _menu.SetActive(false);
         GameStateHandler.Instance.ResumeGame();
     }
@@ -122,9 +105,15 @@ public class GeneralUIHandler : MonoBehaviour
         fadeOut.ForcePlay(() => StartCoroutine(loadGameTransition()));
     }
 
+    public void OnExitGamePressed()
+    {
+        GameStateHandler.Instance.ExitGame();
+    }
+
     IEnumerator loadGameTransition()
     {
-        GameStateHandler.Instance.LoadGame();
+        PlayerController.ShouldLoadPosition = true;
+        GameStateHandler.Instance.ReloadLastSave();
         yield return new WaitForSeconds(0.5f);
         fadein.ForcePlay();
     }
@@ -132,7 +121,7 @@ public class GeneralUIHandler : MonoBehaviour
     IEnumerator showFirstTokenFoundPopUp()
     {
         PlayerController.Instance.DisableInput();
-        yield return new WaitForSeconds(1.8f);
+        yield return new WaitForSeconds(2.5f);
         _firstTokenFoundPopUp.SetActive(true);
     }
 

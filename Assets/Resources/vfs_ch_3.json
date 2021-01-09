@@ -72,18 +72,6 @@
           {
             "hidden": false,
             "readable": false,
-            "name": "cp",
-            "full_path": "/bin/cp",
-            "r_path": "VFS/challenge_3/bin/CpCommand",
-            "flags": "-r-xr-xr-x",
-            "user": "user",
-            "group": "group",
-            "type": "cmd",
-            "content": ""
-          },
-          {
-            "hidden": false,
-            "readable": false,
             "name": "decode",
             "full_path": "/bin/decode",
             "r_path": "VFS/challenge_3/bin/DecodeCommand",
@@ -159,18 +147,6 @@
             "name": "pwd",
             "full_path": "/bin/pwd",
             "r_path": "VFS/challenge_3/bin/PwdCommand",
-            "flags": "-r-xr-xr-x",
-            "user": "user",
-            "group": "group",
-            "type": "cmd",
-            "content": ""
-          },
-          {
-            "hidden": false,
-            "readable": false,
-            "name": "sh",
-            "full_path": "/bin/sh",
-            "r_path": "VFS/challenge_3/bin/ShCommand",
             "flags": "-r-xr-xr-x",
             "user": "user",
             "group": "group",
@@ -273,20 +249,7 @@
             "user": "user",
             "group": "group",
             "type": "directory",
-            "childs": [
-              {
-                "hidden": false,
-                "readable": true,
-                "name": "file_3",
-                "full_path": "/home/user/file_3",
-                "r_path": "VFS/challenge_3/home/user/file_3",
-                "flags": "-rw-rw-r--",
-                "user": "user",
-                "group": "group",
-                "type": "file",
-                "content": ""
-              }
-            ]
+            "childs": []
           },
           {
             "hidden": true,

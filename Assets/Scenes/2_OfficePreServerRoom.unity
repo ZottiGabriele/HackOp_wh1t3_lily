@@ -960,7 +960,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: OpenedServerDoor
   _conditionTarget: 0
-  _conditionIndex: 11
+  _conditionIndex: 12
   onInteractionText: I need to input the daily code in the keypad to enter ...
 --- !u!60 &138199357
 PolygonCollider2D:
@@ -1056,8 +1056,8 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: OpenedServerDoor
   _conditionTarget: 1
-  _conditionIndex: 11
-  _sceneToLoad: 3
+  _conditionIndex: 12
+  _sceneToLoad: 4
   _fadeout: {fileID: 976836001}
 --- !u!1 &138375531
 GameObject:
@@ -1174,13 +1174,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc87ae7638ab42b488428aa755799119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gameData: {fileID: 11400000, guid: e990cd8501674c14bbca309a6ad109f4, type: 2}
+  _gameData: {fileID: 0}
   _saveGameDataDuringPlay: 0
   _loadDataFromSaveFile: 1
-  _currentGameState: 0
+  _startingGameState: 0
+  _pointer: {fileID: 2800000, guid: 1252a58fe3bfb3c499b333e22c99c938, type: 3}
 --- !u!1 &210853937 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5679583613663997584, guid: 22262f98bc38d6a4d85982722ea550ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 5679583612212796372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &210853942 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5679583613663997585, guid: 22262f98bc38d6a4d85982722ea550ce,
     type: 3}
   m_PrefabInstance: {fileID: 5679583612212796372}
   m_PrefabAsset: {fileID: 0}
@@ -4215,7 +4222,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: OpenedServerDoor
   _conditionTarget: 0
-  _conditionIndex: 11
+  _conditionIndex: 12
   _onInteraction:
     m_PersistentCalls:
       m_Calls:
@@ -4470,7 +4477,7 @@ PlayableDirector:
     value: {fileID: 1347662982}
   - key: {fileID: 4884010185405253, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -6881215073632740020, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 210853937}
   - key: {fileID: -1444243803287905761, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 0}
@@ -4490,12 +4497,12 @@ PlayableDirector:
     value: {fileID: 2103090208}
   - key: {fileID: 1452538046948865841, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -4824367299005971251, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
-    value: {fileID: 210853937}
   - key: {fileID: -3501982305759002310, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 1347662982}
   - key: {fileID: 7715394071587727064, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 0}
+  - key: {fileID: -409194241978199178, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
+    value: {fileID: 210853942}
   m_ExposedReferences:
     m_References:
     - 119d5a0fd2f6c6143ac19919864b7e03: {fileID: 1571316788}
@@ -5571,7 +5578,7 @@ MonoBehaviour:
   _hasCondition: 1
   _condition: OpenedServerDoor
   _conditionTarget: 0
-  _conditionIndex: 11
+  _conditionIndex: 12
   _playOnStart: 0
 --- !u!320 &1120536251
 PlayableDirector:
@@ -5610,7 +5617,7 @@ PlayableDirector:
     value: {fileID: 1347662982}
   - key: {fileID: 4884010185405253, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -6881215073632740020, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 210853937}
   - key: {fileID: -1444243803287905761, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 0}
@@ -5630,7 +5637,7 @@ PlayableDirector:
     value: {fileID: 2103090208}
   - key: {fileID: 1452538046948865841, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -4824367299005971251, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 210853937}
   - key: {fileID: -3501982305759002310, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 1347662982}
@@ -6063,18 +6070,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206696805}
   m_CullTransparentMesh: 0
---- !u!114 &1235769079 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5679583613663997597, guid: 22262f98bc38d6a4d85982722ea550ce,
-    type: 3}
-  m_PrefabInstance: {fileID: 5679583612212796372}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 210853937}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1239377237
 GameObject:
   m_ObjectHideFlags: 0
@@ -7668,55 +7663,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Events:
     m_Signals:
-    - {fileID: 11400000, guid: 8ccb6f2f98e0c0447bf88463efbf1717, type: 2}
-    - {fileID: 11400000, guid: bb8cc7243d52bf04ebe89692c4d30eeb, type: 2}
-    - {fileID: 11400000, guid: 6eb0b8243232680488e59d867cdd01a9, type: 2}
     - {fileID: 11400000, guid: 6695ba39e5141ab4e89d73002ff7ee5d, type: 2}
     - {fileID: 11400000, guid: b6490a8188b30f94fbe876bc460c4bd8, type: 2}
     - {fileID: 11400000, guid: ddd3282c6ba582648a08fc6f53eec6ec, type: 2}
-    - {fileID: 11400000, guid: fdc24f0d4c76cc9488e2518e5690409f, type: 2}
-    - {fileID: 11400000, guid: d2d550317f3bb344a8bc8b4fdcef95e3, type: 2}
     - {fileID: 11400000, guid: 4e95e14ab5618f344b53a5f278a05c6a, type: 2}
+    - {fileID: 11400000, guid: ccb22fa672689f94986b5626e58f51ff, type: 2}
+    - {fileID: 11400000, guid: ae438bf615ddf384d8167946e76680b5, type: 2}
     m_Events:
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1235769079}
-          m_MethodName: DeactivateInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1235769079}
-          m_MethodName: ActivateInput
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: SecurityCameraFound
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 2116674436}
@@ -7732,8 +7685,8 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 206159180}
-          m_MethodName: UnpausableCutsceneStarted
+        - m_Target: {fileID: 2116674436}
+          m_MethodName: OnUnpausableCutsceneStarted
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7745,34 +7698,8 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 206159180}
-          m_MethodName: UnpausableCutsceneEnded
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    - m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: EnteredOffice
+        - m_Target: {fileID: 2116674436}
+          m_MethodName: OnUnpausableCutsceneEnded
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7787,6 +7714,32 @@ MonoBehaviour:
         - m_Target: {fileID: 2116674436}
           m_MethodName: RightCodeEntered
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116674436}
+          m_MethodName: InteractingWithKeypad
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2116674436}
+          m_MethodName: InteractingWithKeypad
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8091,6 +8044,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9097207708268266942, guid: 47abf9b80b5c28246a40a631f6840cdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5679583612212796373}
+    - target: {fileID: 9097207708268266942, guid: 47abf9b80b5c28246a40a631f6840cdd,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: EnableInput
       objectReference: {fileID: 0}
     - target: {fileID: 9097207708578705344, guid: 47abf9b80b5c28246a40a631f6840cdd,
         type: 3}
@@ -9200,7 +9163,7 @@ PlayableDirector:
     value: {fileID: 1347662982}
   - key: {fileID: 4884010185405253, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -6881215073632740020, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 210853937}
   - key: {fileID: -1444243803287905761, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 0}
@@ -9220,7 +9183,7 @@ PlayableDirector:
     value: {fileID: 2103090208}
   - key: {fileID: 1452538046948865841, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -4824367299005971251, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
+  - key: {fileID: 0}
     value: {fileID: 210853937}
   - key: {fileID: -3501982305759002310, guid: e5556323b97a65348bc4a63b365d1bf6, type: 2}
     value: {fileID: 1347662982}
@@ -9242,6 +9205,8 @@ PlayableDirector:
     value: {fileID: 1886693901}
   - key: {fileID: 4179421936790377271, guid: 7eb12ff7a8c01d143bfaeaa15a174881, type: 2}
     value: {fileID: 1683235915}
+  - key: {fileID: -7953188345161151660, guid: 7eb12ff7a8c01d143bfaeaa15a174881, type: 2}
+    value: {fileID: 210853942}
   m_ExposedReferences:
     m_References:
     - bad562beb140eb240b5e7a9f166b7cce: {fileID: 819374502}
@@ -9505,8 +9470,6 @@ PlayableDirector:
     value: {fileID: 1347662982}
   - key: {fileID: 4884010185405253, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 1361684061}
-  - key: {fileID: -6881215073632740020, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
-    value: {fileID: 210853937}
   - key: {fileID: -1444243803287905761, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 0}
   - key: {fileID: -9133586323425278124, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
@@ -9515,6 +9478,8 @@ PlayableDirector:
     value: {fileID: 1886693902}
   - key: {fileID: -8610812996693582537, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
     value: {fileID: 1361684066}
+  - key: {fileID: 5736212587611505671, guid: 7220e4bc3498e2643bb2f4a18d0378ea, type: 2}
+    value: {fileID: 210853942}
   m_ExposedReferences:
     m_References:
     - 119d5a0fd2f6c6143ac19919864b7e03: {fileID: 1571316788}
@@ -9833,6 +9798,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5679583613663997586, guid: 22262f98bc38d6a4d85982722ea550ce,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5679583613663997587, guid: 22262f98bc38d6a4d85982722ea550ce,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9946,3 +9916,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22262f98bc38d6a4d85982722ea550ce, type: 3}
+--- !u!114 &5679583612212796373 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5679583613663997596, guid: 22262f98bc38d6a4d85982722ea550ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 5679583612212796372}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210853937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb24ff990963b8443901c9aa27bfc4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

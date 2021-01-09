@@ -187,7 +187,7 @@
                 "user": "user",
                 "group": "group",
                 "type": "file",
-                "content": "Something is hidden at the \"bottom of the tree\",\nI just wonder what that could be ..."
+                "content": "TODO:\n - Create new Master Password to generate daily codes.\n - Safely <b>hide</b> the Master Password somewhere on this computer.\n - Delete this file after it's done."
               }
             ]
           }

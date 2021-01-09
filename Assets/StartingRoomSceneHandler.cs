@@ -6,6 +6,7 @@ using UnityEngine;
 public class StartingRoomSceneHandler : MonoBehaviour
 {
     [SerializeField] GameObject _mailNotification;
+    [SerializeField] Cutscene _introCutscene;
     [SerializeField] Cutscene _sshCutscene;
     [SerializeField] Cutscene _firstChallengeCompleted;
 
@@ -44,5 +45,20 @@ public class StartingRoomSceneHandler : MonoBehaviour
         GameStateHandler.Instance.GameData.InteractedWithMailApp = true;
         GameStateHandler.Instance.SaveGame();
         _mailNotification.SetActive(false);
+    }
+
+    public void InteractingWithComputer(bool isInteracting)
+    {
+        GameStateHandler.Instance.InteractingWithComputer(isInteracting);
+    }
+
+    public void UnpausableCutsceneStarted()
+    {
+        GameStateHandler.Instance.UnpausableCutsceneStarted();
+    }
+
+    public void UnpausableCutsceneEnded()
+    {
+        GameStateHandler.Instance.UnpausableCutsceneEnded();
     }
 }
