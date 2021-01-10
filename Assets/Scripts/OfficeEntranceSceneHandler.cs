@@ -5,7 +5,7 @@ using UnityEngine.Playables;
 using Cinemachine;
 using System;
 
-public class OfficeEntranceSceneHandler : MonoBehaviour
+public class OfficeEntranceSceneHandler : ISceneHandler
 {
     [SerializeField] TerminalHandler _terminalHandler;
     [SerializeField] CinemachineTriggerAction _cameraFoundTrigger;
@@ -33,35 +33,15 @@ public class OfficeEntranceSceneHandler : MonoBehaviour
         GameStateHandler.Instance.SaveGame();
     }
 
-    public void OnInteractingWithComputer(bool isInteracting)
-    {
-        GameStateHandler.Instance.InteractingWithComputer(isInteracting);
-    }
-
     public void SecurityCameraFound()
     {
         GameStateHandler.Instance.GameData.SecurityCameraFound = true;
         GameStateHandler.Instance.SaveGame();
     }
 
-    public void GameOver()
-    {
-        GameStateHandler.Instance.GameOver();
-    }
-
     public void EnteredOffice()
     {
         GameStateHandler.Instance.GameData.EnteredOffice = true;
         GameStateHandler.Instance.SaveGame();
-    }
-
-    public void OnUnpausableCutsceneStarted()
-    {
-        GameStateHandler.Instance.UnpausableCutsceneStarted();
-    }
-
-    public void OnUnpausableCutsceneEnded()
-    {
-        GameStateHandler.Instance.UnpausableCutsceneEnded();
     }
 }

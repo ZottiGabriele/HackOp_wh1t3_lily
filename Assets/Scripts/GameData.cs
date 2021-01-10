@@ -10,6 +10,7 @@ public class GameData : ScriptableObject
     //GENERAL
     public int CurrentScene = 1;
     public float[] PlayerPosition = { 4.7f, 0, 0 };
+    public float[] PrevPlayerPosition = { 0, 0, 0 };
     public int HintTokenCount = 0;
     public bool IntroPlayed = false;
     public bool FirstTokenFound = false;
@@ -44,6 +45,7 @@ public class GameData : ScriptableObject
     {
         CurrentScene = save.CurrentScene;
         PlayerPosition = save.PlayerPosition;
+        PrevPlayerPosition = save.PrevPlayerPosition;
         HintTokenCount = save.HintTokenCount;
         IntroPlayed = save.IntroPlayed;
         FirstTokenFound = save.FirstTokenFound;

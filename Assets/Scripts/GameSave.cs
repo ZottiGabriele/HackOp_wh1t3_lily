@@ -7,6 +7,7 @@ public class GameSave
 {
     public int CurrentScene = 1;
     public float[] PlayerPosition = { 4.7f, 0, 0 };
+    public float[] PrevPlayerPosition = { 0, 0, 0 };
     public int HintTokenCount = 0;
     public bool IntroPlayed = false;
     public bool FirstTokenFound = false;
@@ -43,6 +44,7 @@ public class GameSave
     {
         CurrentScene = data.CurrentScene;
         PlayerPosition = data.PlayerPosition;
+        PrevPlayerPosition = data.PrevPlayerPosition;
         HintTokenCount = data.HintTokenCount;
         IntroPlayed = data.IntroPlayed;
         FirstTokenFound = data.FirstTokenFound;

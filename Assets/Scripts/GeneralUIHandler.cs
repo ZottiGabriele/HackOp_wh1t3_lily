@@ -43,6 +43,7 @@ public class GeneralUIHandler : MonoBehaviour
     public void PlayText(string text)
     {
         _textBox.SetActive(true);
+        if (Application.isPlaying && text != _text.text) SoundsHandler.Instance.PlayTextSound();
         _text.text = text;
     }
 
@@ -130,6 +131,7 @@ public class GeneralUIHandler : MonoBehaviour
         _text.text = "";
         foreach (var c in text)
         {
+            SoundsHandler.Instance.PlayTextSound();
             _text.text += c;
             yield return new WaitForSeconds(1 - _typingSpeed);
         }

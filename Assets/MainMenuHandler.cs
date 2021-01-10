@@ -11,6 +11,8 @@ public class MainMenuHandler : MonoBehaviour
     [SerializeField] Cutscene _outro;
     [SerializeField] Cutscene _intro_pt1;
 
+    RoamingUiHandler _rui;
+
     private void Start()
     {
         var gameDataFound = GameStateHandler.Instance.LoadGame();
@@ -27,6 +29,8 @@ public class MainMenuHandler : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         PlayerController.Instance.DisableInput();
+        _rui = FindObjectOfType<RoamingUiHandler>();
+        if (_rui != null) _rui.gameObject.SetActive(false);
     }
 
     public void OnNewGame()
@@ -47,6 +51,7 @@ public class MainMenuHandler : MonoBehaviour
         {
             closeMainMenu();
             PlayerController.Instance.EnableInput();
+            if (_rui != null) _rui.gameObject.SetActive(true);
         });
     }
 

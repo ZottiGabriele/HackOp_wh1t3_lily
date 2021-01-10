@@ -12,6 +12,7 @@ public class ChangeSceneInteractionArea : IInteractionArea
 
     protected override void execute()
     {
+        SoundsHandler.Instance.PlayDoorSound();
         _fadeout.ForcePlay(() =>
         {
             GameStateHandler.Instance.ChangeScene(_sceneToLoad);

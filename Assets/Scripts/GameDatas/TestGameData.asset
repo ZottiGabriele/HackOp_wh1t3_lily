@@ -17,21 +17,25 @@ MonoBehaviour:
   - 4.444005
   - -0.00032615662
   - 0
-  HintTokenCount: 0
+  PrevPlayerPosition:
+  - 0
+  - 0
+  - 0
+  HintTokenCount: 10
   IntroPlayed: 1
-  FirstTokenFound: 0
-  TutorialCompleted: 0
+  FirstTokenFound: 1
+  TutorialCompleted: 1
   FoundHintIDs: []
   UnlockedHintIDs: []
   InteractedWithFirstComputer: 1
   InteractedWithMailApp: 1
   ConnectedViaSsh: 1
-  FirstChallengeCompleted: 0
-  EnteredOffice: 0
-  InteractedWithSecondComputer: 0
-  SecurityCameraFound: 0
-  SecondChallengeCompleted: 0
-  InteractedWithKeypad: 0
+  FirstChallengeCompleted: 1
+  EnteredOffice: 1
+  InteractedWithSecondComputer: 1
+  SecurityCameraFound: 1
+  SecondChallengeCompleted: 1
+  InteractedWithKeypad: 1
   OpenedServerDoor: 0
   InteractedWithThirdComputer: 0
   ThirdChallengeCompleted: 0

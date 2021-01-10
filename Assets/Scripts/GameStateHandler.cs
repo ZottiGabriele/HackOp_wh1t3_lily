@@ -37,7 +37,7 @@ public class GameStateHandler : MonoBehaviour
         else
         {
             Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 
@@ -50,7 +50,6 @@ public class GameStateHandler : MonoBehaviour
         if (_gameData != null)
         {
             _gameData = Instantiate(_gameData);
-            _gameData.CurrentScene = SceneManager.GetActiveScene().buildIndex;
             Debug.LogWarning("Custom GameData assigned: GAME WILL NOT LOAD SAVE DATA!");
         }
         else
@@ -145,7 +144,13 @@ public class GameStateHandler : MonoBehaviour
 
     public void ChangeScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        bool goingBack = sceneIndex < _gameData.CurrentScene;
+
+        SceneManager.LoadSceneAsync(sceneIndex).completed += _ =>
+        {
+            if (goingBack) PlayerController.Instance.transform.position = ISceneHandler.Instance.GoBackPosition;
+            SaveGame();
+        };
     }
 
     private void ChangeGameState(GameState newGameState)

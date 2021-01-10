@@ -13,6 +13,8 @@ public class Keypad : MonoBehaviour
 
     public void PressedKey(string key)
     {
+        SoundsHandler.Instance.PlayKeypadSound();
+
         if (_displayText.text.Length < 5)
         {
             _displayText.text += key;
@@ -21,6 +23,8 @@ public class Keypad : MonoBehaviour
 
     public void DeleteKey()
     {
+        SoundsHandler.Instance.PlayKeypadSound();
+
         if (_displayText.text.Length > 0)
         {
             _displayText.text = _displayText.text.Substring(0, _displayText.text.Length - 1);
@@ -36,6 +40,7 @@ public class Keypad : MonoBehaviour
     {
         if (_displayText.text == _targetCode)
         {
+            SoundsHandler.Instance.PlayKeypadRightSound();
             _rightCode.Play(_ =>
             {
                 Clear();
@@ -45,6 +50,7 @@ public class Keypad : MonoBehaviour
         }
         else
         {
+            SoundsHandler.Instance.PlayKeypadWrongSound();
             _wrongCode.Play(_ =>
             {
                 Clear();

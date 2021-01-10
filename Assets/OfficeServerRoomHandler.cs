@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class OfficeServerRoomHandler : MonoBehaviour
+public class OfficeServerRoomHandler : ISceneHandler
 {
     [SerializeField] Cutscene _thirdChallengeCompletedCutscene;
     [SerializeField] Cutscene _fourthChallengeCompletedCutscene;
@@ -28,14 +29,10 @@ public class OfficeServerRoomHandler : MonoBehaviour
         thirdChallengeCompletedCutscene = _thirdChallengeCompletedCutscene;
         fourthChallengeCompletedCutscene = _fourthChallengeCompletedCutscene;
 
-        // if (GameStateHandler.Instance.GameData.ExtractedHiddenFolder)
-        // {
-        //     ExtractHiddenFolder();
-        //     TerminalHandler.Instance.ClearScreen();
-        // }
-
         partOneSideBar.SetActive(!GameStateHandler.Instance.GameData.ThirdChallengeCompleted);
         partTwoSideBar.SetActive(GameStateHandler.Instance.GameData.ThirdChallengeCompleted);
+
+        GameStateHandler.Instance.SaveGame();
     }
 
     public static void OnThirdChallengeCompleted()
@@ -88,18 +85,8 @@ public class OfficeServerRoomHandler : MonoBehaviour
         GameStateHandler.Instance.GameData.ViewedImage = true;
     }
 
-    public void InteractingWithComputer(bool isInteracting)
+    public void CreditsEnded()
     {
-        GameStateHandler.Instance.InteractingWithComputer(isInteracting);
-    }
-
-    public void UnpausableCutsceneStarted()
-    {
-        GameStateHandler.Instance.UnpausableCutsceneStarted();
-    }
-
-    public void UnpausableCutsceneEnded()
-    {
-        GameStateHandler.Instance.UnpausableCutsceneEnded();
+        Application.Quit();
     }
 }

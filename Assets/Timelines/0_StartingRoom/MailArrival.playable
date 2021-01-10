@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CutsceneTextClip
   m_EditorClassIdentifier: 
   _template:
-    _text: Let's take a peek with the terminal...
+    _text: Let's see where this ssh points to with the terminal ...
 --- !u!114 &-8046453293773528891
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +220,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.916666
+        time: 30.366667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -248,7 +248,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.916666
+        time: 30.366667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -333,7 +333,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 26.916666
+    m_StopTime: 30.366667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -512,7 +512,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.916666
+        time: 30.366667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -540,7 +540,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 26.916666
+        time: 30.366667
         value: 1
         inSlope: Infinity
         outSlope: Infinity
@@ -622,7 +622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 27.038339217503864
+  m_Time: 30.378340085347492
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: ddd3282c6ba582648a08fc6f53eec6ec, type: 2}
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15c38f6fa1940124db1ab7f6fe7268d1, type: 3}
   m_Name: Signal Emitter
   m_EditorClassIdentifier: 
-  m_Time: 27.038339217503864
+  m_Time: 30.378340085347492
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: 5945a3b0975ff544bad8d275901ae79e, type: 2}
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_Name: CutsceneTextClip
   m_EditorClassIdentifier: 
   _template:
-    _text: What is this about? Who is wh1t3_lily?
+    _text: Who is this wh1t3_lily?
 --- !u!114 &3969142223097900627
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -774,7 +774,7 @@ MonoBehaviour:
     m_Start: 10.563334067662556
     m_ClipIn: 0
     m_Asset: {fileID: 3207777503318998846}
-    m_Duration: 3.900001049041748
+    m_Duration: 3.3750007152557373
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3969142223097900627}
     m_EaseInDuration: 0
@@ -840,7 +840,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CutsceneTextClip
   - m_Version: 1
-    m_Start: 19.16833694775899
+    m_Start: 21.878337224324543
     m_ClipIn: 0
     m_Asset: {fileID: -3207970822705717322}
     m_Duration: 3.970001220703125
@@ -909,7 +909,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CutsceneTextClip
   - m_Version: 1
-    m_Start: 14.463335116704304
+    m_Start: 13.938334782918293
     m_ClipIn: 0
     m_Asset: {fileID: 7484408562358035994}
     m_Duration: 4.7050018310546875
@@ -978,10 +978,79 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CutsceneTextClip
   - m_Version: 1
-    m_Start: 23.138338168462116
+    m_Start: 25.848338445027668
     m_ClipIn: 0
     m_Asset: {fileID: -8962067365178097132}
-    m_Duration: 3.900001049041748
+    m_Duration: 4.530001640319824
+    m_TimeScale: 1
+    m_ParentTrack: {fileID: 3969142223097900627}
+    m_EaseInDuration: 0
+    m_EaseOutDuration: 0
+    m_BlendInDuration: 0
+    m_BlendOutDuration: 0
+    m_MixInCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_MixOutCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_BlendInCurveMode: 0
+    m_BlendOutCurveMode: 0
+    m_ExposedParameterNames: []
+    m_AnimationCurves: {fileID: 0}
+    m_Recordable: 0
+    m_PostExtrapolationMode: 0
+    m_PreExtrapolationMode: 0
+    m_PostExtrapolationTime: 0
+    m_PreExtrapolationTime: 0
+    m_DisplayName: CutsceneTextClip
+  - m_Version: 1
+    m_Start: 18.64333661397298
+    m_ClipIn: 0
+    m_Asset: {fileID: 6946608448202655930}
+    m_Duration: 3.2350006103515625
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3969142223097900627}
     m_EaseInDuration: 0
@@ -1085,7 +1154,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 9046378007845489756}
-    m_Duration: 27.038339217503864
+    m_Duration: 30.378340085347492
     m_TimeScale: 1
     m_ParentTrack: {fileID: 5777185894148917348}
     m_EaseInDuration: 0
@@ -1169,6 +1238,20 @@ MonoBehaviour:
   m_Retroactive: 0
   m_EmitOnce: 0
   m_Asset: {fileID: 11400000, guid: b6490a8188b30f94fbe876bc460c4bd8, type: 2}
+--- !u!114 &6946608448202655930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b7a0a49b4ede9749a939a2399803036, type: 3}
+  m_Name: CutsceneTextClip
+  m_EditorClassIdentifier: 
+  _template:
+    _text: What is this about?
 --- !u!114 &7330256632161179847
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1194,7 +1277,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 5618718155913109244}
-    m_Duration: 27.038339217503864
+    m_Duration: 30.378340085347492
     m_TimeScale: 1
     m_ParentTrack: {fileID: 7330256632161179847}
     m_EaseInDuration: 0
