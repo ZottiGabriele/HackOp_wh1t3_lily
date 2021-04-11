@@ -84,7 +84,7 @@ def parse_custom_tags(d):
 
     set_uid = d['name'].__contains__("_s_")
     if(set_uid):
-        d['flags'] = "sr-xr-xr-x"
+        d['flags'] = "-r-sr-xr-x"
 
     unreadable = d['name'].__contains__("_u_")
     if(unreadable):

@@ -19,6 +19,7 @@ public class GameSave
     public bool InteractedWithFirstComputer = false;
     public bool InteractedWithMailApp = false;
     public bool ConnectedViaSsh = false;
+    public bool NotesThought = false;
     public bool FirstChallengeCompleted = false;
 
     //SECOND CHALLENGE
@@ -54,6 +55,7 @@ public class GameSave
         InteractedWithFirstComputer = data.InteractedWithFirstComputer;
         InteractedWithMailApp = data.InteractedWithMailApp;
         ConnectedViaSsh = data.ConnectedViaSsh;
+        NotesThought = data.NotesThought;
         FirstChallengeCompleted = data.FirstChallengeCompleted;
         EnteredOffice = data.EnteredOffice;
         InteractedWithSecondComputer = data.InteractedWithSecondComputer;

@@ -249,7 +249,20 @@
             "user": "user",
             "group": "group",
             "type": "directory",
-            "childs": []
+            "childs": [
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "logs.txt",
+                "full_path": "/home/user/logs.txt",
+                "r_path": "VFS/challenge_3/home/user/logs",
+                "flags": "-rw-rw-r--",
+                "user": "user",
+                "group": "group",
+                "type": "file",
+                "content": "+3264:55958cb4:0|GET / HTTP/1.1|Host:localhost|Connection:keep-alive|\nCache-Control:max-age=0|\nAccept:text/html,application/xhtml+xml\nUser-Agent:Mozilla/5.0 (X11; Linux x86_64)\nAccept-Encoding:gzip, deflate, sdch|\nAccept-Language:en-US,en;q=0.8|\nIf-None-Match:\"2cf6-519e8edfca429-gzip\"|\nIf-Modified-Since:Thu, 02 Jul 2015 18%3a51%3a39 GMT"
+              }
+            ]
           },
           {
             "hidden": true,
@@ -264,10 +277,10 @@
             "childs": [
               {
                 "hidden": false,
-                "readable": true,
+                "readable": false,
                 "name": "wh1t3_l1ly.jpg",
                 "full_path": "/home/.wh1t3_l1ly/wh1t3_l1ly.jpg",
-                "r_path": "VFS/challenge_3/home/_ro__h_wh1t3_l1ly/_ro_wh1t3_l1ly",
+                "r_path": "VFS/challenge_3/home/_ro__h_wh1t3_l1ly/_ro__u_wh1t3_l1ly",
                 "flags": "-r-xr-x---",
                 "user": "root",
                 "group": "root",
@@ -296,7 +309,7 @@
                 "user": "root",
                 "group": "root",
                 "type": "file",
-                "content": "B3_C4REFUL_0F_W1LD3C4RD5"
+                "content": "B3_C4REFUL_0F_W1LDC4RD5"
               },
               {
                 "hidden": false,
@@ -343,7 +356,7 @@
                     "user": "root",
                     "group": "root",
                     "type": "file",
-                    "content": "- Call client 10382 on Monday\n- Buy new toilet paper for the office\n- Find a better solution to make these files available to users (there might be a vulnerability!)\n- Fix the broken chair in server room HA-1\n- Upgrade server storage (Wait for Buyazon discounts?)"
+                    "content": "- Call client 10382 on Monday\n- Buy new toilet paper for the office\n- Find a better solution to make these files available to users (there might be a vulnerability!)\n- Fix the broken chair in server room HA-1\n- Upgrade server storage (Wait for Buyazon discounts?)\n- Find another place to store root password"
                   }
                 ]
               }

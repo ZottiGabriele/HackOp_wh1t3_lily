@@ -168,9 +168,9 @@
               {
                 "hidden": false,
                 "readable": true,
-                "name": "whishlist.txt",
-                "full_path": "/home/user/whishlist.txt",
-                "r_path": "VFS/challenge_0/home/user/whishlist",
+                "name": "wishlist.txt",
+                "full_path": "/home/user/wishlist.txt",
+                "r_path": "VFS/challenge_0/home/user/wishlist",
                 "flags": "-rw-rw-r--",
                 "user": "user",
                 "group": "group",

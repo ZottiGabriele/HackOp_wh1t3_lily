@@ -207,7 +207,7 @@
                 "name": "welcome_user",
                 "full_path": "/home/user/welcome_user",
                 "r_path": "VFS/challenge_2/home/user/_r__s_welcome_user",
-                "flags": "sr-xr-xr-x",
+                "flags": "-r-sr-xr-x",
                 "user": "root",
                 "group": "root",
                 "type": "cmd",
@@ -276,6 +276,31 @@
             "group": "group",
             "type": "directory",
             "childs": []
+          },
+          {
+            "hidden": false,
+            "readable": true,
+            "name": "local",
+            "full_path": "/usr/local",
+            "r_path": "VFS/challenge_2/usr/local",
+            "flags": "dr-xr-xr-x",
+            "user": "user",
+            "group": "group",
+            "type": "directory",
+            "childs": [
+              {
+                "hidden": false,
+                "readable": true,
+                "name": "bin",
+                "full_path": "/usr/local/bin",
+                "r_path": "VFS/challenge_2/usr/local/bin",
+                "flags": "dr-xr-xr-x",
+                "user": "user",
+                "group": "group",
+                "type": "directory",
+                "childs": []
+              }
+            ]
           }
         ]
       },

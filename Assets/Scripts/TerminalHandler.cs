@@ -21,6 +21,7 @@ public class TerminalHandler : MonoBehaviour
     public VirtualFileSystem VirtualFileSystem { get => _virtualFileSystem.Peek(); }
 
     public Action OnChallengeCompleted = () => { };
+    public Action<string> OnInputProcessed = (string _) => { };
 
     [SerializeField] GameObject _terminalUI;
     [SerializeField] GameObject _lineTameplate;
@@ -68,16 +69,19 @@ public class TerminalHandler : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (!_readingInput)
         {
-            _currentInputField.text = TerminalConfig.GetPrevInHistory();
-            _currentInputField.stringPosition = _currentInputField.text.Length;
-        }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                _currentInputField.text = TerminalConfig.GetPrevInHistory();
+                _currentInputField.stringPosition = _currentInputField.text.Length;
+            }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            _currentInputField.text = TerminalConfig.GetNextInHistory();
-            _currentInputField.stringPosition = _currentInputField.text.Length;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                _currentInputField.text = TerminalConfig.GetNextInHistory();
+                _currentInputField.stringPosition = _currentInputField.text.Length;
+            }
         }
 
         if (EventSystem.current.currentSelectedGameObject == null)
@@ -98,6 +102,8 @@ public class TerminalHandler : MonoBehaviour
             _onInputRead(line.cmd);
             _readingInput = false;
         }
+
+        OnInputProcessed(line.cmd);
     }
 
     public void InstantiateNewLine()
@@ -134,12 +140,12 @@ public class TerminalHandler : MonoBehaviour
             }
             else if (target.type != "cmd")
             {
-                DisplayOutput("ERROR: Cannot execute.");
+                DisplayOutput("ERROR: Cannot be executed.");
                 return;
             }
             else if (!CheckPermissions(target, "r-x"))
             {
-                DisplayOutput("ERROR: Permission deined.");
+                DisplayOutput("ERROR: Permission denied.");
                 return;
             }
             else
@@ -291,6 +297,16 @@ public class TerminalHandler : MonoBehaviour
             ScriptableObject.Destroy(_configs.Pop());
             InstantiateNewLine();
         }
+    }
+
+    public void ResetTerminal()
+    {
+        while (_sshCount > 0 || _configs.Count > 1)
+        {
+            ExitShell();
+        }
+
+        ExitShell();
     }
 
     public void BuildPrompt()

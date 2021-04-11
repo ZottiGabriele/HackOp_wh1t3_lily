@@ -222,6 +222,15 @@ public class GameStateHandler : MonoBehaviour
 #endif
     }
 
+    public void CompleteGame()
+    {
+        if (File.Exists(SAVE_PATH))
+        {
+            File.Delete(SAVE_PATH);
+        }
+        Application.Quit();
+    }
+
     public enum GameState
     {
         Playing,

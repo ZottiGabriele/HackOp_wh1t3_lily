@@ -22,6 +22,7 @@ public class GameData : ScriptableObject
     public bool InteractedWithFirstComputer = false;
     public bool InteractedWithMailApp = false;
     public bool ConnectedViaSsh = false;
+    public bool NotesThought = false;
     public bool FirstChallengeCompleted = false;
 
     //SECOND CHALLENGE
@@ -55,6 +56,7 @@ public class GameData : ScriptableObject
         InteractedWithFirstComputer = save.InteractedWithFirstComputer;
         InteractedWithMailApp = save.InteractedWithMailApp;
         ConnectedViaSsh = save.ConnectedViaSsh;
+        NotesThought = save.NotesThought;
         FirstChallengeCompleted = save.FirstChallengeCompleted;
         EnteredOffice = save.EnteredOffice;
         InteractedWithSecondComputer = save.InteractedWithSecondComputer;

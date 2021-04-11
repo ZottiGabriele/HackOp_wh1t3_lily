@@ -42,13 +42,21 @@ public class DecodeCommand : ICommand
                 return;
         }
 
-        var output = decode(content, alg);
-        TerminalHandler.Instance.DisplayOutput(output);
-
-        if (output == "ANSWER{FORTYTWO}")
+        try
         {
-            OfficeServerRoomHandler.OnFourthChallengeCompelted();
+            var output = decode(content, alg);
+            TerminalHandler.Instance.DisplayOutput(output);
+
+            if (output == "ANSWER{FORTYTWO}")
+            {
+                OfficeServerRoomHandler.OnFourthChallengeCompelted();
+            }
         }
+        catch (Exception e)
+        {
+            TerminalHandler.Instance.DisplayOutput("ERROR: The string can't be decoded with the chosen algorithm.");
+        }
+
     }
 
     private string decode(string input, DecodeAlg alg)

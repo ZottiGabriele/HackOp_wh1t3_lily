@@ -10,23 +10,30 @@ public class MvCommand : ICommand
     public override string GetCmdMatch() => "^ *mv +\\S+ +\\S+ *$";
     public override void OnCmdMatch()
     {
-        var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
+        var cmd = _cmd.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
 
         var source = TerminalHandler.Instance.VirtualFileSystem.Query(cmd[1]);
         int last_sep = 0;
 
-        if(source == null) {
+        if (source == null)
+        {
             TerminalHandler.Instance.DisplayOutput("ERROR: source file not found");
-        } else {
+        }
+        else
+        {
 
-            if(source.type == "directory") {
+            if (source.type == "directory")
+            {
                 TerminalHandler.Instance.DisplayOutput("ERROR: moving / renaming folders is not allowed.");
                 return;
-            } else if(source.type == "file") {
+            }
+            else
+            {
                 last_sep = source.full_path.LastIndexOf('/');
                 string source_parent_path = (last_sep == 0) ? "/" : source.full_path.Remove(last_sep);
                 var source_parent = TerminalHandler.Instance.VirtualFileSystem.Query(source_parent_path);
-                if(!TerminalHandler.Instance.CheckPermissions(source_parent, "-wx")) {
+                if (!TerminalHandler.Instance.CheckPermissions(source_parent, "-wx"))
+                {
                     TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied.");
                     return;
                 }
@@ -38,17 +45,20 @@ public class MvCommand : ICommand
             var destination_parent = TerminalHandler.Instance.VirtualFileSystem.Query(destination_parent_path);
             var destination = TerminalHandler.Instance.VirtualFileSystem.Query(destination_path);
 
-            if(destination != null && destination.type == "directory") {
+            if (destination != null && destination.type == "directory")
+            {
                 destination_path += "/" + source.name;
                 destination_parent = destination;
             }
 
-            if(destination_parent == null) {
+            if (destination_parent == null)
+            {
                 TerminalHandler.Instance.DisplayOutput("ERROR: Destination folder \"" + destination_parent_path + "\" not found.");
                 return;
             }
 
-            if(!TerminalHandler.Instance.CheckPermissions(destination_parent, "-wx")) {
+            if (!TerminalHandler.Instance.CheckPermissions(destination_parent, "-wx"))
+            {
                 TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied.");
                 return;
             }

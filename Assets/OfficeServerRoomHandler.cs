@@ -46,7 +46,7 @@ public class OfficeServerRoomHandler : ISceneHandler
 
     public static void ExtractHiddenFolder()
     {
-        var gibberish = new VirtualFileSystemEntry(true, true, "gibberish.txt", "/home/.wh1t3_l1ly/nothing_to_see_here/gibberish.txt", "/home/_ro_h_wh1t3_l1ly/nothing_to_see_here/gibberish.txt", "-rw-------", "root", "root", "file",
+        var gibberish = new VirtualFileSystemEntry(false, true, "gibberish.txt", "/home/.wh1t3_l1ly/nothing_to_see_here/gibberish.txt", "/home/_ro_h_wh1t3_l1ly/nothing_to_see_here/gibberish.txt", "-rw-------", "root", "root", "file",
             "Why even look at this gibberish?\n" +
             "\n" +
             "54 6b 46 47 53 6c 4a 46 65 31 4e 43 52 55 64 4d 52 30 70 43 66 51 3d 3d\n" +
@@ -55,7 +55,7 @@ public class OfficeServerRoomHandler : ISceneHandler
             new VirtualFileSystemEntry[0]
         );
 
-        var folder = new VirtualFileSystemEntry(true, true, "nothing_to_see_here", "/home/.wh1t3_l1ly/nothing_to_see_here", "/home/_ro_h_wh1t3_l1ly/nothing_to_see_here", "drwx------", "root", "root", "directory",
+        var folder = new VirtualFileSystemEntry(false, true, "nothing_to_see_here", "/home/.wh1t3_l1ly/nothing_to_see_here", "/home/_ro_h_wh1t3_l1ly/nothing_to_see_here", "drwx------", "root", "root", "directory",
             "",
             new VirtualFileSystemEntry[] { gibberish }
         );
@@ -87,6 +87,6 @@ public class OfficeServerRoomHandler : ISceneHandler
 
     public void CreditsEnded()
     {
-        Application.Quit();
+        GameStateHandler.Instance.CompleteGame();
     }
 }

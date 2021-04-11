@@ -1,4 +1,4 @@
 TODO:
  - Create new Master Password to generate daily codes.
- - Safely <b>hide</b> the Master Password somewhere on this computer.
+ - Safely <b>hide</b> the Master Password somewhere on this computer (NOT THIS FOLDER PLEASE).
  - Delete this file after it's done.
