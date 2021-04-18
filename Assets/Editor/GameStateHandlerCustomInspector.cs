@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UIElements;
 
+
+/// <summary>
+/// Custom editor that adds commonly needed functionality through the addition of buttons
+/// under the GameStateHandler editor inspector.
+/// </summary>
+
 [CustomEditor(typeof(GameStateHandler))]
 public class GameStateHandlerCustomInspector : Editor
 {

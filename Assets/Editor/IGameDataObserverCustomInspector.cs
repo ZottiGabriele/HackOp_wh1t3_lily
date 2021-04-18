@@ -7,6 +7,11 @@ using System.IO;
 using UnityEngine.Events;
 using System;
 
+
+/// <summary>
+/// Custom editor drawer for the IGameDataObserver script.
+/// It's job is to draw an editor popup to chose which game data condition the script should check before executing
+/// </summary>
 [CustomEditor(typeof(IGameDataObserver), true)]
 public class IGameDataObserverCustomInspector : Editor
 {

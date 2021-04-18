@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Singleton Interface for each scene handler's basic functionalities.
+/// </summary>
 public abstract class ISceneHandler : MonoBehaviour
 {
     public static ISceneHandler Instance;

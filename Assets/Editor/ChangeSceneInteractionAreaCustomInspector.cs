@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 
+/// <summary>
+/// Editor extension that creates a popup to chose which scene has to be loaded on interaction by the
+/// underlying ChangeSceneInteractionArea script.
+/// </summary>
 [CustomEditor(typeof(ChangeSceneInteractionArea))]
 public class ChangeSceneInteractionAreaCustomInspector : IGameDataObserverCustomInspector
 {

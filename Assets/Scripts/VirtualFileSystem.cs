@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/// <summary>
+/// Serializable emulated file system that provides all the operations to interact with it.
+/// </summary>
+
 [System.Serializable]
 public class VirtualFileSystem
 {
@@ -13,6 +17,11 @@ public class VirtualFileSystem
     public List<VirtualFileSystemEntry> AvailableCommands { get => getAvailableCommands(); }
     private Dictionary<string, VirtualFileSystemEntry> _hashTable = new Dictionary<string, VirtualFileSystemEntry>();
 
+    /// <summary>
+    /// Static method to deserialize a Json file rapresenting a VirtualFileSystem.
+    /// </summary>
+    /// <param name="jsonString">The json text to deserialize.</param>
+    /// <returns>The serialized VirtualFileSystem.</returns>
     public static VirtualFileSystem CreateFromJson(string jsonString)
     {
         var output = JsonUtility.FromJson<VirtualFileSystem>(jsonString);
@@ -22,6 +31,10 @@ public class VirtualFileSystem
         return output;
     }
 
+    /// <summary>
+    /// Returns a List containing all the VirtualFileSystemEntry of the commands found following the current value of the $PATH envinroment variable.
+    /// </summary>
+    /// <returns></returns>
     public List<VirtualFileSystemEntry> getAvailableCommands()
     {
         var output = new List<VirtualFileSystemEntry>();
@@ -45,6 +58,11 @@ public class VirtualFileSystem
         return output;
     }
 
+    /// <summary>
+    /// Queries the VirtualFileSystem for the existence of the requested file.
+    /// </summary>
+    /// <param name="path">The relative or absolute path to the requested file.</param>
+    /// <returns>The requested VirtualFileSystemEntry, or null if the file can't be found.</returns>
     public VirtualFileSystemEntry Query(string path)
     {
         VirtualFileSystemEntry output = null;
@@ -55,6 +73,13 @@ public class VirtualFileSystem
         return output;
     }
 
+    /// <summary>
+    /// <para>Elaborates the given path and returns the full absolute path to the requested entry.</para>
+    /// 
+    /// Use this before passing the path to other methods in order to make sure that the path follows the required specifications
+    /// </summary>
+    /// <param name="path">The path to elaborate.</param>
+    /// <returns></returns>
     public string GetFinalPath(string path)
     {
         if (path == "") return "";
@@ -90,6 +115,12 @@ public class VirtualFileSystem
         return path;
     }
 
+    /// <summary>
+    /// Creates a copy of the source VirtualFileSystemEntry. If the destination file already exists then it will be replaced with the copy.
+    /// </summary>
+    /// <param name="source">The source VirtualFileSystemEntry</param>
+    /// <param name="destination">The destination path of the copy</param>
+    /// <returns></returns>
     public VirtualFileSystemEntry CopyEntry(VirtualFileSystemEntry source, string destination)
     {
 
@@ -119,6 +150,12 @@ public class VirtualFileSystem
         return copy;
     }
 
+    /// <summary>
+    /// Moves the source VirtualFileSystemEntry. If the destination file already exists then it will be replaced with the moved file.
+    /// </summary>
+    /// <param name="source">The source VirtualFileSystemEntry</param>
+    /// <param name="destination">The destination path where to move the file</param>
+    /// <returns></returns>
     public VirtualFileSystemEntry MoveEntry(VirtualFileSystemEntry source, string destination)
     {
         var copy = CopyEntry(source, destination);
@@ -126,6 +163,10 @@ public class VirtualFileSystem
         return copy;
     }
 
+    /// <summary>
+    /// Adds an entry to the VirtualFileSystem. If the entry already exists it will be replaced with the new one.
+    /// </summary>
+    /// <param name="entry">The entry to add to the VirtualFileSystem.</param>
     public void AddEntry(VirtualFileSystemEntry entry)
     {
         var parent_path = entry.full_path.Remove(entry.full_path.LastIndexOf('/'));
@@ -148,10 +189,17 @@ public class VirtualFileSystem
         fixFullPath(parent, entry);
     }
 
+    /// <summary>
+    /// Removes an entry from the VirtualFileSystem.
+    /// </summary>
+    /// <param name="entry">The entry to remove from the VirtualFileSystem</param>
     public void RemoveEntry(VirtualFileSystemEntry entry)
     {
         var parent_path = entry.full_path.Remove(entry.full_path.LastIndexOf('/'));
         var parent = Query(parent_path);
+
+        if (parent == null) return;
+
         var parent_childs = new List<VirtualFileSystemEntry>(parent.childs);
 
         _hashTable.Remove(entry.full_path);
@@ -160,6 +208,11 @@ public class VirtualFileSystem
         parent.childs = parent_childs.ToArray();
     }
 
+    /// <summary>
+    /// Recursively fixes a newly added entry and all his childs paths relative to the new parent.
+    /// </summary>
+    /// <param name="parent">Parent entry.</param>
+    /// <param name="entry">Target entry.</param>
     void fixFullPath(VirtualFileSystemEntry parent, VirtualFileSystemEntry entry)
     {
 

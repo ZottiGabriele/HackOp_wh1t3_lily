@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
+/// <summary>
+/// ScriptableObject containing all the configuration data needed for the emulated terminal.
+/// </summary>
 [CreateAssetMenu(menuName = "Custom/TerminalConfig", fileName = "NewTerminalConfig")]
 public class TerminalConfig : ScriptableObject
 {
@@ -17,6 +20,7 @@ public class TerminalConfig : ScriptableObject
     public Challenge CurrentChallenge { get => _challenge; }
 
     [SerializeField] Challenge _challenge;
+
     [SerializeField]
     ENV_VAR[] _env = new ENV_VAR[]{
         new ENV_VAR("PATH", "/bin:/usr/bin:/usr/local/bin"),
@@ -39,6 +43,11 @@ public class TerminalConfig : ScriptableObject
         }
     }
 
+    /// <summary>
+    /// Returns the value of the requested envinroment variable. If the variable is not present in the envinroment an empty string is returned.
+    /// </summary>
+    /// <param name="var">The name of the variable. IT MUST START WITH THE "$" SIGN.</param>
+    /// <returns></returns>
     public string TryGetEnvVar(string var)
     {
         string val = "";
@@ -46,6 +55,11 @@ public class TerminalConfig : ScriptableObject
         return val;
     }
 
+    /// <summary>
+    /// Sets a new value to the specified envinroment variable.
+    /// </summary>
+    /// <param name="var">The name of the variable. IT MUST START WITH THE "$" SIGN.</param>
+    /// <param name="value">The value of the variable.</param>
     public void SetEnvVar(string var, string value)
     {
         var = var.Substring(1);
@@ -56,6 +70,9 @@ public class TerminalConfig : ScriptableObject
         ENV.Add(var, value);
     }
 
+    /// <summary>
+    /// Loads the available commands based on the current value of the $PATH envinroment variable.
+    /// </summary>
     public void LoadCmdsFromPATH()
     {
         AvailableCommands = new Dictionary<VirtualFileSystemEntry, ICommand>();
@@ -68,6 +85,9 @@ public class TerminalConfig : ScriptableObject
         }
     }
 
+    /// <summary>
+    /// Resets the emulated envinroment.
+    /// </summary>
     public void ResetENV()
     {
         _env = new ENV_VAR[]{
@@ -80,6 +100,10 @@ public class TerminalConfig : ScriptableObject
         OnEnable();
     }
 
+    /// <summary>
+    /// Returns the string containing the previous command in the emulated terminal history.
+    /// </summary>
+    /// <returns></returns>
     public string GetPrevInHistory()
     {
         if (_history.Count == 0) return "";
@@ -88,6 +112,10 @@ public class TerminalConfig : ScriptableObject
         return _history[_historyCounter];
     }
 
+    /// <summary>
+    /// Returns the string containing the next command in the emulated terminal history.
+    /// </summary>
+    /// <returns></returns>
     public string GetNextInHistory()
     {
         if (_history.Count == 0) return "";
@@ -96,6 +124,10 @@ public class TerminalConfig : ScriptableObject
         return _history[_historyCounter];
     }
 
+    /// <summary>
+    /// Adds the command to the history.
+    /// </summary>
+    /// <param name="cmd">The command to add to the history.</param>
     public void AddToHistory(string cmd)
     {
         _history.Add(cmd);

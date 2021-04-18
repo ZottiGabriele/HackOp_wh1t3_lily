@@ -8,6 +8,10 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 
+
+/// <summary>
+/// Script that handles all interactions with the ingame emulated terminal.
+/// </summary>
 public class TerminalHandler : MonoBehaviour
 {
     public bool DebugMode = false;
@@ -90,6 +94,10 @@ public class TerminalHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Method that starts the parsing of a LineHandler text.
+    /// </summary>
+    /// <param name="line">LineHandler containing the text to parse.</param>
     public void OnCommandInputEnd(LineHandler line)
     {
         if (!_readingInput)
@@ -106,6 +114,9 @@ public class TerminalHandler : MonoBehaviour
         OnInputProcessed(line.cmd);
     }
 
+    /// <summary>
+    /// Creates a new line on the emulated terminal.
+    /// </summary>
     public void InstantiateNewLine()
     {
         _currentLine = Instantiate(_lineTameplate, transform);
@@ -115,6 +126,10 @@ public class TerminalHandler : MonoBehaviour
         StartCoroutine(scrollToBottom());
     }
 
+    /// <summary>
+    /// Method that emulates the parsing of the given text as a command of the emulated terminal.
+    /// </summary>
+    /// <param name="cmd">The text to parse.</param>
     public void ParseCommand(string cmd)
     {
         bool match = false;
@@ -190,6 +205,9 @@ public class TerminalHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears the emulated terminal's screen and creates a new empty line.
+    /// </summary>
     public void ClearScreen()
     {
         foreach (Transform child in transform)
@@ -202,12 +220,21 @@ public class TerminalHandler : MonoBehaviour
         InstantiateNewLine();
     }
 
+    /// <summary>
+    /// Displays the given output on the emulated terminal screen and creates a new empty line.
+    /// </summary>
+    /// <param name="output">The output to display.</param>
     public void DisplayOutput(string output)
     {
         _currentLine.GetComponent<LineHandler>().DisplayOutput(output);
         InstantiateNewLine();
     }
 
+    /// <summary>
+    /// Creates an input field and passes the inputted text to the given callback function.
+    /// </summary>
+    /// <param name="prompt">Text to display before the input field.</param>
+    /// <param name="callback">Callback function that will receive the inputted text.</param>
     public void ReadInput(string prompt, Action<string> callback)
     {
         _readingInput = true;
@@ -217,6 +244,15 @@ public class TerminalHandler : MonoBehaviour
         _onInputRead = callback;
     }
 
+    /// <summary>
+    /// <para>Checks the permissions on a VirtualFileSystemEntry against the given flags. This will automatically handle the check for the "user", the "group" and the "others" flags based on the current terminal configuration.</para>
+    /// 
+    /// NOTE: The check will return True only if ALL OF THE PERMISSIONS asked are verified.
+    /// </summary>
+    /// <param name="query_item">The entry that requires the permissions check.</param>
+    /// <param name="flags"><para>Use the following rules to check for permissions: "r--" will check for read, "-w-" will check for write, "--x" will check for execute. </para>
+    /// All combinations are possible to check multiple permissions at once (example: "rw-" will check for read AND write permissions).</param>
+    /// <returns></returns>
     public bool CheckPermissions(VirtualFileSystemEntry query_item, string flags)
     {
 
@@ -248,6 +284,10 @@ public class TerminalHandler : MonoBehaviour
         return p_user || p_group || p_other || TerminalConfig.CurrentUser == "root";
     }
 
+    /// <summary>
+    /// Emulated the creation of a SSH connection to another terminal.
+    /// </summary>
+    /// <param name="tc">The TerminalConfig with the configuration of the SSH terminal.</param>
     public void NewSsh(TerminalConfig tc)
     {
         _sshCount++;
@@ -259,6 +299,9 @@ public class TerminalHandler : MonoBehaviour
         TerminalConfig.LoadCmdsFromPATH();
     }
 
+    /// <summary>
+    /// Emulates the creation of a new shell. Note that there is a limit to the number of cuncurrent shells active.
+    /// </summary>
     public void NewShell()
     {
         if (_configs.Count <= 5)
@@ -277,6 +320,10 @@ public class TerminalHandler : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Emulates the killing of the current shell process. If there is only one shell left, it will close the ingame terminal UI as well.
+    /// </summary>
     public void ExitShell()
     {
         if (_sshCount > 0)
@@ -299,6 +346,9 @@ public class TerminalHandler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Completely resets the terminal by closing all shells and ssh
+    /// </summary>
     public void ResetTerminal()
     {
         while (_sshCount > 0 || _configs.Count > 1)
@@ -309,6 +359,9 @@ public class TerminalHandler : MonoBehaviour
         ExitShell();
     }
 
+    /// <summary>
+    /// Builds the prompt of the emulated terminal based on the current user and hostname.
+    /// </summary>
     public void BuildPrompt()
     {
         _currentPrompt = _currentLine.GetComponentInChildren<TMP_Text>();
@@ -317,11 +370,9 @@ public class TerminalHandler : MonoBehaviour
         _currentPrompt.color = (user == "root") ? new Color(0.31f, 0.94f, 0.13f) : new Color(0.4f, 0.8078431f, 0.8392157f);
     }
 
-    public void RevealHint()
-    {
-        //TODO:
-    }
-
+    /// <summary>
+    /// Forces the emulated terminal to scroll to the last line.
+    /// </summary>
     public void ScrollToBottom()
     {
         StartCoroutine(scrollToBottom());

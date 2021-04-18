@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Interface for a Game Data "Obeserver pattern" implementation as an editor extension
+/// see: Editor/IGameDataObserverCustomInspector.cs
+/// </summary>
 public abstract class IGameDataObserver : MonoBehaviour
 {
     [HideInInspector] [SerializeField] protected bool _hasCondition = false;
