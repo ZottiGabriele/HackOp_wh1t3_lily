@@ -11,8 +11,13 @@ public class GeneralUIHandler : MonoBehaviour
     [SerializeField] GameObject _textBox;
     [SerializeField] GameObject _firstTokenFoundPopUp;
     [SerializeField] GameObject _menu;
+    [SerializeField] GameObject _settings;
     [Range(0, 1)] public float _typingSpeed = 0.95f;
     [SerializeField] TMP_Text _text;
+
+    [Header("Scene Specific Data")]
+    [Space(25)]
+
     [SerializeField] Cutscene fadeOut;
     [SerializeField] Cutscene fadein;
 
@@ -85,6 +90,11 @@ public class GeneralUIHandler : MonoBehaviour
 
     public void ToggleMenu()
     {
+        if (_settings.activeInHierarchy)
+        {
+            HideSettings();
+        }
+
         if (_menu.activeInHierarchy)
         {
             HideMenu();
@@ -106,9 +116,32 @@ public class GeneralUIHandler : MonoBehaviour
         fadeOut.ForcePlay(() => StartCoroutine(loadGameTransition()));
     }
 
+    public void ShowSettings()
+    {
+        HideMenu();
+        GameStateHandler.Instance.PauseGame();
+        _settings.SetActive(true);
+    }
+
+    public void HideSettings()
+    {
+        _settings.SetActive(false);
+        ShowMenu();
+    }
+
     public void OnExitGamePressed()
     {
         GameStateHandler.Instance.ExitGame();
+    }
+
+    public void OnMusicSliderUpdate(float value)
+    {
+        SoundsHandler.Instance.BgMusicVolume = value;
+    }
+
+    public void OnSfxSliderUpdate(float value)
+    {
+        SoundsHandler.Instance.SfxVolume = value;
     }
 
     IEnumerator loadGameTransition()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CutsceneTextClip
   m_EditorClassIdentifier: 
   _template:
-    _text: Someone must have left this behind and didn't delete the file
+    _text: Did wh1t3_l1ly forget to delete this file?
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
     m_Start: 1
     m_ClipIn: 0
     m_Asset: {fileID: -809697580296329600}
-    m_Duration: 4.7050018310546875
+    m_Duration: 4.040000915527344
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6384715577308692392}
     m_EaseInDuration: 0
@@ -125,10 +125,10 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: CutsceneTextClip
   - m_Version: 1
-    m_Start: 5.7050018310546875
+    m_Start: 5.040000915527344
     m_ClipIn: 0
     m_Asset: {fileID: 7585920487010931726}
-    m_Duration: 4.565001487731934
+    m_Duration: 4.9500017166137695
     m_TimeScale: 1
     m_ParentTrack: {fileID: 6384715577308692392}
     m_EaseInDuration: 0
@@ -208,4 +208,4 @@ MonoBehaviour:
   m_Name: CutsceneTextClip
   m_EditorClassIdentifier: 
   _template:
-    _text: So they must have hid the file somewhere on this computer
+    _text: So the master password must be hidden somewhere on this computer ...

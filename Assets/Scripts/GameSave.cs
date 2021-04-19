@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Rapresents the serialized GameData saved on the local storage.
+/// </summary>
+
 [System.Serializable]
 public class GameSave
 {

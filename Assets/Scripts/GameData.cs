@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //! IF ANYTHING IS RENAMED CHECK CONDITIONS ON IINTERACTIONAREA
+
+/// <summary>
+/// ScriptableObject that rapreents the instance of the game data.
+/// </summary>
 [System.Serializable]
 [CreateAssetMenu(menuName = "Custom/GameData", fileName = "New GameData")]
 public class GameData : ScriptableObject

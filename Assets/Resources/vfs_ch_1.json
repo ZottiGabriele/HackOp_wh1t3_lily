@@ -187,7 +187,19 @@
                 "user": "user",
                 "group": "group",
                 "type": "file",
-                "content": "TODO:\n - Create new Master Password to generate daily codes.\n - Safely <b>hide</b> the Master Password somewhere on this computer (NOT THIS FOLDER PLEASE).\n - Delete this file after it's done."
+                "content": "Instructions for wh1t3_l1ly:\n - Safely <b>hide</b> the Master Password to generate daily codes somewhere on this computer (NOT THIS FOLDER PLEASE).\n - Delete this file after it's done."
+              },
+              {
+                "hidden": true,
+                "readable": true,
+                "name": ".not_here.txt",
+                "full_path": "/home/user/.not_here.txt",
+                "r_path": "VFS/challenge_1/home/user/_h_not_here",
+                "flags": "-rw-rw-r--",
+                "user": "user",
+                "group": "group",
+                "type": "file",
+                "content": "Please look for a better place to hide the Master Password ..."
               }
             ]
           }

@@ -7,6 +7,11 @@ public class SoundsHandler : MonoBehaviour
 {
     public static SoundsHandler Instance { get; private set; }
 
+    public float BgMusicVolume { get => _bgMusicVolume; set { _bgMusicVolume = value; _musicAudioSource.volume = _bgMusicVolume; } }
+    public float SfxVolume { get => _sfxVolume; set { _sfxVolume = value; _sfxAudioSource.volume = _sfxVolume; } }
+
+    [SerializeField] AudioSource _musicAudioSource;
+    [SerializeField] AudioSource _sfxAudioSource;
     [SerializeField] AudioClip _bgMusic;
     [SerializeField] AudioClip _hintTokenFound;
     [SerializeField] AudioClip _text;
@@ -16,7 +21,9 @@ public class SoundsHandler : MonoBehaviour
     [SerializeField] AudioClip _keyPadWrong;
     [SerializeField] bool playBgMusic = false;
 
-    AudioSource _audioSource;
+    float _bgMusicVolume = 1;
+    float _sfxVolume = 1;
+
 
     private void Awake()
     {
@@ -34,41 +41,43 @@ public class SoundsHandler : MonoBehaviour
 
     private void Start()
     {
-        _audioSource = GetComponent<AudioSource>();
         if (playBgMusic)
         {
-            _audioSource.clip = _bgMusic;
-            _audioSource.Play();
+            _musicAudioSource.clip = _bgMusic;
+            _musicAudioSource.volume = BgMusicVolume;
+            _musicAudioSource.Play();
         }
+
+        _sfxAudioSource.volume = SfxVolume;
     }
 
     public void PlayHintTokenFoundSound()
     {
-        _audioSource.PlayOneShot(_hintTokenFound);
+        _sfxAudioSource.PlayOneShot(_hintTokenFound);
     }
 
     public void PlayTextSound()
     {
-        _audioSource.PlayOneShot(_text);
+        _sfxAudioSource.PlayOneShot(_text);
     }
 
     public void PlayDoorSound()
     {
-        _audioSource.PlayOneShot(_door);
+        _sfxAudioSource.PlayOneShot(_door);
     }
 
     public void PlayKeypadSound()
     {
-        _audioSource.PlayOneShot(_keyPadBtn);
+        _sfxAudioSource.PlayOneShot(_keyPadBtn);
     }
 
     public void PlayKeypadRightSound()
     {
-        _audioSource.PlayOneShot(_keyPadRight);
+        _sfxAudioSource.PlayOneShot(_keyPadRight);
     }
 
     public void PlayKeypadWrongSound()
     {
-        _audioSource.PlayOneShot(_keyPadWrong);
+        _sfxAudioSource.PlayOneShot(_keyPadWrong);
     }
 }

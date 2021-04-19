@@ -1,4 +1,3 @@
-TODO:
- - Create new Master Password to generate daily codes.
- - Safely <b>hide</b> the Master Password somewhere on this computer (NOT THIS FOLDER PLEASE).
+Instructions for wh1t3_l1ly:
+ - Safely <b>hide</b> the Master Password to generate daily codes somewhere on this computer (NOT THIS FOLDER PLEASE).
  - Delete this file after it's done.

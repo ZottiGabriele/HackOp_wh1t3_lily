@@ -169,6 +169,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayStepSound()
     {
+        _audioSource.volume = SoundsHandler.Instance.SfxVolume;
         _audioSource.Play();
     }
 }
