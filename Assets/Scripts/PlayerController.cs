@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
     {
         switch (gameState)
         {
+            case GameStateHandler.GameState.Paused:
             case GameStateHandler.GameState.UnpausableCutscene:
             case GameStateHandler.GameState.InteractingWithComputer:
                 DisableInput();
