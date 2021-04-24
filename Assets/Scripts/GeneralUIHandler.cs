@@ -12,6 +12,8 @@ public class GeneralUIHandler : MonoBehaviour
     [SerializeField] GameObject _firstTokenFoundPopUp;
     [SerializeField] GameObject _menu;
     [SerializeField] GameObject _settings;
+    [SerializeField] UnityEngine.UI.Slider _bgMusicSlider;
+    [SerializeField] UnityEngine.UI.Slider _sfxSlider;
     [Range(0, 1)] public float _typingSpeed = 0.95f;
     [SerializeField] TMP_Text _text;
 
@@ -35,6 +37,12 @@ public class GeneralUIHandler : MonoBehaviour
             Debug.LogWarning("ATTENTION: " + this + " has been destroyed because of double singleton");
             Destroy(this);
         }
+    }
+
+    private void Start()
+    {
+        _bgMusicSlider.value = GameStateHandler.Instance.GameData.BgMusicVolume;
+        _sfxSlider.value = GameStateHandler.Instance.GameData.SfxVolume;
     }
 
     public void ShowText(string text)

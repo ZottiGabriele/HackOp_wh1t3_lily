@@ -22,6 +22,10 @@ public class GameData : ScriptableObject
     public List<string> FoundHintIDs = new List<string>();
     public List<string> UnlockedHintIDs = new List<string>();
 
+    //SETTINGS
+    public float BgMusicVolume = 1;
+    public float SfxVolume = 1;
+
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
     public bool InteractedWithMailApp = false;
@@ -57,6 +61,8 @@ public class GameData : ScriptableObject
         TutorialCompleted = save.TutorialCompleted;
         FoundHintIDs = save.FoundHintIDs;
         UnlockedHintIDs = save.UnlockedHintIDs;
+        BgMusicVolume = save.BgMusicVolume;
+        SfxVolume = save.SfxVolume;
         InteractedWithFirstComputer = save.InteractedWithFirstComputer;
         InteractedWithMailApp = save.InteractedWithMailApp;
         ConnectedViaSsh = save.ConnectedViaSsh;

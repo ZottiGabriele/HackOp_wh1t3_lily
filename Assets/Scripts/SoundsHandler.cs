@@ -7,8 +7,8 @@ public class SoundsHandler : MonoBehaviour
 {
     public static SoundsHandler Instance { get; private set; }
 
-    public float BgMusicVolume { get => _bgMusicVolume; set { _bgMusicVolume = value; _musicAudioSource.volume = _bgMusicVolume; } }
-    public float SfxVolume { get => _sfxVolume; set { _sfxVolume = value; _sfxAudioSource.volume = _sfxVolume; } }
+    public float BgMusicVolume { get => GameStateHandler.Instance.GameData.BgMusicVolume; set { GameStateHandler.Instance.GameData.BgMusicVolume = value; _musicAudioSource.volume = value; } }
+    public float SfxVolume { get => GameStateHandler.Instance.GameData.SfxVolume; set { GameStateHandler.Instance.GameData.SfxVolume = value; _sfxAudioSource.volume = value; } }
 
     [SerializeField] AudioSource _musicAudioSource;
     [SerializeField] AudioSource _sfxAudioSource;
@@ -20,9 +20,6 @@ public class SoundsHandler : MonoBehaviour
     [SerializeField] AudioClip _keyPadRight;
     [SerializeField] AudioClip _keyPadWrong;
     [SerializeField] bool playBgMusic = false;
-
-    float _bgMusicVolume = 1;
-    float _sfxVolume = 1;
 
 
     private void Awake()

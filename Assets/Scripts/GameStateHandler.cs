@@ -215,8 +215,6 @@ public class GameStateHandler : MonoBehaviour
 
     public void ExitGame()
     {
-        //TODO: save settings data
-
         Application.Quit();
 
 #if UNITY_EDITOR

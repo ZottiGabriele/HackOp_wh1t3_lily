@@ -2770,6 +2770,8 @@ MonoBehaviour:
   _firstTokenFoundPopUp: {fileID: 9097207708668053872}
   _menu: {fileID: 9097207709219613674}
   _settings: {fileID: 3202295779045418357}
+  _bgMusicSlider: {fileID: 6212899876809871567}
+  _sfxSlider: {fileID: 3811885212479505684}
   _typingSpeed: 0.965
   _text: {fileID: 9097207707821734467}
   fadeOut: {fileID: 0}

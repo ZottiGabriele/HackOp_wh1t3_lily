@@ -19,6 +19,10 @@ public class GameSave
     public List<string> FoundHintIDs = new List<string>();
     public List<string> UnlockedHintIDs = new List<string>();
 
+    //SETTINGS
+    public float BgMusicVolume = 1;
+    public float SfxVolume = 1;
+
     //FIRST CHALLENGE
     public bool InteractedWithFirstComputer = false;
     public bool InteractedWithMailApp = false;
@@ -56,6 +60,8 @@ public class GameSave
         TutorialCompleted = data.TutorialCompleted;
         FoundHintIDs = data.FoundHintIDs;
         UnlockedHintIDs = data.UnlockedHintIDs;
+        BgMusicVolume = data.BgMusicVolume;
+        SfxVolume = data.SfxVolume;
         InteractedWithFirstComputer = data.InteractedWithFirstComputer;
         InteractedWithMailApp = data.InteractedWithMailApp;
         ConnectedViaSsh = data.ConnectedViaSsh;

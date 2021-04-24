@@ -13,26 +13,36 @@ public class ImgViewCommand : ICommand
 
     public override void OnCmdMatch()
     {
-        var cmd = _cmd.Split(new []{' '}, System.StringSplitOptions.RemoveEmptyEntries);
+        var cmd = _cmd.Split(new[] { ' ' }, System.StringSplitOptions.RemoveEmptyEntries);
         string arg = cmd[1];
         var query_item = TerminalHandler.Instance.VirtualFileSystem.Query(arg);
 
-        if(query_item != null) {
-            if(query_item.type == "directory") {
+        if (query_item != null)
+        {
+            if (query_item.type == "directory")
+            {
                 TerminalHandler.Instance.DisplayOutput("ERROR: The file " + arg + " is a directory");
-            } else {
-                if(!TerminalHandler.Instance.CheckPermissions(query_item, "r--")) {
+            }
+            else
+            {
+                if (!TerminalHandler.Instance.CheckPermissions(query_item, "r--"))
+                {
                     TerminalHandler.Instance.DisplayOutput("ERROR: Permission denied");
                     return;
                 }
-                if(query_item.readable && query_item.name == _targetImgName) {
+                if (query_item.name == _targetImgName)
+                {
                     OfficeServerRoomHandler.ShowImg();
                     TerminalHandler.Instance.InstantiateNewLine();
-                } else {
+                }
+                else
+                {
                     TerminalHandler.Instance.DisplayOutput("ERROR: File " + arg + " cannot be opened as an image");
                 }
             }
-        } else {
+        }
+        else
+        {
             TerminalHandler.Instance.DisplayOutput("ERROR: File " + arg + " not found");
         }
     }
